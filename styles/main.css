@@ -317,7 +317,6 @@ a {
   color: #495057;
 }
 .sidebar {
-  overflow: hidden !important;
   width: 320px;
   position: fixed;
   left: 0;
@@ -329,6 +328,7 @@ a {
   background-image: url('../media/images/sidebar-bg.jpg');
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .sidebar .menu-btn {
   display: none;
@@ -489,7 +489,9 @@ a {
   font-size: 18px;
   color: #495057;
 }
-.post-detail .post-content p code {
+.post-detail .post-content p code,
+.post-detail .post-content ul code,
+.post-detail .post-content ol code {
   padding: 0 3px;
   margin: 0 2px;
   background: #e9ecef;
