@@ -317,7 +317,7 @@ a {
   color: #495057;
 }
 .sidebar {
-  overflow-y: hidden !important;
+  overflow: hidden !important;
   width: 320px;
   position: fixed;
   left: 0;
