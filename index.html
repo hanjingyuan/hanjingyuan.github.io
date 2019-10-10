@@ -1,270 +1,208 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Gridea</title>
-<meta name="description" content="温故而知新" />
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570678448547">
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570690857000">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://hanjingyuan.github.io">
-  <img class="avatar" src="https://hanjingyuan.github.io/images/avatar.png?v=1570678448547" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570690857000" class="site-logo">
+        <h1 class="site-title">Gridea</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
       
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://hanjingyuan.github.io/post/0825-0831周总结">
-        <h2 class="post-title">0825-0831周总结</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-08-25
-        </span>
-        <span>
-          1 min read
-        </span>
-        
-          <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="post-tag">
-            # geoserver
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://hanjingyuan.github.io/post/0818-0824周总结">
-        <h2 class="post-title">0818-0824周总结</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-08-18
-        </span>
-        <span>
-          1 min read
-        </span>
-        
-          <a href="https://hanjingyuan.github.io/tag/ASKx9ao49m" class="post-tag">
-            # canvas
-          </a>
-        
-          <a href="https://hanjingyuan.github.io/tag/MMl1svNQ-E" class="post-tag">
-            # openlayers
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://hanjingyuan.github.io/post/0811-0817周总结">
-        <h2 class="post-title">0811-0817周总结</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-08-11
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://hanjingyuan.github.io/tag/ASKx9ao49m" class="post-tag">
-            # canvas
-          </a>
-        
-          <a href="https://hanjingyuan.github.io/tag/MMl1svNQ-E" class="post-tag">
-            # openlayers
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://hanjingyuan.github.io/post/0804-0810周总结">
-        <h2 class="post-title">0804-0810周总结</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2019-08-04
-        </span>
-        <span>
-          6 min read
-        </span>
-        
-          <a href="https://hanjingyuan.github.io/tag/L7RisVMicG" class="post-tag">
-            # postgis
-          </a>
-        
-          <a href="https://hanjingyuan.github.io/tag/yQeUc4vWZg" class="post-tag">
-            # asp.net web api
-          </a>
-        
-          <a href="https://hanjingyuan.github.io/tag/q9RWszzMh_" class="post-tag">
-            # angularjs
-          </a>
-        
-      </div>
-      
-      <div class="post-abstract">
-        
-      </div>
-    </article>
-  
-    <article class="post">
-      <a href="https://hanjingyuan.github.io/post/hello-gridea">
-        <h2 class="post-title">Hello Gridea</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-12-12
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://hanjingyuan.github.io/tag/yrwDu2zap" class="post-tag">
-            # Gridea
-          </a>
-        
-      </div>
-      
-        <a href="https://hanjingyuan.github.io/post/hello-gridea" class="post-feature-image" style="background-image: url('https://hanjingyuan.github.io/post-images/hello-gridea.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://hanjingyuan.github.io/post/0825-0831周总结">
+                  <h2 class="post-title">0825-0831周总结</h2>
+                </a>
+                <div class="post-date">
+                  2019-08-25
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://hanjingyuan.github.io/post/0818-0824周总结">
+                  <h2 class="post-title">0818-0824周总结</h2>
+                </a>
+                <div class="post-date">
+                  2019-08-18
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://hanjingyuan.github.io/post/0811-0817周总结">
+                  <h2 class="post-title">0811-0817周总结</h2>
+                </a>
+                <div class="post-date">
+                  2019-08-11
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://hanjingyuan.github.io/post/0804-0810周总结">
+                  <h2 class="post-title">0804-0810周总结</h2>
+                </a>
+                <div class="post-date">
+                  2019-08-04
+                </div>
+                <div class="post-abstract">
+                  
+                </div>
+              </div>
+              
+            </article>
+          
+            <article class="post-item">
+              <div class="left">
+                <a href="https://hanjingyuan.github.io/post/hello-gridea">
+                  <h2 class="post-title">Hello Gridea</h2>
+                </a>
+                <div class="post-date">
+                  2018-12-12
+                </div>
+                <div class="post-abstract">
+                  <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
 
+                </div>
+              </div>
+              
+                <a class="right" href="https://hanjingyuan.github.io/post/hello-gridea">
+                  <div class="feature-container" style="background-image: url('https://hanjingyuan.github.io/post-images/hello-gridea.png')">
+                  </div>
+                </a>
+              
+            </article>
+          
+
+          <div class="pagination-container">
+  
+  
+</div>
+
+        </div>
       </div>
-    </article>
-  
-</div>
+    </div>
 
-    
-        <div class="pagination-container">
-  
-  
-</div>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
-</div>
+<script type="application/javascript">
 
-<script>
-  hljs.initHighlightingOnLoad()
+AOS.init();
 
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+hljs.initHighlightingOnLoad()
 
-  // This should probably be throttled.
-  // Especially because it triggers during smooth scrolling.
-  // https://lodash.com/docs/4.17.10#throttle
-  // You could do like...
-  // window.addEventListener("scroll", () => {
-  //    _.throttle(doThatStuff, 100);
-  // });
-  // Only not doing it here to keep this Pen dependency-free.
-
-  window.addEventListener("scroll", event => {
-    let fromTop = window.scrollY;
-
-    mainNavLinks.forEach((link, index) => {
-      let section = document.getElementById(decodeURI(link.hash).substring(1));
-      let nextSection = null
-      if (mainNavLinks[index + 1]) {
-        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-      }
-      if (section.offsetTop <= fromTop) {
-        if (nextSection) {
-          if (nextSection.offsetTop > fromTop) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");    
-          }
-        } else {
-          link.classList.add("current");
-        }
-      } else {
-        link.classList.remove("current");
-      }
-    });
-  });
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
 
 </script>
 
-      </div>
-    </div>
+
+
+
   </body>
 </html>
