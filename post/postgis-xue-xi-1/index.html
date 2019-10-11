@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>PostGIS学习1 | 汉景源的博客</title>
+<meta name="description" content="我只是一个GIS工程师，来自长沙市规划信息中心。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570800462256">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
+<link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570800462256" class="site-logo">
+        <h1 class="site-title">汉景源的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      我只是一个GIS工程师，来自长沙市规划信息中心。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/lucahan" target="_blank">汉景源</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">PostGIS学习1</h2>
+            <div class="post-date">2019-05-01</div>
+            
+            <div class="post-content">
+              <h1 id="postgis学习-1">PostGIS学习-1</h1>
+<h2 id="1准备工作">1.准备工作</h2>
+<ol>
+<li>创建数据库</li>
+</ol>
+<pre><code class="language-sql">CREATE DATABASE gis;
+</code></pre>
+<ol start="2">
+<li>安装postgis拓展</li>
+</ol>
+<pre><code class="language-sql">CREATE EXTENSION postgis;
+select postgis_full_version();--检查pg是否安装ok
+</code></pre>
+<ol start="3">
+<li>shp文件:通常是指shp（几何信息），shx（索引信息），dbf（属性信息）三个文件组成。</li>
+</ol>
+<h2 id="2导入数据">2.导入数据</h2>
+<ol>
+<li>使用postgis直接将shp文件相关导入即可，导入时要注意设置想对应的SRID。</li>
+</ol>
+<h2 id="3基本操作">3.基本操作</h2>
+<ol>
+<li>SQL语句中的基本操作：create，select，update，delete，insert；</li>
+<li>常用的聚合函数：avg（），sum（），count（）；</li>
+<li>求纽约市的总人口？</li>
+</ol>
+<pre><code class="language-mssql">select sum(popn_total) as population from nyc_census_blocks;
+</code></pre>
+<ol start="4">
+<li>Bronx的人口数量是多少？</li>
+</ol>
+<pre><code class="language-sql">select sum(popn_total) as population from nyc_census_blocks where boroname = 'The Bronx'
+</code></pre>
+<ol start="5">
+<li>对于每一个行政区来说，白人占总人口的百分比是多少?</li>
+</ol>
+<pre><code class="language-sql">select boroname, sum(popn_white)/sum(popn_total) as white_pct from nyc_census_blocks group by boroname
+
+</code></pre>
+<ol start="6">
+<li>创建一张表</li>
+</ol>
+<pre><code class="language-sql">create table geometries(
+	id serial primary key,--主键而且自增
+	name varchar(100) not null,
+	geom geometry
+)
+</code></pre>
+<ol start="7">
+<li>插入数据</li>
+</ol>
+<pre><code class="language-sql">insert into geometries (name,geom) values
+('Point', 'Point(0 0)'),
+('Line', 'LineString(0 0,1 1)'),
+('PolygonWithHole', 'POLYGON((0 0, 10 0, 10 10, 0 10, 0 0),(1 1, 1 2, 2 2, 2 1, 1 1))'),
+('Collection', 'GEOMETRYCOLLECTION(POINT(2 0),POLYGON((0 0, 1 0, 1 1, 0 1, 0 0)))');
+
+DELETE FROM geometries
+ WHERE &lt;condition&gt;;
+ 
+ UPDATE geometries
+   SET id=?, name=?, geom=?
+ WHERE &lt;condition&gt;;
+</code></pre>
+<ol start="8">
+<li>元数据表：pg中为了更好的维护数据，专门有两张表用来追踪数据：spatial_ref_sys（用来记录空间参考系的坐标），另一张表实际上是视图geometry_columns（用来提供当前空间数据库中所有空间数据表的描述信息）</li>
+<li>对没有定义SRID的数据表追加SRID</li>
+</ol>
+<pre><code class="language-sql">select UpdateGeometrySRID('TableName', 'geom', '4326')
+</code></pre>
+<ol start="10">
+<li>pg数据库中又一个简单的语法形式，可以将数据由一种类型快速的转换到另一种类型</li>
+</ol>
+<pre><code class="language-sql">select 0.9::text; --将0.9转换text类型
+select 'POINT(0 0);SRID=4326'::GEOMETRY --将text转为geometry类型
+</code></pre>
+<ol start="11">
+<li>一些常用的空间函数：</li>
+</ol>
+<pre><code>sum(expression) aggregate to return a sum for a set of records
+count(expression) aggregate to return the size of a set of records
+ST_GeometryType(geometry) returns the type of the geometry
+ST_NDims(geometry) returns the number of dimensions of the geometry
+ST_SRID(geometry) returns the spatial reference identifier number of the geometry
+ST_X(point) returns the X ordinate
+ST_Y(point) returns the Y ordinate
+ST_Length(linestring) returns the length of the linestring
+ST_StartPoint(geometry) returns the first coordinate as a point
+ST_EndPoint(geometry) returns the last coordinate as a point
+ST_NPoints(geometry) returns the number of coordinates in the linestring
+ST_Area(geometry) returns the area of the polygons
+ST_NRings(geometry) returns the number of rings (usually 1, more if there are holes)
+ST_ExteriorRing(polygon) returns the outer ring as a linestring
+ST_InteriorRingN(polygon, integer) returns a specified interior ring as a linestring
+ST_Perimeter(geometry) returns the length of all the rings
+ST_NumGeometries(multi/geomcollection) returns the number of parts in the collection
+ST_GeometryN(geometry, integer) returns the specified part of the collection
+ST_GeomFromText(text) returns geometry
+ST_AsText(geometry) returns WKT text
+ST_AsEWKT(geometry) returns EWKT text
+ST_GeomFromWKB(bytea) returns geometry
+ST_AsBinary(geometry) returns WKB bytea
+ST_AsEWKB(geometry) returns EWKB bytea
+ST_GeomFromGML(text) returns geometry
+ST_AsGML(geometry) returns GML text
+ST_GeomFromKML(text) returns geometry
+ST_AsKML(geometry) returns KML text
+ST_AsGeoJSON(geometry) returns JSON text
+ST_AsSVG(geometry) returns SVG text
+</code></pre>
+<ol start="12">
+<li>group by  xxx order by yyy desc，order by一定要在group by的后面</li>
+</ol>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/L7RisVMicG" class="tag">
+                    postgis
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/ogc-biao-zhun-2">
+                  <h3 class="post-title">
+                    OGC标准2
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

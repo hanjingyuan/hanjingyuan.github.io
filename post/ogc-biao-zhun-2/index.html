@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>OGC标准2 | 汉景源的博客</title>
+<meta name="description" content="我只是一个GIS工程师，来自长沙市规划信息中心。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570800462256">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
+<link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570800462256" class="site-logo">
+        <h1 class="site-title">汉景源的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      我只是一个GIS工程师，来自长沙市规划信息中心。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/lucahan" target="_blank">汉景源</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">OGC标准2</h2>
+            <div class="post-date">2019-04-29</div>
+            
+            <div class="post-content">
+              <h1 id="一-wms">一、WMS</h1>
+<h2 id="1-1-getcapabilities">1-1 GetCapabilities</h2>
+<blockquote>
+<p>用于返回服务级元数据,包括有当前服务提供商的一些基本信息以及当前服务的一些能力</p>
+</blockquote>
+<p>请求：http://localhost:8080/geoserver/wms?service=wms&amp;version=1.1.1&amp;request=GetCapabilities</p>
+<p>返回：格式为xml文档，包含了如下的信息（返回了一个超长的XML文件，包含了各种信息，有图层，请求，以及WMS的服务器的信息等等）<br>
+<img src="https://hanjingyuan.github.io/post-images/1570800102858.png" alt=""></p>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570800075942.png" alt=""></figure>
+<h2 id="1-2getmap">1-2GetMap</h2>
+<blockquote>
+<p>用来获取地图影像，是一个非常常用的方法</p>
+</blockquote>
+<p>请求：http://localhost:8080/geoserver/wms?service=wms&amp;version=1.1.1&amp;request=GetMap&amp;bbox=-130,24,-66,50&amp;style=population&amp;format=image/png&amp;layers=topp:states&amp;width=500&amp;height=250&amp;srs=EPSG:4326</p>
+<p>上面就是一个标准的GetMap请求，请求返回了png数据。对于返回的格式，有如下的选择：</p>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570800114151.png" alt=""></figure>
+<p><strong>注：style后的内容可以不填，即&amp;style=&amp;xxxx=xxx</strong></p>
+<h2 id="1-3-getfeatureinfo">1-3 GetFeatureInfo</h2>
+<blockquote>
+<p>此方法主要用于地图上通过某一坐标进行查询，这种方法一般不常用，对于WMS一般使用GetMap方法就足够了。</p>
+</blockquote>
+<h1 id="二-wmts">二、WMTS</h1>
+<h1 id="三-wfs">三、WFS</h1>
+<h2 id="3-1-getcapabilities">3-1 GetCapabilities</h2>
+<blockquote>
+<p>返回服务描述文档，和WMS里的方法差不多，都是返回服务相关的信息的，在一般开发过程中，用处不大。</p>
+</blockquote>
+<p>请求：http://localhost:8060/geoserver/cite/ows?service=wfs&amp;version=1.1.1&amp;request=GetCapabilities</p>
+<p>返回：xml格式的文档<br>
+<img src="https://hanjingyuan.github.io/post-images/1570800122582.png" alt=""></p>
+<h2 id="3-2-describefeaturetype">3-2 DescribeFeatureType</h2>
+<blockquote>
+<p>返回图层的描述信息</p>
+</blockquote>
+<p>请求：http://localhost:8060/geoserver/cite/ows?service=wfs&amp;version=1.1.1&amp;request=DescribeFeatureType</p>
+<p>返回：很多很多xml文件；</p>
+<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570800130942.png" alt=""></figure>
+<h2 id="3-3-getfeature">3-3 GetFeature</h2>
+<p>请求：http://localhost:8060/geoserver/cite/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=cite:xspoint&amp;maxFeatures=50&amp;outputFormat=application%2Fjson</p>
+<p>或者是:http://localhost:8060/geoserver/wfs?service=wfs&amp;version=1.1.0&amp;request=GetFeature&amp;typeName=cite:xspoin&amp;outputFormat=application/json</p>
+<p>对于GetFeature操作来说，使用的是GML协议，get和post请求都可以使用，但是有用get请求传送的数据量是有限的，所以一般使用post来进行传送。</p>
+<p>对于事务的操作，也就是Transaction，需要提交的是xml协议。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/PcO-b64nH" class="tag">
+                    ogc
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/ogc-biao-zhun-1">
+                  <h3 class="post-title">
+                    OGC标准-1
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

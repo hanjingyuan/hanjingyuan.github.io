@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-10T12:58:52.443Z</updated>
+    <updated>2019-10-11T13:27:45.335Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -11,15 +11,204 @@
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
     <entry>
-        <title type="html"><![CDATA[测试]]></title>
-        <id>https://hanjingyuan.github.io/post/ce-shi</id>
-        <link href="https://hanjingyuan.github.io/post/ce-shi">
+        <title type="html"><![CDATA[0922-0929周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/0922-0929周总结</id>
+        <link href="https://hanjingyuan.github.io/post/0922-0929周总结">
         </link>
-        <updated>2019-10-10T08:15:22.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>
+        <updated>2019-09-21T16:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="0922-0929周">0922-0929周</h1>
+<h2 id="0923">0923</h2>
+<ol>
+<li>快速网格化代码</li>
+</ol>
+<pre><code class="language-js">javascript: (function() {
+	var elements = document.body.getElementsByTagName('*');
+	var items = [];
+	for (var i = 0; i &lt; elements.length; i++) {
+		if (elements[i].innerHTML.indexOf('html * { outline: 1px solid red }') != -1) {
+			items.push(elements[i]);
+		}
+	}
+	if (items.length &gt; 0) {
+		for (var i = 0; i &lt; items.length; i++) {
+			items[i].innerHTML = '';
+		}
+	} else {
+		document.body.innerHTML +=
+			'&lt;style&gt;html * { outline: 1px solid red }&lt;/style&gt;';
+	}
+})();
+
 </code></pre>
-<p><img src="https://hanjingyuan.github.io/post-images/1570695646333.png" alt=""><br>
-<img src="https://hanjingyuan.github.io/post-images/1570695795541.png" alt=""></p>
+<h2 id="0924">0924</h2>
+<ol>
+<li>当遇到gulp合并js文件突然变慢的时候，此时可以尝试重试启动gulp，基本可以解决；</li>
+</ol>
+<h2 id="0926">0926</h2>
+<ol>
+<li>geotools,阿里云maven配置</li>
+</ol>
+<pre><code class="language-xml">&lt;mirror&gt;
+		&lt;id&gt;alimaven&lt;/id&gt;
+		&lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+		&lt;name&gt;aliyun maven&lt;/name&gt;
+&lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;
+		&lt;mirrorOf&gt;*,!osgeo,!maven2-repository.dev.java.net,!boundless&lt;/mirrorOf&gt; 
+&lt;/mirror&gt;
+</code></pre>
+<h2 id="0929">0929</h2>
+<ol>
+<li>使用nvm作为node.js的版本管理工具；</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[0915-0921周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/0915-0921周总结</id>
+        <link href="https://hanjingyuan.github.io/post/0915-0921周总结">
+        </link>
+        <updated>2019-09-14T16:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="0915-0921周">0915-0921周</h1>
+<h2 id="0917">0917</h2>
+<ol>
+<li>组织树的简单递归算法实现</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799418412.png" alt=""></figure>
+<pre><code class="language-js">data.forEach(item=&gt;{
+  recursiveTraverse(item);
+});
+
+const recursiveTraverse = function (node) {
+  if (!node || node['children'].length === 0) {
+      node['children'] = null;
+      return;
+  }
+  node['children'].forEach(function(item) {
+      recursiveTraverse(item);
+  });
+};
+</code></pre>
+<h2 id="0918">0918</h2>
+<ol>
+<li>geoserver中对于restful api使用时遇到401和403问题的解决办法：（1）遇到401时，需要在请求的headers中携带'Authorization': 'Basic YWRtaW46Z2Vvc2VydmVy'来进行解决；（2）遇到403时，说明在web.xml中，跨域信息没有完全打开，此时需要打开跨域请求，即:</li>
+</ol>
+<pre><code class="language-xml">   &lt;filter&gt;
+        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.eclipse.jetty.servlets.CrossOriginFilter&lt;/filter-class&gt;
+		
+       &lt;init-param&gt;
+           &lt;param-name&gt;chainPreflight&lt;/param-name&gt;
+           &lt;param-value&gt;false&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;allowedOrigins&lt;/param-name&gt;
+           &lt;param-value&gt;*&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;allowedMethods&lt;/param-name&gt;
+           &lt;param-value&gt;GET,POST,PUT,DELETE,HEAD,OPTIONS&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;allowedHeaders&lt;/param-name&gt;
+           &lt;param-value&gt;*&lt;/param-value&gt;
+       &lt;/init-param&gt;
+    &lt;/filter&gt;
+
+    &lt;filter-mapping&gt;
+      &lt;filter-name&gt;Set Character Encoding&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+   
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+   
+</code></pre>
+<h2 id="0919">0919</h2>
+<ol>
+<li>天地图的能力请求方式：</li>
+</ol>
+<pre><code>http://t0.tianditu.gov.cn/vec_c/wmts?tk=f1d0e61021ded0ed120188019ec1c5a3?request=GetCapabilities&amp;service=wmts
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[0908-0914周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/0908-0914周总结</id>
+        <link href="https://hanjingyuan.github.io/post/0908-0914周总结">
+        </link>
+        <updated>2019-09-07T16:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="0908-0914周">0908-0914周</h1>
+<h2 id="0912">0912</h2>
+<ol>
+<li>对于瓦片规则的获取以及其他geoserver相关图层信息的获取可以使用geoserver自带的rest服务进行查找，例如获取gridset的信息，可以使用：http://localhost:8080/geoserver/gwc/rest/gridsets来实现；</li>
+</ol>
+<pre><code>1.获取瓦片图层：http://localhost:8080/geoserver/gwc/rest/layers
+2.获取girdset：
+http://localhost:8080/geoserver/gwc/rest/gridsets
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[0901-0907周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/0901-0907周总结</id>
+        <link href="https://hanjingyuan.github.io/post/0901-0907周总结">
+        </link>
+        <updated>2019-08-31T16:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="0901-0907周">0901-0907周</h1>
+<h2 id="0902">0902</h2>
+<ol>
+<li>对于postgresql触发器的使用。先编写对应的函数，然后使用触发器函数进行联动；</li>
+</ol>
+<pre><code>//触发器函数
+BEGIN 
+  UPDATE public.indexmap_xzq
+  SET shape_area=st_area(new.geom)
+  WHERE gid=new.gid;
+  return NEW;
+END;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799356463.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570799366762.png" alt=""></figure>
+<ol>
+<li>对于sld文件的上下限值的设置(注意如果没有上下限，只有单一的限，那么注意去除掉and条件)：</li>
+</ol>
+<pre><code class="language-xml">&lt;se:Rule&gt;
+          &lt;se:Name&gt;极小型&lt;/se:Name&gt;
+          &lt;se:Description&gt;
+            &lt;se:Title&gt;极小型&lt;/se:Title&gt;
+          &lt;/se:Description&gt;
+          &lt;ogc:Filter xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;
+              &lt;ogc:PropertyIsLessThanOrEqualTo&gt;
+                &lt;ogc:PropertyName&gt;shape_area&lt;/ogc:PropertyName&gt;
+                &lt;ogc:Literal&gt;10404351.5462104007601738&lt;/ogc:Literal&gt;
+              &lt;/ogc:PropertyIsLessThanOrEqualTo&gt;
+          &lt;/ogc:Filter&gt;
+          &lt;se:PolygonSymbolizer&gt;
+            &lt;se:Fill&gt;
+              &lt;se:SvgParameter name=&quot;fill&quot;&gt;#f7fcf5&lt;/se:SvgParameter&gt;
+            &lt;/se:Fill&gt;
+            &lt;se:Stroke&gt;
+              &lt;se:SvgParameter name=&quot;stroke&quot;&gt;#232323&lt;/se:SvgParameter&gt;
+              &lt;se:SvgParameter name=&quot;stroke-width&quot;&gt;1&lt;/se:SvgParameter&gt;
+              &lt;se:SvgParameter name=&quot;stroke-linejoin&quot;&gt;bevel&lt;/se:SvgParameter&gt;
+            &lt;/se:Stroke&gt;
+          &lt;/se:PolygonSymbolizer&gt;
+        &lt;/se:Rule&gt;
+</code></pre>
+<h2 id="0903">0903</h2>
+<ol>
+<li>wfs的结果输出为geojson的方式</li>
+</ol>
+<pre><code class="language-xml">&lt;wfs:GetFeature service=&quot;WFS&quot; version=&quot;1.0.0&quot;
+  outputFormat=&quot;application/json&quot;&gt;
+</code></pre>
+<h2 id="0906">0906</h2>
+<ol>
+<li>scale与resolution之间的互换：https://www.cnblogs.com/naaoveGIS/p/5620951.html</li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570799379739.png" alt=""></figure>
 ]]></content>
     </entry>
     <entry>
@@ -185,35 +374,132 @@ public Result&lt;List&lt;KgLandBound&gt;&gt; getSpatialQueryInfo(dynamic obj)
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://hanjingyuan.github.io/post/hello-gridea</id>
-        <link href="https://hanjingyuan.github.io/post/hello-gridea">
+        <title type="html"><![CDATA[0728-0803周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/0728-0803周总结</id>
+        <link href="https://hanjingyuan.github.io/post/0728-0803周总结">
         </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+        <updated>2019-07-27T16:00:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="0728-0803周">0728-0803周</h1>
+<h2 id="0728">0728</h2>
+<ol>
+<li>若使用li，使用宽度33%出现了换行情况，则父元素ul标签应该设置font-size:0；</li>
+</ol>
+<h2 id="0729">0729</h2>
+<ol>
+<li>在openlayers中，若发生鼠标偏移的情况，则很有可能是CSS问题导致的。在这一次遇到的问题中，由于高度设置问题，map容器出现了滚动条，但是滚动条因为被我进行了强制隐藏操作，所以鼠标出现了偏移的问题。解决的方法是：只要解决掉css导致的高度、滚动条问题，即可以解决鼠标偏移的问题；</li>
+<li>监听地图渲染完成后的事件：</li>
+</ol>
+<pre><code class="language-js">    map.once('postrender', function(event) {
+        //do somethings
+    });
+</code></pre>
+<h2 id="0730">0730</h2>
+<ol>
+<li>当修改了geoserver的配置文件时，会出现预览图层时报空指针的错误，目前已经查到的原因是:默认style样式文件的配置出现问题，此时需要重新配置style即可解决问题；</li>
+<li>openlayers中的ol.layer.group只有setLayers方法，可以添加图层到group中去，但是没有从group中移出图层的方法，想要移出图层，只能进行全部移出的操作，使用setLayers方法传进去一个空数组，即使用</li>
+</ol>
+<pre><code class="language-js">    const group = new ol.layer.group(); 
+    group.setLayers(new ol.Collection([]));
+</code></pre>
+<h2 id="0731">0731</h2>
+<ol>
+<li>
+<p>在后续的开发中，应当采用每开发一个新功能，对应使用一个开发分支，保证功能使用的正确性和流畅性。具体文档参加：https://www.liaoxuefeng.com/wiki/896043488029600/896954848507552;</p>
+</li>
+<li>
+<p>比较重要的就是使用bug分支，即使用git stash可以保存当前的工作状态，然后可以切换到其他分支中去；</p>
+</li>
+<li>
+<p>常用的git分支操作：</p>
+</li>
+</ol>
+<pre><code>    删除本地分支：git branch -d [branchname]
+    强制删除本地没有merge的分支：git branch -D [branchname]
+    推送本地分支到远程：git push origin [branchname]
+    删除远程分支：git push origin --delete [branchname]
+    拉取本地不存在的远程分支：git checkout -b 本地分支名 origin/远程分支名
+</code></pre>
+<ol start="4">
+<li>其他常用的git操作：</li>
+</ol>
+<pre><code>reset hard后的恢复：git reflog（查看历史操作，从而找到版本号）
+合并分支：git merge [branchname] 在当前分支上合并目标分支
+</code></pre>
+<h2 id="0801">0801</h2>
+<ol>
+<li>postgis实现先用bbox选定指定范围内的数据，然后将选出的数据再进行相关的空间查询，平均耗时不稳定，在150ms左右；</li>
+</ol>
+<pre><code class="language-sql">select * from
+	(
+		SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area, geom FROM public.kg_land_bound2 
+			where geom &amp;&amp; ST_MakeEnvelope(49521.10320887309,96831.87283041234,50109.537719075444,97307.06544746425)
+	) as res 
+where St_Intersects(res.geom, ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547));
+</code></pre>
+<ol start="2">
+<li>在不使用st_makeenvelope的情况下，进行直接的查询，消耗的平均时间为140ms；</li>
+</ol>
+<pre><code class="language-sql">SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area, geom FROM public.kg_land_bound2 
+			where St_Intersects(geom, ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547));
+</code></pre>
+<ol start="3">
+<li>
+<p>之所以出现上面这种情况，是因为空间数据库中会根据geometry字段自动的生成索引覆盖，由于索引的存在，所以方法2甚至可能会比方法1还要快，毕竟方法2可以直接通过索引的方式找到指定区域，而且比方法1还要少了一个步骤。</p>
+</li>
+<li>
+<p>求相交部分，给定一个大范围，使用intersects，找出与大范围相交的元素，然后再使用intersection，求出相交数据与大范围的重叠部分并且进行返回；</p>
+</li>
+</ol>
+<pre><code class="language-sql">SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area,  ST_Intersection(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
+FROM public.kg_land_bound2  where ST_Intersects(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[0721-0727周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/0721-0727周总结</id>
+        <link href="https://hanjingyuan.github.io/post/0721-0727周总结">
+        </link>
+        <updated>2019-07-27T05:32:02.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="19-0721-0727周总结">19-0721-0727周总结</h1>
+<h2 id="0724">0724</h2>
+<ol>
+<li>openlayers中地图的容器div先被隐藏后被显示，此时需要调用setTimeout进行map.updateSize()；</li>
+<li>惰性单例模式的封装；</li>
+<li>图层加载时的状态监听：</li>
+</ol>
+<pre><code class="language-js">    const wmsLayerSource = new ol.source.ImageWMS(
+        Object.assign(defaultOption, option)
+    );
+    wmsLayerSource.on('imageloadstart', function() {
+        console.log('imageloadstart')
+    });
+
+    wmsLayerSource.on('imageloadend', function() {
+        console.log('imageloadend')
+    });
+</code></pre>
+<h2 id="0725">0725</h2>
+<ol>
+<li>geoserver中配置sld导致无法预览的原因是：geoserver读取的属性名全部为小写，而qgis生成的sld中的字段名存在大写，大小写不一致就会导致无法预览图层的情况；</li>
+<li>请求图例的方式：</li>
+</ol>
+<blockquote>
+<p>http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&amp;VERSION=1.0.0&amp;FORMAT=image/png&amp;WIDTH=100&amp;HEIGHT=100&amp;LAYER=cite:indexmap_kg&amp;STYLE=cite:xzq</p>
+</blockquote>
+<ol start="3">
+<li>arcgis请求图例分别有html和json两种方式，且json方式返回的是base格式：</li>
+</ol>
+<blockquote>
+<p>http://172.30.3.201:6080/arcgis/rest/services/JSYDSP_TDGY1/MapServer/legend</p>
+</blockquote>
+<h2 id="0726">0726</h2>
+<ol>
+<li>c#中，获取webconfig的连接字符串：</li>
+</ol>
+<pre><code class="language-c#">ConnectionStringSettings cs = ConfigurationManager.ConnectionStrings[&quot;postgresql&quot;];
+            string conStr = cs.ConnectionString;
+</code></pre>
 ]]></content>
     </entry>
 </feed>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>坐标系 | 汉景源的博客</title>
+<meta name="description" content="我只是一个GIS工程师，来自长沙市规划信息中心。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570800462256">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
+<link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570800462256" class="site-logo">
+        <h1 class="site-title">汉景源的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      我只是一个GIS工程师，来自长沙市规划信息中心。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/lucahan" target="_blank">汉景源</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">坐标系</h2>
+            <div class="post-date">2019-04-22</div>
+            
+            <div class="post-content">
+              <h1 id="一-gis坐标系">一、GIS坐标系</h1>
+<ol>
+<li><strong>平面坐标系</strong>：可以理解为用户自定义坐标系；</li>
+<li><strong>地理坐标系</strong>：球面坐标，参考平面是椭球面，坐标单位是经纬度；</li>
+<li><strong>投影坐标系</strong>：平面坐标，参考平面是水平面，坐标单位是米，千米等。</li>
+</ol>
+<h1 id="二-地球空间模型">二、地球空间模型</h1>
+<ol>
+<li><strong>地球自然表面</strong>：两级稍扁，赤道略鼓的不规则球体；</li>
+<li><strong>大地水准面</strong>：大地水准面是对地球自然平面的抽象。定义是：假设当海水处于完全静止的平衡状态时，从海平面延伸到所有的大陆下部，而与地球重力方向处处正交的一个连续，闭合的曲面；水准面从正常的角度来说，应该是水平的，但是受到地球质量和引力的影响，导致了不用位置的引力是不同的，进而导致大地水准面并不是水平面。</li>
+<li><strong>地球椭球体</strong>：以大地水准面建立的地球模型成为地球椭球体；</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570800430801.gif" alt=""></figure>
+<ol>
+<li><strong>参考椭球体</strong>：参考椭球体就是一种具有一定几何参数的地球椭球。西安80坐标系使用1975椭球，国家2000坐标系采用1980椭球。</li>
+</ol>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570800419319.jpg" alt=""></figure>
+<h1 id="三-地理坐标系">三、地理坐标系</h1>
+<ol>
+<li>地心坐标系：地心坐标系的原点与地球的质心重合，以质心为原点建立的空间直角坐标系，如国家2000坐标系，WGS84坐标系；</li>
+<li>参心坐标系：采用的是参考椭球体的原点。一般来说，参心坐标系在局部使用，在局部地区的拟合度较好，包括北京54，西安80；</li>
+</ol>
+<h1 id="四-投影坐标系">四、投影坐标系</h1>
+<p>常用的投影方式包括了：等角，等积和任意投影三种方式。</p>
+<ol>
+<li><strong>墨卡托投影</strong>：是一种“等角正切圆柱投影”。假设地球被围绕在一个中空的圆柱中，其赤道线与圆柱相切接触，然后假设地球中心有一盏灯，再把球面上的图形投影到圆柱体上，再把圆柱体展开。优点是没有角度变形，缺点是纬度越高，变形越大。目前世界上两种通用地图，“大西洋世界地图”和“太平洋世界地图”都是采用墨卡托投影；</li>
+<li><strong>高斯克吕格投影</strong>：又名“横轴等角切圆柱投影”，按照分带方法各自进行投影，我国确定，1:1万，1:2.5万，1:5万，1:10万，1:25万，1:50万比例尺的地形图采用高斯克吕格投影，北京54和西安80也亦采用这种投影方式。</li>
+<li><strong>高斯投影的特点</strong>：（1）离开中央子午线越远，变形越大；（2）赤道是直线，离开赤道的线是弧线，并且凸向赤道；（3）没有角度变形；（4）长度和面积的变形很小。</li>
+<li><strong><mark>分带的计算</mark></strong></li>
+</ol>
+<h1 id="五-国际标准坐标系">五、国际标准坐标系</h1>
+<ol>
+<li>WGS84坐标系：地理坐标系；</li>
+<li>Web墨卡托投影：投影坐标系；原点为本初子午线与赤道的交点；</li>
+</ol>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/wasm-jie-duan-yan-zheng">
+                  <h3 class="post-title">
+                    WASM阶段验证
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

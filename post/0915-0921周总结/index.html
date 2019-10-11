@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>0915-0921周总结 | 汉景源的博客</title>
+<meta name="description" content="我只是一个GIS工程师，来自长沙市规划信息中心。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570800462256">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
+<link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570800462256" class="site-logo">
+        <h1 class="site-title">汉景源的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      我只是一个GIS工程师，来自长沙市规划信息中心。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/lucahan" target="_blank">汉景源</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">0915-0921周总结</h2>
+            <div class="post-date">2019-09-15</div>
+            
+            <div class="post-content">
+              <h1 id="0915-0921周">0915-0921周</h1>
+<h2 id="0917">0917</h2>
+<ol>
+<li>组织树的简单递归算法实现</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799418412.png" alt=""></figure>
+<pre><code class="language-js">data.forEach(item=&gt;{
+  recursiveTraverse(item);
+});
+
+const recursiveTraverse = function (node) {
+  if (!node || node['children'].length === 0) {
+      node['children'] = null;
+      return;
+  }
+  node['children'].forEach(function(item) {
+      recursiveTraverse(item);
+  });
+};
+</code></pre>
+<h2 id="0918">0918</h2>
+<ol>
+<li>geoserver中对于restful api使用时遇到401和403问题的解决办法：（1）遇到401时，需要在请求的headers中携带'Authorization': 'Basic YWRtaW46Z2Vvc2VydmVy'来进行解决；（2）遇到403时，说明在web.xml中，跨域信息没有完全打开，此时需要打开跨域请求，即:</li>
+</ol>
+<pre><code class="language-xml">   &lt;filter&gt;
+        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.eclipse.jetty.servlets.CrossOriginFilter&lt;/filter-class&gt;
+		
+       &lt;init-param&gt;
+           &lt;param-name&gt;chainPreflight&lt;/param-name&gt;
+           &lt;param-value&gt;false&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;allowedOrigins&lt;/param-name&gt;
+           &lt;param-value&gt;*&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;allowedMethods&lt;/param-name&gt;
+           &lt;param-value&gt;GET,POST,PUT,DELETE,HEAD,OPTIONS&lt;/param-value&gt;
+       &lt;/init-param&gt;
+       &lt;init-param&gt;
+           &lt;param-name&gt;allowedHeaders&lt;/param-name&gt;
+           &lt;param-value&gt;*&lt;/param-value&gt;
+       &lt;/init-param&gt;
+    &lt;/filter&gt;
+
+    &lt;filter-mapping&gt;
+      &lt;filter-name&gt;Set Character Encoding&lt;/filter-name&gt;
+      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+   
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+   
+</code></pre>
+<h2 id="0919">0919</h2>
+<ol>
+<li>天地图的能力请求方式：</li>
+</ol>
+<pre><code>http://t0.tianditu.gov.cn/vec_c/wmts?tk=f1d0e61021ded0ed120188019ec1c5a3?request=GetCapabilities&amp;service=wmts
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/hYe_vET_OB" class="tag">
+                    postgresql
+                  </a>
+                
+                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
+                    geoserver
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/0908-0914周总结">
+                  <h3 class="post-title">
+                    0908-0914周总结
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

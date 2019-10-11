@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>0901-0907周总结 | 汉景源的博客</title>
+<meta name="description" content="我只是一个GIS工程师，来自长沙市规划信息中心。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570800462256">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
+<link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570800462256" class="site-logo">
+        <h1 class="site-title">汉景源的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      我只是一个GIS工程师，来自长沙市规划信息中心。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/lucahan" target="_blank">汉景源</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">0901-0907周总结</h2>
+            <div class="post-date">2019-09-01</div>
+            
+            <div class="post-content">
+              <h1 id="0901-0907周">0901-0907周</h1>
+<h2 id="0902">0902</h2>
+<ol>
+<li>对于postgresql触发器的使用。先编写对应的函数，然后使用触发器函数进行联动；</li>
+</ol>
+<pre><code>//触发器函数
+BEGIN 
+  UPDATE public.indexmap_xzq
+  SET shape_area=st_area(new.geom)
+  WHERE gid=new.gid;
+  return NEW;
+END;
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799356463.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570799366762.png" alt=""></figure>
+<ol>
+<li>对于sld文件的上下限值的设置(注意如果没有上下限，只有单一的限，那么注意去除掉and条件)：</li>
+</ol>
+<pre><code class="language-xml">&lt;se:Rule&gt;
+          &lt;se:Name&gt;极小型&lt;/se:Name&gt;
+          &lt;se:Description&gt;
+            &lt;se:Title&gt;极小型&lt;/se:Title&gt;
+          &lt;/se:Description&gt;
+          &lt;ogc:Filter xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;
+              &lt;ogc:PropertyIsLessThanOrEqualTo&gt;
+                &lt;ogc:PropertyName&gt;shape_area&lt;/ogc:PropertyName&gt;
+                &lt;ogc:Literal&gt;10404351.5462104007601738&lt;/ogc:Literal&gt;
+              &lt;/ogc:PropertyIsLessThanOrEqualTo&gt;
+          &lt;/ogc:Filter&gt;
+          &lt;se:PolygonSymbolizer&gt;
+            &lt;se:Fill&gt;
+              &lt;se:SvgParameter name=&quot;fill&quot;&gt;#f7fcf5&lt;/se:SvgParameter&gt;
+            &lt;/se:Fill&gt;
+            &lt;se:Stroke&gt;
+              &lt;se:SvgParameter name=&quot;stroke&quot;&gt;#232323&lt;/se:SvgParameter&gt;
+              &lt;se:SvgParameter name=&quot;stroke-width&quot;&gt;1&lt;/se:SvgParameter&gt;
+              &lt;se:SvgParameter name=&quot;stroke-linejoin&quot;&gt;bevel&lt;/se:SvgParameter&gt;
+            &lt;/se:Stroke&gt;
+          &lt;/se:PolygonSymbolizer&gt;
+        &lt;/se:Rule&gt;
+</code></pre>
+<h2 id="0903">0903</h2>
+<ol>
+<li>wfs的结果输出为geojson的方式</li>
+</ol>
+<pre><code class="language-xml">&lt;wfs:GetFeature service=&quot;WFS&quot; version=&quot;1.0.0&quot;
+  outputFormat=&quot;application/json&quot;&gt;
+</code></pre>
+<h2 id="0906">0906</h2>
+<ol>
+<li>scale与resolution之间的互换：https://www.cnblogs.com/naaoveGIS/p/5620951.html</li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570799379739.png" alt=""></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/hYe_vET_OB" class="tag">
+                    postgresql
+                  </a>
+                
+                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
+                    geoserver
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/0825-0831周总结">
+                  <h3 class="post-title">
+                    0825-0831周总结
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>

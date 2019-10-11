@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>OGC标准-1 | 汉景源的博客</title>
+<meta name="description" content="我只是一个GIS工程师，来自长沙市规划信息中心。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570800462256">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
+<link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570800462256" class="site-logo">
+        <h1 class="site-title">汉景源的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      我只是一个GIS工程师，来自长沙市规划信息中心。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/lucahan" target="_blank">汉景源</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">OGC标准-1</h2>
+            <div class="post-date">2019-04-28</div>
+            
+            <div class="post-content">
+              <h1 id="一-sfs简单要素标准">一 SFS简单要素标准</h1>
+<h2 id="1-简述">1 简述</h2>
+<ol>
+<li>通用模型：WKT几何对象，WKB几何对象，WKT空间参考</li>
+<li>SQL实现：schema预定义，SQL几何类型，SQL空间操作</li>
+</ol>
+<h2 id="2-wkt">2 WKT</h2>
+<h3 id="2-1-几何描述">2-1 几何描述</h3>
+<p>Point，LineString，Polygon，GeometryCollection，MultiPoint/LineString/Polygon</p>
+<h3 id="2-2-空间参考">2-2 空间参考</h3>
+<p>（1）地理坐标系</p>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799941036.png" alt=""></figure>
+<p>（2）投影坐标系<br>
+<img src="https://hanjingyuan.github.io/post-images/1570799957153.png" alt=""></p>
+<h2 id="3-wkb">3 WKB</h2>
+<p>使用字节码来存储几何对象</p>
+<h2 id="4-schema">4 Schema</h2>
+<p>在空间数据库中，这个东西是一定要有的，他是用来进行定义诸如空间坐标的定义，几何字段，空间参考信息等；</p>
+<h1 id="二-gml地理标记语言">二 GML地理标记语言</h1>
+<p>GML实际上是XML格式对于地理处理的封装，实际上和geojson和json的关系相类似。WFS标准就使用GML作为输入输出格式。</p>
+<p>下图为一个简易的GML对象格式：<br>
+<img src="https://hanjingyuan.github.io/post-images/1570799977301.png" alt=""></p>
+<h1 id="三-sld图层样式描述标准">三 SLD图层样式描述标准</h1>
+<p>SLD文件也是使用的是XML来定义的。SLD基本上没有什么好记的，因为大部分基本上是通过qgis/arcgis编辑好了的，没必要单独去写SLD文件。</p>
+<h1 id="四-kml格式">四 KML格式</h1>
+<p>与GML相比，KML更加简洁，可读性好，另外KML相当于自身可以携带样式。而GML本身是无法携带样式的，需要配合SLD一起使用才行。</p>
+<h1 id="五-ogc-web通用标准">五 OGC WEB通用标准</h1>
+<p>（1）请求：OWS（OGC Web Service）可以通过get和post两种方式进行请求。get方式是直接在连接里带参数，post方式则是传xml格式。</p>
+<p>（2）响应：都可以</p>
+<p>（3）所有的OWS请求都可以使用GetCapabilities操作</p>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570799987487.png" alt=""></figure>
+<h1 id="六-wfs服务">六 WFS服务</h1>
+<p>WFS服务说到底是支持两种服务，第一种是数据的读取，也就是GetCapabilities；另外一种就是WFS-T，通过服务进行事务的操作，也就是增删改。</p>
+<p>包含了：</p>
+<ul>
+<li>GetCapabilities(返回服务描述文档)</li>
+<li>DescribeFeatureType（返回图层描述信息）：主要是返回图层的字段信息</li>
+<li>GetFeature（获取图层要素）</li>
+</ul>
+<pre><code>http://localhost:8060/geoserver/cite/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=cite:shenghui&amp;maxFeatures=50&amp;outputFormat=application%2Fjson
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/PcO-b64nH" class="tag">
+                    ogc
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/zuo-biao-xi">
+                  <h3 class="post-title">
+                    坐标系
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
