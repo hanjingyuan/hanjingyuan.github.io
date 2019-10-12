@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570851544836">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570851991733">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570851544836" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570851991733" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -105,6 +105,11 @@
 <p>速度很慢，在进行请求之前需要进行一个getServiceInfo的操作，这个操作的时间长达半分钟，原因目前未知；</p>
 <p><img src="https://hanjingyuan.github.io/post-images/1570851376650.png" alt=""><br>
 <img src="https://hanjingyuan.github.io/post-images/1570851541447.png" alt=""></p>
+<h2 id="3思考">3.思考</h2>
+<ol>
+<li>所有的wfs查询以后都使用get方式进行请求，filter条件使用ecql，这样不仅速度快，而且检索更加方便；</li>
+<li>wfs的事务操作使用哪一个方式还需要进行验证；</li>
+</ol>
 
             </div>
             
