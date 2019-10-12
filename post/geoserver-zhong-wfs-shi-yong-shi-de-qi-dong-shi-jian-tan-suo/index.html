@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570851991733">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1570860625915">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -30,7 +30,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570851991733" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1570860625915" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -109,7 +109,12 @@
 <ol>
 <li>所有的wfs查询以后都使用get方式进行请求，filter条件使用ecql，这样不仅速度快，而且检索更加方便；</li>
 <li>wfs的事务操作使用哪一个方式还需要进行验证；</li>
+<li>cql_filter使用样例</li>
 </ol>
+<blockquote>
+<p>http://127.0.0.1:8080/geoserver/cite/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=cite%3Ahn_region&amp;exceptions=application%2Fvnd.ogc.se_inimage&amp;CQL_FILTER=intersects(geom%2Cpoint(112.10999%2027.46033))%20and%20display%20%3D%202007&amp;SRS=EPSG%3A4490&amp;STYLES=&amp;WIDTH=765&amp;HEIGHT=768&amp;BBOX=107.3199462890625%2C23.170166015625%2C115.7244873046875%2C31.607666015625<br>
+<img src="https://hanjingyuan.github.io/post-images/1570860623531.png" alt=""></p>
+</blockquote>
 
             </div>
             

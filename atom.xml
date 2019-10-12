@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-12T03:52:29.906Z</updated>
+    <updated>2019-10-12T06:10:29.010Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -29,7 +29,12 @@
 <ol>
 <li>所有的wfs查询以后都使用get方式进行请求，filter条件使用ecql，这样不仅速度快，而且检索更加方便；</li>
 <li>wfs的事务操作使用哪一个方式还需要进行验证；</li>
+<li>cql_filter使用样例</li>
 </ol>
+<blockquote>
+<p>http://127.0.0.1:8080/geoserver/cite/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=cite%3Ahn_region&amp;exceptions=application%2Fvnd.ogc.se_inimage&amp;CQL_FILTER=intersects(geom%2Cpoint(112.10999%2027.46033))%20and%20display%20%3D%202007&amp;SRS=EPSG%3A4490&amp;STYLES=&amp;WIDTH=765&amp;HEIGHT=768&amp;BBOX=107.3199462890625%2C23.170166015625%2C115.7244873046875%2C31.607666015625<br>
+<img src="https://hanjingyuan.github.io/post-images/1570860623531.png" alt=""></p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
