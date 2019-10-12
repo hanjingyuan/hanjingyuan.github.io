@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>webassembly | 汉景源的博客</title>
+<title>geoserver中wfs使用时的启动时间探索 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -91,28 +91,45 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: webassembly</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/wasm-jie-duan-yan-zheng">
-                  <h2 class="post-title">WASM阶段验证</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-02
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">geoserver中wfs使用时的启动时间探索</h2>
+            <div class="post-date">2019-10-12</div>
+            
+            <div class="post-content">
+              <p>在使用geoserver的wfs服务时，每次把tomcat重启之后，第一次使用wfs会使用很长的时间来打开数据库连接池？同时会进行一个getServiceInfo的操作。</p>
+<h2 id="1使用get请求">1.使用get请求</h2>
+<p>速度很快，即时即可完成<br>
+<img src="https://hanjingyuan.github.io/post-images/1570851255891.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1570851297925.png" alt=""></p>
+<h2 id="2使用post">2.使用post</h2>
+<p>速度很慢，在进行请求之前需要进行一个getServiceInfo的操作，这个操作的时间长达半分钟，原因目前未知；</p>
+<p><img src="https://hanjingyuan.github.io/post-images/1570851376650.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1570851541447.png" alt=""></p>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
+                    geoserver
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/0922-0929周总结">
+                  <h3 class="post-title">
+                    0922-0929周总结
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>

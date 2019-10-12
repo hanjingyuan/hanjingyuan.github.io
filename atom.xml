@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-11T13:32:48.152Z</updated>
+    <updated>2019-10-12T03:39:54.520Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[geoserver中wfs使用时的启动时间探索]]></title>
+        <id>https://hanjingyuan.github.io/post/geoserver-zhong-wfs-shi-yong-shi-de-qi-dong-shi-jian-tan-suo</id>
+        <link href="https://hanjingyuan.github.io/post/geoserver-zhong-wfs-shi-yong-shi-de-qi-dong-shi-jian-tan-suo">
+        </link>
+        <updated>2019-10-12T03:22:44.000Z</updated>
+        <content type="html"><![CDATA[<p>在使用geoserver的wfs服务时，每次把tomcat重启之后，第一次使用wfs会使用很长的时间来打开数据库连接池？同时会进行一个getServiceInfo的操作。</p>
+<h2 id="1使用get请求">1.使用get请求</h2>
+<p>速度很快，即时即可完成<br>
+<img src="https://hanjingyuan.github.io/post-images/1570851255891.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1570851297925.png" alt=""></p>
+<h2 id="2使用post">2.使用post</h2>
+<p>速度很慢，在进行请求之前需要进行一个getServiceInfo的操作，这个操作的时间长达半分钟，原因目前未知；</p>
+<p><img src="https://hanjingyuan.github.io/post-images/1570851376650.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1570851541447.png" alt=""></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[0922-0929周总结]]></title>
         <id>https://hanjingyuan.github.io/post/0922-0929周总结</id>
@@ -452,53 +469,6 @@ where St_Intersects(res.geom, ST_MakeEnvelope(49701.02023537382,96951.7293201253
 </ol>
 <pre><code class="language-sql">SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area,  ST_Intersection(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
 FROM public.kg_land_bound2  where ST_Intersects(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0721-0727周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0721-0727周总结</id>
-        <link href="https://hanjingyuan.github.io/post/0721-0727周总结">
-        </link>
-        <updated>2019-07-27T05:32:02.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="19-0721-0727周总结">19-0721-0727周总结</h1>
-<h2 id="0724">0724</h2>
-<ol>
-<li>openlayers中地图的容器div先被隐藏后被显示，此时需要调用setTimeout进行map.updateSize()；</li>
-<li>惰性单例模式的封装；</li>
-<li>图层加载时的状态监听：</li>
-</ol>
-<pre><code class="language-js">    const wmsLayerSource = new ol.source.ImageWMS(
-        Object.assign(defaultOption, option)
-    );
-    wmsLayerSource.on('imageloadstart', function() {
-        console.log('imageloadstart')
-    });
-
-    wmsLayerSource.on('imageloadend', function() {
-        console.log('imageloadend')
-    });
-</code></pre>
-<h2 id="0725">0725</h2>
-<ol>
-<li>geoserver中配置sld导致无法预览的原因是：geoserver读取的属性名全部为小写，而qgis生成的sld中的字段名存在大写，大小写不一致就会导致无法预览图层的情况；</li>
-<li>请求图例的方式：</li>
-</ol>
-<blockquote>
-<p>http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&amp;VERSION=1.0.0&amp;FORMAT=image/png&amp;WIDTH=100&amp;HEIGHT=100&amp;LAYER=cite:indexmap_kg&amp;STYLE=cite:xzq</p>
-</blockquote>
-<ol start="3">
-<li>arcgis请求图例分别有html和json两种方式，且json方式返回的是base格式：</li>
-</ol>
-<blockquote>
-<p>http://172.30.3.201:6080/arcgis/rest/services/JSYDSP_TDGY1/MapServer/legend</p>
-</blockquote>
-<h2 id="0726">0726</h2>
-<ol>
-<li>c#中，获取webconfig的连接字符串：</li>
-</ol>
-<pre><code class="language-c#">ConnectionStringSettings cs = ConfigurationManager.ConnectionStrings[&quot;postgresql&quot;];
-            string conStr = cs.ConnectionString;
 </code></pre>
 ]]></content>
     </entry>
