@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-14T03:56:29.763Z</updated>
+    <updated>2019-10-14T07:46:38.445Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -16,12 +16,16 @@
         <link href="https://hanjingyuan.github.io/post/1014-1020-zhou-zong-jie">
         </link>
         <updated>2019-10-14T02:38:23.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="1014-1020周总结">1014-1020周总结</h1>
-<h2 id="1014">1014</h2>
+        <content type="html"><![CDATA[<h2 id="1014">1014</h2>
 <h3 id="1geoserver的分页查询">1.geoserver的分页查询</h3>
 <p>geoserver的wfs分页查询需要在2.0.0版本及以上进行。</p>
 <pre><code>http://10.14.3.160:8080/geoserver/wfs?outputFormat=application%2Fjson&amp;request=getFeature&amp;service=WFS&amp;typeName=cite:hn_region&amp;version=2.0.0&amp;count=2&amp;startIndex=0
 </code></pre>
+<h3 id="2">2</h3>
+<blockquote>
+<p>1度 约等于 110Km</p>
+</blockquote>
+<h3 id="3">3</h3>
 ]]></content>
     </entry>
     <entry>
