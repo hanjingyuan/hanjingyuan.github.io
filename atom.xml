@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-12T06:22:47.439Z</updated>
+    <updated>2019-10-14T02:42:20.664Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[1014-1020周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/1014-1020-zhou-zong-jie</id>
+        <link href="https://hanjingyuan.github.io/post/1014-1020-zhou-zong-jie">
+        </link>
+        <updated>2019-10-14T02:38:23.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="1014-1020周总结">1014-1020周总结</h1>
+<p>##　1014</p>
+<h3 id="1geoserver的分页查询">1.geoserver的分页查询</h3>
+<p>geoserver的wfs分页查询需要在2.0.0版本及以上进行。</p>
+<pre><code>http://10.14.3.160:8080/geoserver/wfs?outputFormat=application%2Fjson&amp;request=getFeature&amp;service=WFS&amp;typeName=cite:hn_region&amp;version=2.0.0&amp;count=2&amp;startIndex=0
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[geoserver中wfs使用时的启动时间探索]]></title>
         <id>https://hanjingyuan.github.io/post/geoserver-zhong-wfs-shi-yong-shi-de-qi-dong-shi-jian-tan-suo</id>
@@ -319,7 +333,7 @@ END;
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[0804-0810总结]]></title>
+        <title type="html"><![CDATA[0804-0810周总结]]></title>
         <id>https://hanjingyuan.github.io/post/0804-0810-总结</id>
         <link href="https://hanjingyuan.github.io/post/0804-0810-总结">
         </link>
@@ -396,88 +410,6 @@ public Result&lt;List&lt;KgLandBound&gt;&gt; getSpatialQueryInfo(dynamic obj)
         &lt;/span&gt;
         {{test}}
     &lt;/div&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0728-0803周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0728-0803周总结</id>
-        <link href="https://hanjingyuan.github.io/post/0728-0803周总结">
-        </link>
-        <updated>2019-07-27T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="0728-0803周">0728-0803周</h1>
-<h2 id="0728">0728</h2>
-<ol>
-<li>若使用li，使用宽度33%出现了换行情况，则父元素ul标签应该设置font-size:0；</li>
-</ol>
-<h2 id="0729">0729</h2>
-<ol>
-<li>在openlayers中，若发生鼠标偏移的情况，则很有可能是CSS问题导致的。在这一次遇到的问题中，由于高度设置问题，map容器出现了滚动条，但是滚动条因为被我进行了强制隐藏操作，所以鼠标出现了偏移的问题。解决的方法是：只要解决掉css导致的高度、滚动条问题，即可以解决鼠标偏移的问题；</li>
-<li>监听地图渲染完成后的事件：</li>
-</ol>
-<pre><code class="language-js">    map.once('postrender', function(event) {
-        //do somethings
-    });
-</code></pre>
-<h2 id="0730">0730</h2>
-<ol>
-<li>当修改了geoserver的配置文件时，会出现预览图层时报空指针的错误，目前已经查到的原因是:默认style样式文件的配置出现问题，此时需要重新配置style即可解决问题；</li>
-<li>openlayers中的ol.layer.group只有setLayers方法，可以添加图层到group中去，但是没有从group中移出图层的方法，想要移出图层，只能进行全部移出的操作，使用setLayers方法传进去一个空数组，即使用</li>
-</ol>
-<pre><code class="language-js">    const group = new ol.layer.group(); 
-    group.setLayers(new ol.Collection([]));
-</code></pre>
-<h2 id="0731">0731</h2>
-<ol>
-<li>
-<p>在后续的开发中，应当采用每开发一个新功能，对应使用一个开发分支，保证功能使用的正确性和流畅性。具体文档参加：https://www.liaoxuefeng.com/wiki/896043488029600/896954848507552;</p>
-</li>
-<li>
-<p>比较重要的就是使用bug分支，即使用git stash可以保存当前的工作状态，然后可以切换到其他分支中去；</p>
-</li>
-<li>
-<p>常用的git分支操作：</p>
-</li>
-</ol>
-<pre><code>    删除本地分支：git branch -d [branchname]
-    强制删除本地没有merge的分支：git branch -D [branchname]
-    推送本地分支到远程：git push origin [branchname]
-    删除远程分支：git push origin --delete [branchname]
-    拉取本地不存在的远程分支：git checkout -b 本地分支名 origin/远程分支名
-</code></pre>
-<ol start="4">
-<li>其他常用的git操作：</li>
-</ol>
-<pre><code>reset hard后的恢复：git reflog（查看历史操作，从而找到版本号）
-合并分支：git merge [branchname] 在当前分支上合并目标分支
-</code></pre>
-<h2 id="0801">0801</h2>
-<ol>
-<li>postgis实现先用bbox选定指定范围内的数据，然后将选出的数据再进行相关的空间查询，平均耗时不稳定，在150ms左右；</li>
-</ol>
-<pre><code class="language-sql">select * from
-	(
-		SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area, geom FROM public.kg_land_bound2 
-			where geom &amp;&amp; ST_MakeEnvelope(49521.10320887309,96831.87283041234,50109.537719075444,97307.06544746425)
-	) as res 
-where St_Intersects(res.geom, ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547));
-</code></pre>
-<ol start="2">
-<li>在不使用st_makeenvelope的情况下，进行直接的查询，消耗的平均时间为140ms；</li>
-</ol>
-<pre><code class="language-sql">SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area, geom FROM public.kg_land_bound2 
-			where St_Intersects(geom, ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547));
-</code></pre>
-<ol start="3">
-<li>
-<p>之所以出现上面这种情况，是因为空间数据库中会根据geometry字段自动的生成索引覆盖，由于索引的存在，所以方法2甚至可能会比方法1还要快，毕竟方法2可以直接通过索引的方式找到指定区域，而且比方法1还要少了一个步骤。</p>
-</li>
-<li>
-<p>求相交部分，给定一个大范围，使用intersects，找出与大范围相交的元素，然后再使用intersection，求出相交数据与大范围的重叠部分并且进行返回；</p>
-</li>
-</ol>
-<pre><code class="language-sql">SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area,  ST_Intersection(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
-FROM public.kg_land_bound2  where ST_Intersects(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
 </code></pre>
 ]]></content>
     </entry>
