@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-15T01:45:38.337Z</updated>
+    <updated>2019-10-21T01:03:39.999Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[1021-1027周总结]]></title>
+        <id>https://hanjingyuan.github.io/post/1021-1027-zhou-zong-jie</id>
+        <link href="https://hanjingyuan.github.io/post/1021-1027-zhou-zong-jie">
+        </link>
+        <updated>2019-10-21T01:02:37.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="1021">1021</h3>
+<ol>
+<li>postgis拓展添加：</li>
+</ol>
+<pre><code>CREATE EXTENSION postgis;//添加postgis拓展
+SELECT postgis_full_version();//查看拓展是否添加成功
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[1014-1020周总结]]></title>
         <id>https://hanjingyuan.github.io/post/1014-1020-zhou-zong-jie</id>
@@ -334,87 +349,6 @@ END;
 <ol>
 <li>ratio,在ol中，<a href="http://127.0.0.1/ol/apidoc/ol.html">ol</a><a href="http://127.0.0.1/ol/apidoc/ol.source.html">.source</a>.ImageArcGISRest中存在一个ratio参数，在之前的添加agserver图层的过程中，把ratio误理解成透明度，然后填成了1。这就造成了，在手动添加对应图层时，客户端会一直发送请求至服务端，当修改为默认值1.5时，则不再出现这种情况，目前暂不知道原因是什么。ratio指的是请求图片的大小与map viewport的比率，目前尚不清楚为什么比率为1:1时出现的这种不断发送请求的情况。</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0804-0810周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0804-0810-总结</id>
-        <link href="https://hanjingyuan.github.io/post/0804-0810-总结">
-        </link>
-        <updated>2019-08-04T07:58:56.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="0805">0805</h2>
-<ol>
-<li>给出一个WKT数据，通过ST_GeomFromText构造geometry数据，然后再使用ST_Intersects求相交数据；</li>
-</ol>
-<pre><code class="language-sql">SELECT gid, linecolor, proname, protype, proextent,shape_leng, shape_area, geom FROM public.kg_land_bound2 
-	where St_Intersects(geom, 
-		ST_GeomFromText('POLYGON((57404.91490982982 98730.52662771994,57404.91490982982 99013.10219287108,57405.87564580966 99022.85670897189,57408.720933204255 99032.23636448933,57413.34142921469 99040.88070452206,57419.55957077049 99048.45753193041,57427.136398178845 99054.67567348621,57435.780738211564 99059.29616949665,57445.16039372901 99062.14145689124,57454.91490982982 99063.10219287108,57721.61544323089 99063.10219287108,57731.3699593317 99062.14145689124,57740.74961484915 99059.29616949665,57749.39395488187 99054.67567348621,57756.97078229022 99048.45753193041,57763.18892384602 99040.88070452206,57767.80941985646 99032.23636448933,57770.65470725105 99022.85670897189,57771.61544323089 99013.10219287108,57771.61544323089 98730.52662771994,57770.65470725105 98720.77211161914,57767.80941985646 98711.39245610169,57763.18892384602 98702.74811606896,57756.97078229022 98695.17128866061,57749.39395488187 98688.95314710481,57740.74961484915 98684.33265109437,57731.3699593317 98681.48736369978,57721.61544323089 98680.52662771994,57454.91490982982 98680.52662771994,57445.16039372901 98681.48736369978,57435.780738211564 98684.33265109437,57427.136398178845 98688.95314710481,57419.55957077049 98695.17128866061,57413.34142921469 98702.74811606896,57408.720933204255 98711.39245610169,57405.87564580966 98720.77211161914,57404.91490982982 98730.52662771994))',4547)
-   );
-</code></pre>
-<ol start="2">
-<li>asp.net web api中，post请求的方式比较怪异，最好使用dynamic数据类型，在使用动态类型时，需要对数据进行解析操作：</li>
-</ol>
-<pre><code class="language-c#">[HttpPost]
-[Route(&quot;getSpatialQueryInfo&quot;)]
-public Result&lt;List&lt;KgLandBound&gt;&gt; getSpatialQueryInfo(dynamic obj)
-{
-    string wkt = obj.wkt;
-    return sas.spatialQuery(wkt);
-}
-</code></pre>
-<ol start="3">
-<li>font awesome中使用数字</li>
-</ol>
-<pre><code class="language-html">&lt;span class=&quot;fa-stack&quot;&gt;
-   &lt;span class=&quot;fa fa-circle-thin fa-stack-2x&quot; style=&quot;color: red&quot;&gt;&lt;/span&gt;
-   &lt;strong class=&quot;fa-stack-1x&quot; style=&quot;color: red&quot;&gt;2&lt;/strong&gt;
-&lt;/span&gt;
-</code></pre>
-<ol start="4">
-<li>angularjs中，执行ng-repeat操作时，遍历时加上index</li>
-</ol>
-<pre><code class="language-js">ng-repeat=&quot;layer in table.data track by $index&quot;
-</code></pre>
-<ol start="5">
-<li>根据pg查出来的geometry，顺带把面积也进行查询</li>
-</ol>
-<pre><code class="language-sql">select res.gid,res.ydtype,res.ydcode,res.shape_area,st_area(res.wkt),res.wkt from (
- SELECT gid, ydtype, ydcode,  shape_area,ST_Intersection(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547)) as wkt
- FROM public.kg_land_bound2  where ST_Intersects(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
-) as res 
-
-</code></pre>
-<h2 id="0806">0806</h2>
-<ol>
-<li>angularjs中的watch使用方法：</li>
-</ol>
-<pre><code class="language-js">$scope.$watch(&quot;bufferDistance&quot;,function (newValue,oldValue){
-    if(newValue &gt; 0){
-        $scope.showDrawLine = true;
-    }else{
-        $scope.showDrawLine = false;
-    }
-},true);
-</code></pre>
-<ol start="2">
-<li>postgresql中的简单分页:limit代表每页个数，offset代表偏移量，以下面的代码为例，offset 20代表前面偏移20个数据，从第二十一个数据开始；</li>
-</ol>
-<pre><code class="language-sql">SELECT gid, ydcode, ydtype, capability, bldhlimit,shape_leng, shape_area, geom
-	FROM public.kg_land_bound2 order by gid limit 10 offset 20;
-</code></pre>
-<ol start="3">
-<li>angularjs使用ng-class对于样式的动态修改，使用ng-repeat循环生成子列表。其中通过$index与selected来进行判断，如果两个值相等，那么，selectedBaseMap样式将会生效，从而出现样式切换的效果；</li>
-</ol>
-<pre><code>&lt;div ng-repeat=&quot;item in baseLayers&quot;
-         ng-class=&quot;{selectedBaseMap:$index == selected}&quot;
-         style=&quot;background: url('../../App/assets/images/item.img')&quot;
-         ng-click=&quot;showBaseMap(item.title,$index)&quot;&gt;
-        &lt;span class=&quot;baseMapTitle&quot; ng-class=&quot;{baseMapTitleActive:$index == selected}&quot;&gt;
-            item.title
-        &lt;/span&gt;
-        {{test}}
-    &lt;/div&gt;
-</code></pre>
 ]]></content>
     </entry>
 </feed>
