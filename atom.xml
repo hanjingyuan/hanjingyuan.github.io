@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-21T01:03:39.999Z</updated>
+    <updated>2019-10-21T06:46:36.174Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -22,6 +22,14 @@
 </ol>
 <pre><code>CREATE EXTENSION postgis;//添加postgis拓展
 SELECT postgis_full_version();//查看拓展是否添加成功
+</code></pre>
+<ol start="2">
+<li>spring boot中post的请求方式：</li>
+</ol>
+<pre><code class="language-java">@PostMapping(&quot;/getPagedSpatialQueryInfo&quot;)
+public XResult&lt;PageInfo&lt;Shuiti&gt;&gt; getPagedSpatialQueryInfo(@RequestParam(&quot;pageNo&quot;) Integer pageNo, @RequestParam(&quot;pageSize&quot;) Integer pageSize, @RequestParam(&quot;wkt&quot;) String wkt){
+        return new XResult&lt;PageInfo&lt;Shuiti&gt;&gt;(true,&quot;查询成功&quot;,spatialAnalysisService.spatialQuery(pageNo,pageSize,wkt));
+    }
 </code></pre>
 ]]></content>
     </entry>
