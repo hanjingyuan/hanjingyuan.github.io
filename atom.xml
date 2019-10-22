@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-21T08:06:32.089Z</updated>
+    <updated>2019-10-22T06:03:33.403Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -31,6 +31,12 @@ public XResult&lt;PageInfo&lt;Shuiti&gt;&gt; getPagedSpatialQueryInfo(@RequestPa
         return new XResult&lt;PageInfo&lt;Shuiti&gt;&gt;(true,&quot;查询成功&quot;,spatialAnalysisService.spatialQuery(pageNo,pageSize,wkt));
     }
 </code></pre>
+<h3 id="1022">1022</h3>
+<ol>
+<li>geoserver切图失败的原因：与wms的连接时间默认设置为60s，修改默认时长，修改为更长的时间，即可解决问题。<br>
+<img src="https://hanjingyuan.github.io/post-images/1571724178391.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1571724183168.png" alt=""></li>
+</ol>
 ]]></content>
     </entry>
     <entry>

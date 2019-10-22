@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1571640393683">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1571724210622">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1571640393683" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1571724210622" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -112,6 +112,12 @@ public XResult&lt;PageInfo&lt;Shuiti&gt;&gt; getPagedSpatialQueryInfo(@RequestPa
         return new XResult&lt;PageInfo&lt;Shuiti&gt;&gt;(true,&quot;查询成功&quot;,spatialAnalysisService.spatialQuery(pageNo,pageSize,wkt));
     }
 </code></pre>
+<h3 id="1022">1022</h3>
+<ol>
+<li>geoserver切图失败的原因：与wms的连接时间默认设置为60s，修改默认时长，修改为更长的时间，即可解决问题。<br>
+<img src="https://hanjingyuan.github.io/post-images/1571724178391.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1571724183168.png" alt=""></li>
+</ol>
 
             </div>
             
@@ -123,6 +129,10 @@ public XResult&lt;PageInfo&lt;Shuiti&gt;&gt; getPagedSpatialQueryInfo(@RequestPa
                 
                   <a href="https://hanjingyuan.github.io/tag/hYe_vET_OB" class="tag">
                     postgresql
+                  </a>
+                
+                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
+                    geoserver
                   </a>
                 
                   <a href="https://hanjingyuan.github.io/tag/L7RisVMicG" class="tag">
