@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-22T06:03:33.403Z</updated>
+    <updated>2019-10-23T00:47:58.107Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,17 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[geoserver内存修改]]></title>
+        <id>https://hanjingyuan.github.io/post/geoserver-nei-cun-xiu-gai</id>
+        <link href="https://hanjingyuan.github.io/post/geoserver-nei-cun-xiu-gai">
+        </link>
+        <updated>2019-10-23T00:44:23.000Z</updated>
+        <content type="html"><![CDATA[<p>若使用的是在tomcat中部署的war包形式的geoserver，可以直接使用configure tomcat中的设置来直接修改内存即可；<br>
+<img src="https://hanjingyuan.github.io/post-images/1571791619967.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1571791668878.png" alt=""></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[1021-1027周总结]]></title>
         <id>https://hanjingyuan.github.io/post/1021-1027-zhou-zong-jie</id>
@@ -315,54 +326,6 @@ END;
         <updated>2019-08-17T16:00:00.000Z</updated>
         <content type="html"><![CDATA[<h1 id="0818-0824周">0818-0824周</h1>
 <h2 id="0819">0819</h2>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0811-0817周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0811-0817周总结</id>
-        <link href="https://hanjingyuan.github.io/post/0811-0817周总结">
-        </link>
-        <updated>2019-08-10T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="0811-0817周">0811-0817周</h1>
-<h2 id="0812">0812</h2>
-<ol>
-<li>在打印网页时，如果遇到img中的src是从http形式，那么有可能是打印不出来的，这是最好的解决办法就是，首先把img转为base64形式，再进行打印；如果这种办法依然不可以。那么可以考虑将打印页面使用html2canvas插件，将网页转为canvas，然后把canvas元素进行打印。</li>
-<li>将图片转为base64格式</li>
-</ol>
-<pre><code class="language-js">function getBase64(img){
-    function getBase64Image(img,width,height) {
-   //width、height调用时传入具体像素值，控制大小 ,不传则默认图像大小
-        var canvas = document.createElement(&quot;canvas&quot;);
-        canvas.width = width ? width : img.width;
-        canvas.height = height ? height : img.height;
-
-        var ctx = canvas.getContext(&quot;2d&quot;);
-       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        var dataURL = canvas.toDataURL();
-        return dataURL;
-    }
-    var image = new Image();
-    image.crossOrigin = '';
-    image.src = img;
-    var deferred=$q.defer();
-    if(img){
-        image.onload =function (){
-            deferred.resolve(getBase64Image(image));//将base64传给done上传处理
-        };
-        return deferred.promise;//问题要让onload完成后再return sessionStorage['imgTest']
-    }
-}
-</code></pre>
-<h2 id="0813">0813</h2>
-<ol>
-<li>ol中指定图层的添加位置，一般用于将图层添加的最上部或最下部；</li>
-</ol>
-<pre><code class="language-js">map.getLayers().insertAt(0,layer);
-</code></pre>
-<h2 id="0815">0815</h2>
-<ol>
-<li>ratio,在ol中，<a href="http://127.0.0.1/ol/apidoc/ol.html">ol</a><a href="http://127.0.0.1/ol/apidoc/ol.source.html">.source</a>.ImageArcGISRest中存在一个ratio参数，在之前的添加agserver图层的过程中，把ratio误理解成透明度，然后填成了1。这就造成了，在手动添加对应图层时，客户端会一直发送请求至服务端，当修改为默认值1.5时，则不再出现这种情况，目前暂不知道原因是什么。ratio指的是请求图片的大小与map viewport的比率，目前尚不清楚为什么比率为1:1时出现的这种不断发送请求的情况。</li>
-</ol>
 ]]></content>
     </entry>
 </feed>

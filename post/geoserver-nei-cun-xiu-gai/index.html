@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>0901-0907周总结 | 汉景源的博客</title>
+<title>geoserver内存修改 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,75 +93,17 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">0901-0907周总结</h2>
-            <div class="post-date">2019-09-01</div>
+            <h2 class="post-title">geoserver内存修改</h2>
+            <div class="post-date">2019-10-23</div>
             
             <div class="post-content">
-              <h1 id="0901-0907周">0901-0907周</h1>
-<h2 id="0902">0902</h2>
-<ol>
-<li>对于postgresql触发器的使用。先编写对应的函数，然后使用触发器函数进行联动；</li>
-</ol>
-<pre><code>//触发器函数
-BEGIN 
-  UPDATE public.indexmap_xzq
-  SET shape_area=st_area(new.geom)
-  WHERE gid=new.gid;
-  return NEW;
-END;
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799356463.png" alt=""></figure>
-<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570799366762.png" alt=""></figure>
-<ol>
-<li>对于sld文件的上下限值的设置(注意如果没有上下限，只有单一的限，那么注意去除掉and条件)：</li>
-</ol>
-<pre><code class="language-xml">&lt;se:Rule&gt;
-          &lt;se:Name&gt;极小型&lt;/se:Name&gt;
-          &lt;se:Description&gt;
-            &lt;se:Title&gt;极小型&lt;/se:Title&gt;
-          &lt;/se:Description&gt;
-          &lt;ogc:Filter xmlns:ogc=&quot;http://www.opengis.net/ogc&quot;&gt;
-              &lt;ogc:PropertyIsLessThanOrEqualTo&gt;
-                &lt;ogc:PropertyName&gt;shape_area&lt;/ogc:PropertyName&gt;
-                &lt;ogc:Literal&gt;10404351.5462104007601738&lt;/ogc:Literal&gt;
-              &lt;/ogc:PropertyIsLessThanOrEqualTo&gt;
-          &lt;/ogc:Filter&gt;
-          &lt;se:PolygonSymbolizer&gt;
-            &lt;se:Fill&gt;
-              &lt;se:SvgParameter name=&quot;fill&quot;&gt;#f7fcf5&lt;/se:SvgParameter&gt;
-            &lt;/se:Fill&gt;
-            &lt;se:Stroke&gt;
-              &lt;se:SvgParameter name=&quot;stroke&quot;&gt;#232323&lt;/se:SvgParameter&gt;
-              &lt;se:SvgParameter name=&quot;stroke-width&quot;&gt;1&lt;/se:SvgParameter&gt;
-              &lt;se:SvgParameter name=&quot;stroke-linejoin&quot;&gt;bevel&lt;/se:SvgParameter&gt;
-            &lt;/se:Stroke&gt;
-          &lt;/se:PolygonSymbolizer&gt;
-        &lt;/se:Rule&gt;
-</code></pre>
-<h2 id="0903">0903</h2>
-<ol>
-<li>wfs的结果输出为geojson的方式</li>
-</ol>
-<pre><code class="language-xml">&lt;wfs:GetFeature service=&quot;WFS&quot; version=&quot;1.0.0&quot;
-  outputFormat=&quot;application/json&quot;&gt;
-</code></pre>
-<h2 id="0906">0906</h2>
-<ol>
-<li>scale与resolution之间的互换：https://www.cnblogs.com/naaoveGIS/p/5620951.html</li>
-</ol>
-<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570799379739.png" alt=""></figure>
+              <p>若使用的是在tomcat中部署的war包形式的geoserver，可以直接使用configure tomcat中的设置来直接修改内存即可；<br>
+<img src="https://hanjingyuan.github.io/post-images/1571791619967.png" alt=""><br>
+<img src="https://hanjingyuan.github.io/post-images/1571791668878.png" alt=""></p>
 
             </div>
             
               <div class="tag-container">
-                
-                  <a href="https://hanjingyuan.github.io/tag/w6zQp3yHS" class="tag">
-                    2019周总结
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/hYe_vET_OB" class="tag">
-                    postgresql
-                  </a>
                 
                   <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
                     geoserver
@@ -172,9 +114,9 @@ END;
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/0825-0831周总结">
+                <a href="https://hanjingyuan.github.io/post/1021-1027-zhou-zong-jie">
                   <h3 class="post-title">
-                    0825-0831周总结
+                    1021-1027周总结
                   </h3>
                 </a>
               </div>
