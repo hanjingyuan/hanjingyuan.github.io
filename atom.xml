@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-25T06:03:34.287Z</updated>
+    <updated>2019-10-25T06:21:33.961Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[geoserver纯环境搭建流程]]></title>
+        <id>https://hanjingyuan.github.io/post/geoserver-chun-huan-jing-da-jian-liu-cheng</id>
+        <link href="https://hanjingyuan.github.io/post/geoserver-chun-huan-jing-da-jian-liu-cheng">
+        </link>
+        <updated>2019-10-25T06:18:15.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>安装jdk环境</li>
+<li>安装tomcat环境，最好是更换默认的8080端口，同时修改默认的jvm内存；</li>
+<li>部署war包至webapps中；</li>
+<li>修改跨域，相关相关的jetty包放在lib（最好的办法是使用nginx进行端口转发，把跨域关掉）；</li>
+<li>修改wms的响应时间，防止进行切片时，出现getServiceInfo超时的情况；</li>
+<li>释放数据存储中的主键，将主键暴露出来；</li>
+<li>未完待续。。。</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[geoserver暴露主键的方法]]></title>
         <id>https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa</id>
@@ -303,29 +320,6 @@ END;
 <li>scale与resolution之间的互换：https://www.cnblogs.com/naaoveGIS/p/5620951.html</li>
 </ol>
 <figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570799379739.png" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0825-0831周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0825-0831周总结</id>
-        <link href="https://hanjingyuan.github.io/post/0825-0831周总结">
-        </link>
-        <updated>2019-08-24T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="0825-0831周">0825-0831周</h1>
-<h2 id="0830">0830</h2>
-<ol>
-<li>对于WFS Transaction的使用，首先要确保geoserver的权限打开，即如果不确定的话，启动匿名模式；</li>
-</ol>
-<pre><code>http://127.0.0.1:8080/geoserver/web/wicket/page?57
-</code></pre>
-<ol start="2">
-<li>构造WFS/WMS相关语句时，可以参考使用demo request页面，查看相关的示例请求；</li>
-</ol>
-<pre><code>http://127.0.0.1:8080/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.DemoRequestsPage?59
-</code></pre>
-<ol start="3">
-<li>根据demo request生成的示例请求进行相关的操作即可；</li>
-</ol>
 ]]></content>
     </entry>
 </feed>

@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>geoserver中wfs使用时的启动时间探索 | 汉景源的博客</title>
+<title>geoserver纯环境搭建流程 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,45 +93,28 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">geoserver中wfs使用时的启动时间探索</h2>
-            <div class="post-date">2019-10-12</div>
+            <h2 class="post-title">geoserver纯环境搭建流程</h2>
+            <div class="post-date">2019-10-25</div>
             
             <div class="post-content">
-              <p>在使用geoserver的wfs服务时，每次把tomcat重启之后，第一次使用wfs会使用很长的时间来打开数据库连接池？同时会进行一个getServiceInfo的操作。</p>
-<h2 id="1使用get请求">1.使用get请求</h2>
-<p>速度很快，即时即可完成<br>
-<img src="https://hanjingyuan.github.io/post-images/1570851255891.png" alt=""><br>
-<img src="https://hanjingyuan.github.io/post-images/1570851297925.png" alt=""></p>
-<h2 id="2使用post">2.使用post</h2>
-<p>速度很慢，在进行请求之前需要进行一个getServiceInfo的操作，这个操作的时间长达半分钟，原因目前未知；</p>
-<p><img src="https://hanjingyuan.github.io/post-images/1570851376650.png" alt=""><br>
-<img src="https://hanjingyuan.github.io/post-images/1570851541447.png" alt=""></p>
-<h2 id="3思考">3.思考</h2>
-<ol>
-<li>所有的wfs查询以后都使用get方式进行请求，filter条件使用ecql，这样不仅速度快，而且检索更加方便；</li>
-<li>wfs的事务操作使用哪一个方式还需要进行验证；</li>
-<li>cql_filter使用样例</li>
+              <ol>
+<li>安装jdk环境</li>
+<li>安装tomcat环境，最好是更换默认的8080端口，同时修改默认的jvm内存；</li>
+<li>部署war包至webapps中；</li>
+<li>修改跨域，相关相关的jetty包放在lib（最好的办法是使用nginx进行端口转发，把跨域关掉）；</li>
+<li>修改wms的响应时间，防止进行切片时，出现getServiceInfo超时的情况；</li>
+<li>释放数据存储中的主键，将主键暴露出来；</li>
+<li>未完待续。。。</li>
 </ol>
-<pre><code>http://127.0.0.1:8080/geoserver/cite/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=cite%3Ahn_region&amp;exceptions=application%2Fvnd.ogc.se_inimage&amp;CQL_FILTER=intersects(geom%2Cpoint(112.10999%2027.46033))%20and%20display%20%3D%202007&amp;SRS=EPSG%3A4490&amp;STYLES=&amp;WIDTH=765&amp;HEIGHT=768&amp;BBOX=107.3199462890625%2C23.170166015625%2C115.7244873046875%2C31.607666015625
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570860623531.png" alt=""></figure>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
-                    geoserver
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/0922-0929周总结">
+                <a href="https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa">
                   <h3 class="post-title">
-                    0922-0929周总结
+                    geoserver暴露主键的方法
                   </h3>
                 </a>
               </div>
