@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-25T06:31:17.043Z</updated>
+    <updated>2019-10-25T07:33:11.892Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
     <entry>
-        <title type="html"><![CDATA[geoserver纯环境搭建流程]]></title>
+        <title type="html"><![CDATA[geoserver纯环境搭建流程以及问题汇总]]></title>
         <id>https://hanjingyuan.github.io/post/geoserver-chun-huan-jing-da-jian-liu-cheng</id>
         <link href="https://hanjingyuan.github.io/post/geoserver-chun-huan-jing-da-jian-liu-cheng">
         </link>
@@ -25,6 +25,13 @@
 <li>释放数据存储中的主键，将主键暴露出来；</li>
 <li>未完待续。。。</li>
 </ol>
+<h3 id="geoserver内存调整">geoserver内存调整</h3>
+<p>https://hanjingyuan.github.io/post/geoserver-nei-cun-xiu-gai/</p>
+<h3 id="geoserver-主键暴露">geoserver 主键暴露</h3>
+<p>https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa</p>
+<h3 id="geoserver在进行wfs时遇到的权限问题readonly">geoserver在进行wfs时遇到的权限问题（readonly）</h3>
+<p><img src="https://hanjingyuan.github.io/post-images/1571988779475.png" alt=""><br>
+暂时先赋予匿名规则。</p>
 ]]></content>
     </entry>
     <entry>
