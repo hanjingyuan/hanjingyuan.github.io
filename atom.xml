@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-23T00:47:58.107Z</updated>
+    <updated>2019-10-25T06:03:34.287Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[geoserver暴露主键的方法]]></title>
+        <id>https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa</id>
+        <link href="https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa">
+        </link>
+        <updated>2019-10-25T06:01:22.000Z</updated>
+        <content type="html"><![CDATA[<p>geoserver在发布数据时，默认情况下主键是不会被发布出来的，需要在数据存储中暴露主键出来；<br>
+<img src="https://hanjingyuan.github.io/post-images/1571983386059.png" alt=""></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[geoserver内存修改]]></title>
         <id>https://hanjingyuan.github.io/post/geoserver-nei-cun-xiu-gai</id>
@@ -316,16 +326,6 @@ END;
 <ol start="3">
 <li>根据demo request生成的示例请求进行相关的操作即可；</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0818-0824周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0818-0824周总结</id>
-        <link href="https://hanjingyuan.github.io/post/0818-0824周总结">
-        </link>
-        <updated>2019-08-17T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="0818-0824周">0818-0824周</h1>
-<h2 id="0819">0819</h2>
 ]]></content>
     </entry>
 </feed>
