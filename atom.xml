@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-28T03:29:52.814Z</updated>
+    <updated>2019-10-28T03:31:15.932Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -16,7 +16,8 @@
         <link href="https://hanjingyuan.github.io/post/1028-1103-zhou-zong-jie">
         </link>
         <updated>2019-10-28T01:25:42.000Z</updated>
-        <content type="html"><![CDATA[<h3 id="1maven本地包的配置">1.maven本地包的配置</h3>
+        <content type="html"><![CDATA[<h2 id="1028">1028</h2>
+<h3 id="1maven本地包的配置">1.maven本地包的配置</h3>
 <ol>
 <li>pom文件的配置</li>
 </ol>
@@ -60,6 +61,10 @@
 <pre><code>https://blog.csdn.net/ashleyjun/article/details/101106810
 https://blog.csdn.net/Certain_/article/details/90745360
 </code></pre>
+<h3 id="3idea与蓝灯配置的方法">3.idea与蓝灯配置的方法</h3>
+<blockquote>
+<p>http://www.itzhai.com/intellij-idea-proxy-settings.html</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
