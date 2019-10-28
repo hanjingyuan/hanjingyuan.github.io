@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>汉景源的博客</title>
+<title>1028-1103周总结 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,74 +92,72 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/ogc-biao-zhun-2">
-                  <h2 class="post-title">OGC标准2</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-29
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/ogc-biao-zhun-1">
-                  <h2 class="post-title">OGC标准-1</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-28
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/zuo-biao-xi">
-                  <h2 class="post-title">坐标系</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-22
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/wasm-jie-duan-yan-zheng">
-                  <h2 class="post-title">WASM阶段验证</h2>
-                </a>
-                <div class="post-date">
-                  2019-04-02
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">1028-1103周总结</h2>
+            <div class="post-date">2019-10-28</div>
+            
+            <div class="post-content">
+              <h3 id="1maven本地包的配置">1.maven本地包的配置</h3>
+<ol>
+<li>pom文件的配置</li>
+</ol>
+<pre><code class="language-xml">        &lt;!--geoserver restful--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;it.geosolutions&lt;/groupId&gt;
+            &lt;artifactId&gt;geoserver-manager&lt;/artifactId&gt;
+            &lt;version&gt;1.7-SNAPSHOT&lt;/version&gt;
+            &lt;!--这里使用的是本地jar包集成，远程的环境拉不下来--&gt;
+            &lt;scope&gt;system&lt;/scope&gt;
+            &lt;systemPath&gt;${basedir}/lib/geoserver-manager-1.7.0.jar&lt;/systemPath&gt;
+        &lt;/dependency&gt;
+    &lt;build&gt;
+        &lt;resources&gt;
+            &lt;!--在lib目录下存放着因为网络原因无法拉取到本地的jar包--&gt;
+            &lt;!--maven默认打包时不会包含这些jar包，所以需要单独进行配置--&gt;
+            &lt;!--包含本地jar包的配置--&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;${project.basedir}/lib&lt;/directory&gt;
+                &lt;targetPath&gt;BOOT-INF/lib/&lt;/targetPath&gt;
+                &lt;includes&gt;
+                    &lt;include&gt;**/*.jar&lt;/include&gt;
+                &lt;/includes&gt;
+            &lt;/resource&gt;
+            &lt;resource&gt;
+                &lt;directory&gt;src/main/resources&lt;/directory&gt;
+                &lt;targetPath&gt;BOOT-INF/classes/&lt;/targetPath&gt;
+            &lt;/resource&gt;
+        &lt;/resources&gt;
+    &lt;/build&gt;
+</code></pre>
+<ol start="2">
+<li>根目录下创建lib文件夹，并且把所需要的jar包放入到文件夹中<br>
+<img src="https://hanjingyuan.github.io/post-images/1572226106874.png" alt=""></li>
+</ol>
 
-          <div class="pagination-container">
-  
-    <a href="https://hanjingyuan.github.io/page/2/" class="prev"><i class="icon-arrow-ios-back-outline"></i> 上一页</a>
-  
-  
-</div>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/A-8ziVDp1" class="tag">
+                    maven
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/geoserver-chun-huan-jing-da-jian-liu-cheng">
+                  <h3 class="post-title">
+                    geoserver纯环境搭建流程以及问题汇总
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>
