@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-28T01:29:16.415Z</updated>
+    <updated>2019-10-28T03:29:52.814Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -52,6 +52,14 @@
 <li>根目录下创建lib文件夹，并且把所需要的jar包放入到文件夹中<br>
 <img src="https://hanjingyuan.github.io/post-images/1572226106874.png" alt=""></li>
 </ol>
+<h3 id="2maven配置的若干问题">2.maven配置的若干问题</h3>
+<ol>
+<li>不要使用3.6.1以上版本的maven；</li>
+<li>其他相关问题的参考解决办法：</li>
+</ol>
+<pre><code>https://blog.csdn.net/ashleyjun/article/details/101106810
+https://blog.csdn.net/Certain_/article/details/90745360
+</code></pre>
 ]]></content>
     </entry>
     <entry>
