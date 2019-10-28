@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-28T03:31:15.932Z</updated>
+    <updated>2019-10-28T03:50:08.133Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -65,6 +65,14 @@ https://blog.csdn.net/Certain_/article/details/90745360
 <blockquote>
 <p>http://www.itzhai.com/intellij-idea-proxy-settings.html</p>
 </blockquote>
+<h3 id="4maven仓库地址的配置">4.maven仓库地址的配置</h3>
+<pre><code class="language-xml">&lt;mirror&gt;
+    &lt;id&gt;alimaven&lt;/id&gt;
+    &lt;name&gt;aliyun maven&lt;/name&gt;
+    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
+    &lt;mirrorOf&gt;*,!osgeo,!maven2-repository.dev.java.net,!boundless&lt;/mirrorOf&gt; 
+&lt;/mirror&gt;
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -83,12 +91,20 @@ https://blog.csdn.net/Certain_/article/details/90745360
 <li>未完待续。。。</li>
 </ol>
 <h3 id="geoserver内存调整">geoserver内存调整</h3>
+<blockquote>
 <p>https://hanjingyuan.github.io/post/geoserver-nei-cun-xiu-gai/</p>
+</blockquote>
 <h3 id="geoserver-主键暴露">geoserver 主键暴露</h3>
+<blockquote>
 <p>https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa</p>
+</blockquote>
 <h3 id="geoserver在进行wfs时遇到的权限问题readonly">geoserver在进行wfs时遇到的权限问题（readonly）</h3>
 <p><img src="https://hanjingyuan.github.io/post-images/1571988779475.png" alt=""><br>
 暂时先赋予匿名规则。</p>
+<h3 id="部署多台tomcat服务器">部署多台tomcat服务器</h3>
+<blockquote>
+<p>https://blog.csdn.net/qq_39654841/article/details/82048857</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
