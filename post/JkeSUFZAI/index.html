@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>0811-0817周总结 | 汉景源的博客</title>
+<title>Centos常用操作总结 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,75 +93,61 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">0811-0817周总结</h2>
-            <div class="post-date">2019-08-11</div>
+            <h2 class="post-title">Centos常用操作总结</h2>
+            <div class="post-date">2019-10-30</div>
             
             <div class="post-content">
-              <h1 id="0811-0817周">0811-0817周</h1>
-<h2 id="0812">0812</h2>
-<ol>
-<li>在打印网页时，如果遇到img中的src是从http形式，那么有可能是打印不出来的，这是最好的解决办法就是，首先把img转为base64形式，再进行打印；如果这种办法依然不可以。那么可以考虑将打印页面使用html2canvas插件，将网页转为canvas，然后把canvas元素进行打印。</li>
-<li>将图片转为base64格式</li>
+              <ol>
+<li>目录切换之间的操作</li>
 </ol>
-<pre><code class="language-js">function getBase64(img){
-    function getBase64Image(img,width,height) {
-   //width、height调用时传入具体像素值，控制大小 ,不传则默认图像大小
-        var canvas = document.createElement(&quot;canvas&quot;);
-        canvas.width = width ? width : img.width;
-        canvas.height = height ? height : img.height;
-
-        var ctx = canvas.getContext(&quot;2d&quot;);
-       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        var dataURL = canvas.toDataURL();
-        return dataURL;
-    }
-    var image = new Image();
-    image.crossOrigin = '';
-    image.src = img;
-    var deferred=$q.defer();
-    if(img){
-        image.onload =function (){
-            deferred.resolve(getBase64Image(image));//将base64传给done上传处理
-        };
-        return deferred.promise;//问题要让onload完成后再return sessionStorage['imgTest']
-    }
-}
-</code></pre>
-<h2 id="0813">0813</h2>
-<ol>
-<li>ol中指定图层的添加位置，一般用于将图层添加的最上部或最下部；</li>
+<blockquote>
+<p>cd www , 意思是 到www目录；<br>
+cd .. , 意思是到上一级目录；<br>
+cd - ,意思是返回到上次的目录，类似windows返回 ；<br>
+cd /，意思是回到根目录。</p>
+</blockquote>
+<ol start="2">
+<li>查看当前目录下的文件</li>
 </ol>
-<pre><code class="language-js">map.getLayers().insertAt(0,layer);
-</code></pre>
-<h2 id="0815">0815</h2>
-<ol>
-<li>ratio,在ol中，<a href="http://127.0.0.1/ol/apidoc/ol.html">ol</a><a href="http://127.0.0.1/ol/apidoc/ol.source.html">.source</a>.ImageArcGISRest中存在一个ratio参数，在之前的添加agserver图层的过程中，把ratio误理解成透明度，然后填成了1。这就造成了，在手动添加对应图层时，客户端会一直发送请求至服务端，当修改为默认值1.5时，则不再出现这种情况，目前暂不知道原因是什么。ratio指的是请求图片的大小与map viewport的比率，目前尚不清楚为什么比率为1:1时出现的这种不断发送请求的情况。</li>
+<blockquote>
+<p>ls；</p>
+</blockquote>
+<ol start="3">
+<li>编辑某个文件</li>
 </ol>
+<blockquote>
+<p>vi 文件名；<br>
+insert 进入编辑模式；<br>
+esc退出编辑模式，输入:wq保存退出；</p>
+</blockquote>
+<ol start="4">
+<li>jdk和tomcat的安装</li>
+</ol>
+<blockquote>
+<p>最好使用yum的方式进行安装，这样的好处是不用配置环境变量；</p>
+</blockquote>
+<ol start="5">
+<li>阿里云的入站规则</li>
+</ol>
+<blockquote>
+<p>阿里云默认会把入站的端口关闭，需要把端口打开；</p>
+</blockquote>
+<ol start="6">
+<li>文件的上传</li>
+</ol>
+<blockquote>
+<p>yum   -y  install  lrzsz 进行安装<br>
+rz -y 进行文件的上传，上传的位置是当前目录</p>
+</blockquote>
 
             </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://hanjingyuan.github.io/tag/w6zQp3yHS" class="tag">
-                    2019周总结
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/ASKx9ao49m" class="tag">
-                    canvas
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/MMl1svNQ-E" class="tag">
-                    openlayers
-                  </a>
-                
-              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/0804-0810-总结">
+                <a href="https://hanjingyuan.github.io/post/1028-1103-zhou-zong-jie">
                   <h3 class="post-title">
-                    0804-0810周总结
+                    1028-1103周总结
                   </h3>
                 </a>
               </div>
