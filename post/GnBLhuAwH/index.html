@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>0818-0824周总结 | 汉景源的博客</title>
+<title>css布局-水平居中 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,23 +93,45 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">0818-0824周总结</h2>
-            <div class="post-date">2019-08-18</div>
+            <h2 class="post-title">css布局-水平居中</h2>
+            <div class="post-date">2019-11-05</div>
             
             <div class="post-content">
-              <h1 id="0818-0824周">0818-0824周</h1>
-<h2 id="0819">0819</h2>
+              <h2 id="方案一">方案一</h2>
+<pre><code class="language-css">  .parent{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+  }
+
+  .child{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+  }
+</code></pre>
+<p>##　方案二</p>
+<pre><code class="language-css">  .child{
+    display: table/block;
+    margin: 0 auto;
+  }
+  如果脱离文档流，那么这种方式无效；
+</code></pre>
+<blockquote>
+<p>脱离文档流的三种方式<br>
+1.float浮动<br>
+2.绝对定位<br>
+3.fix固定定位</p>
+</blockquote>
+<h2 id="方案三">方案三</h2>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572960814254.png" alt=""></figure>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/ASKx9ao49m" class="tag">
-                    canvas
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/MMl1svNQ-E" class="tag">
-                    openlayers
+                  <a href="https://hanjingyuan.github.io/tag/yEgiKk4-l" class="tag">
+                    css
                   </a>
                 
               </div>
@@ -117,9 +139,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/0811-0817周总结">
+                <a href="https://hanjingyuan.github.io/post/JkeSUFZAI">
                   <h3 class="post-title">
-                    0811-0817周总结
+                    Centos常用操作总结
                   </h3>
                 </a>
               </div>

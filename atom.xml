@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-10-31T07:55:33.520Z</updated>
+    <updated>2019-11-05T14:36:29.421Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,64 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[css布局-居中布局]]></title>
+        <id>https://hanjingyuan.github.io/post/vmgZDFYz1</id>
+        <link href="https://hanjingyuan.github.io/post/vmgZDFYz1">
+        </link>
+        <updated>2019-11-05T14:02:04.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="方案一">方案一</h2>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572962546779.png" alt=""></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[css布局-垂直居中]]></title>
+        <id>https://hanjingyuan.github.io/post/DXqxFXLgT</id>
+        <link href="https://hanjingyuan.github.io/post/DXqxFXLgT">
+        </link>
+        <updated>2019-11-05T13:41:12.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1第一种方案">1.第一种方案</h2>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572961462052.png" alt=""></figure>
+<h2 id="2第二种方案">2.第二种方案</h2>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1572961873060.png" alt=""></figure>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[css布局-水平居中]]></title>
+        <id>https://hanjingyuan.github.io/post/GnBLhuAwH</id>
+        <link href="https://hanjingyuan.github.io/post/GnBLhuAwH">
+        </link>
+        <updated>2019-11-05T13:17:21.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="方案一">方案一</h2>
+<pre><code class="language-css">  .parent{
+    width: 100%;
+    height: 200px;
+    text-align: center;
+  }
+
+  .child{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+  }
+</code></pre>
+<p>##　方案二</p>
+<pre><code class="language-css">  .child{
+    display: table/block;
+    margin: 0 auto;
+  }
+  如果脱离文档流，那么这种方式无效；
+</code></pre>
+<blockquote>
+<p>脱离文档流的三种方式<br>
+1.float浮动<br>
+2.绝对定位<br>
+3.fix固定定位</p>
+</blockquote>
+<h2 id="方案三">方案三</h2>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572960814254.png" alt=""></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Centos常用操作总结]]></title>
         <id>https://hanjingyuan.github.io/post/JkeSUFZAI</id>
@@ -228,155 +286,6 @@ public XResult&lt;PageInfo&lt;Shuiti&gt;&gt; getPagedSpatialQueryInfo(@RequestPa
 <p>1度 约等于 110Km</p>
 </blockquote>
 <h3 id="3">3</h3>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[geoserver中wfs使用时的启动时间探索]]></title>
-        <id>https://hanjingyuan.github.io/post/geoserver-zhong-wfs-shi-yong-shi-de-qi-dong-shi-jian-tan-suo</id>
-        <link href="https://hanjingyuan.github.io/post/geoserver-zhong-wfs-shi-yong-shi-de-qi-dong-shi-jian-tan-suo">
-        </link>
-        <updated>2019-10-12T03:22:44.000Z</updated>
-        <content type="html"><![CDATA[<p>在使用geoserver的wfs服务时，每次把tomcat重启之后，第一次使用wfs会使用很长的时间来打开数据库连接池？同时会进行一个getServiceInfo的操作。</p>
-<h2 id="1使用get请求">1.使用get请求</h2>
-<p>速度很快，即时即可完成<br>
-<img src="https://hanjingyuan.github.io/post-images/1570851255891.png" alt=""><br>
-<img src="https://hanjingyuan.github.io/post-images/1570851297925.png" alt=""></p>
-<h2 id="2使用post">2.使用post</h2>
-<p>速度很慢，在进行请求之前需要进行一个getServiceInfo的操作，这个操作的时间长达半分钟，原因目前未知；</p>
-<p><img src="https://hanjingyuan.github.io/post-images/1570851376650.png" alt=""><br>
-<img src="https://hanjingyuan.github.io/post-images/1570851541447.png" alt=""></p>
-<h2 id="3思考">3.思考</h2>
-<ol>
-<li>所有的wfs查询以后都使用get方式进行请求，filter条件使用ecql，这样不仅速度快，而且检索更加方便；</li>
-<li>wfs的事务操作使用哪一个方式还需要进行验证；</li>
-<li>cql_filter使用样例</li>
-</ol>
-<pre><code>http://127.0.0.1:8080/geoserver/cite/wms?SERVICE=WMS&amp;VERSION=1.1.1&amp;REQUEST=GetMap&amp;FORMAT=image%2Fpng&amp;TRANSPARENT=true&amp;LAYERS=cite%3Ahn_region&amp;exceptions=application%2Fvnd.ogc.se_inimage&amp;CQL_FILTER=intersects(geom%2Cpoint(112.10999%2027.46033))%20and%20display%20%3D%202007&amp;SRS=EPSG%3A4490&amp;STYLES=&amp;WIDTH=765&amp;HEIGHT=768&amp;BBOX=107.3199462890625%2C23.170166015625%2C115.7244873046875%2C31.607666015625
-</code></pre>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570860623531.png" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0922-0929周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0922-0929周总结</id>
-        <link href="https://hanjingyuan.github.io/post/0922-0929周总结">
-        </link>
-        <updated>2019-09-21T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="0922-0929周">0922-0929周</h1>
-<h2 id="0923">0923</h2>
-<ol>
-<li>快速网格化代码</li>
-</ol>
-<pre><code class="language-js">javascript: (function() {
-	var elements = document.body.getElementsByTagName('*');
-	var items = [];
-	for (var i = 0; i &lt; elements.length; i++) {
-		if (elements[i].innerHTML.indexOf('html * { outline: 1px solid red }') != -1) {
-			items.push(elements[i]);
-		}
-	}
-	if (items.length &gt; 0) {
-		for (var i = 0; i &lt; items.length; i++) {
-			items[i].innerHTML = '';
-		}
-	} else {
-		document.body.innerHTML +=
-			'&lt;style&gt;html * { outline: 1px solid red }&lt;/style&gt;';
-	}
-})();
-
-</code></pre>
-<h2 id="0924">0924</h2>
-<ol>
-<li>当遇到gulp合并js文件突然变慢的时候，此时可以尝试重试启动gulp，基本可以解决；</li>
-</ol>
-<h2 id="0926">0926</h2>
-<ol>
-<li>geotools,阿里云maven配置</li>
-</ol>
-<pre><code class="language-xml">&lt;mirror&gt;
-		&lt;id&gt;alimaven&lt;/id&gt;
-		&lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
-		&lt;name&gt;aliyun maven&lt;/name&gt;
-&lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;
-		&lt;mirrorOf&gt;*,!osgeo,!maven2-repository.dev.java.net,!boundless&lt;/mirrorOf&gt; 
-&lt;/mirror&gt;
-</code></pre>
-<h2 id="0929">0929</h2>
-<ol>
-<li>使用nvm作为node.js的版本管理工具；</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[0915-0921周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/0915-0921周总结</id>
-        <link href="https://hanjingyuan.github.io/post/0915-0921周总结">
-        </link>
-        <updated>2019-09-14T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="0915-0921周">0915-0921周</h1>
-<h2 id="0917">0917</h2>
-<ol>
-<li>组织树的简单递归算法实现</li>
-</ol>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799418412.png" alt=""></figure>
-<pre><code class="language-js">data.forEach(item=&gt;{
-  recursiveTraverse(item);
-});
-
-const recursiveTraverse = function (node) {
-  if (!node || node['children'].length === 0) {
-      node['children'] = null;
-      return;
-  }
-  node['children'].forEach(function(item) {
-      recursiveTraverse(item);
-  });
-};
-</code></pre>
-<h2 id="0918">0918</h2>
-<ol>
-<li>geoserver中对于restful api使用时遇到401和403问题的解决办法：（1）遇到401时，需要在请求的headers中携带'Authorization': 'Basic YWRtaW46Z2Vvc2VydmVy'来进行解决；（2）遇到403时，说明在web.xml中，跨域信息没有完全打开，此时需要打开跨域请求，即:</li>
-</ol>
-<pre><code class="language-xml">   &lt;filter&gt;
-        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
-        &lt;filter-class&gt;org.eclipse.jetty.servlets.CrossOriginFilter&lt;/filter-class&gt;
-		
-       &lt;init-param&gt;
-           &lt;param-name&gt;chainPreflight&lt;/param-name&gt;
-           &lt;param-value&gt;false&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;allowedOrigins&lt;/param-name&gt;
-           &lt;param-value&gt;*&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;allowedMethods&lt;/param-name&gt;
-           &lt;param-value&gt;GET,POST,PUT,DELETE,HEAD,OPTIONS&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;allowedHeaders&lt;/param-name&gt;
-           &lt;param-value&gt;*&lt;/param-value&gt;
-       &lt;/init-param&gt;
-    &lt;/filter&gt;
-
-    &lt;filter-mapping&gt;
-      &lt;filter-name&gt;Set Character Encoding&lt;/filter-name&gt;
-      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-    &lt;/filter-mapping&gt;
-   
-    &lt;filter-mapping&gt;
-        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
-        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-    &lt;/filter-mapping&gt;
-   
-</code></pre>
-<h2 id="0919">0919</h2>
-<ol>
-<li>天地图的能力请求方式：</li>
-</ol>
-<pre><code>http://t0.tianditu.gov.cn/vec_c/wmts?tk=f1d0e61021ded0ed120188019ec1c5a3?request=GetCapabilities&amp;service=wmts
-</code></pre>
 ]]></content>
     </entry>
 </feed>
