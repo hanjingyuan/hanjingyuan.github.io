@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>2019面试总结 | 汉景源的博客</title>
+<title>postgresql中user表名的问题 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,50 +93,20 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">2019面试总结</h2>
-            <div class="post-date">2019-05-10</div>
+            <h2 class="post-title">postgresql中user表名的问题</h2>
+            <div class="post-date">2019-11-13</div>
             
             <div class="post-content">
-              <h2 id="规划中心面试">规划中心面试</h2>
-<h3 id="试题重现">试题重现</h3>
-<ol>
-<li>$rootscope和$scope的区别？</li>
-<li>块状元素，行内元素，绝对相对定位的区别？</li>
-<li>列出三种模块间的通信方式？</li>
-<li>闭包？手写实现闭包；</li>
-<li>arcgis api的三种任务？</li>
-<li>检验身份证，条件很多：一个input，输入身份证号，确认之后进行验证；</li>
-<li>省市县三级联动的一个select；</li>
-</ol>
-<h3 id="反思">反思</h3>
-<p>在规划中心的面试过程中，其他的过程都还好，唯一存在的问题是，手写代码太差了，基本的代码都写不出来，例如，构造一个select实现省市县三级联动，这个问题本来很简单的，但是就是实现不出来，这个非常不应该！</p>
-<p>在后续的学习过程中，我必须要加强自己动手写轮子的能力，不能好高骛远！一定要动手。</p>
-<h2 id="科创信息面试">科创信息面试</h2>
-<h3 id="试题重现-2">试题重现</h3>
-<ol>
-<li>判断一个点是否在多边形中？</li>
-</ol>
-<h3 id="反思-2">反思</h3>
-<p>在科创的面试中，面试官着重的询问了gis业务的具体实现。表现的不好的方面主要是，gis和业务系统描述不清楚，当然客观原因也是在于有部分的内容是我自己瞎编的，所以还是要以后要把简历上的内容都要说清楚。</p>
-<p>强化gis空间算法能力，尤其是实现gis方面的算法实现，这点很重要。</p>
-<p>强化gis相关的坐标系转换，投影转换的关系，理清楚gis中多个图层之间的关系；例如在一个gis系统中，可能包含了多少图层？</p>
-<h2 id="总结">总结</h2>
-<p>在这两场面试中，对于基础知识的考察比较少，更多的是业务方面的了解，考察的内容包含了以下方面：</p>
-<ol>
-<li>gis空间算法</li>
-<li>坐标系，投影，图层；</li>
-<li>gis空间数据库</li>
-<li>js深入；</li>
-<li>具备手写js代码的能力；</li>
-<li>下次面试之前，要把简历上的所有东西要准备的完整；</li>
-</ol>
+              <blockquote>
+<p>不要在pg数据库中使用user表名，因为pg数据中会自带一张隐藏的user表，如果使用user表会造成冲突，但是pg数据库本身却不会提示；</p>
+</blockquote>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/x8_-1nJgD" class="tag">
-                    面试
+                  <a href="https://hanjingyuan.github.io/tag/hYe_vET_OB" class="tag">
+                    postgresql
                   </a>
                 
               </div>
@@ -144,9 +114,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/postgis-xue-xi-2">
+                <a href="https://hanjingyuan.github.io/post/vmgZDFYz1">
                   <h3 class="post-title">
-                    PostGIS学习2
+                    css布局-居中布局
                   </h3>
                 </a>
               </div>
