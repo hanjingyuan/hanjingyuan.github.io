@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>Centos常用操作总结 | 汉景源的博客</title>
+<title>geoserver basic认证 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,61 +93,32 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Centos常用操作总结</h2>
-            <div class="post-date">2019-10-30</div>
+            <h2 class="post-title">geoserver basic认证</h2>
+            <div class="post-date">2019-11-14</div>
             
             <div class="post-content">
-              <ol>
-<li>目录切换之间的操作</li>
-</ol>
-<blockquote>
-<p>cd www , 意思是 到www目录；<br>
-cd .. , 意思是到上一级目录；<br>
-cd - ,意思是返回到上次的目录，类似windows返回 ；<br>
-cd /，意思是回到根目录。</p>
-</blockquote>
-<ol start="2">
-<li>查看当前目录下的文件</li>
-</ol>
-<blockquote>
-<p>ls；</p>
-</blockquote>
-<ol start="3">
-<li>编辑某个文件</li>
-</ol>
-<blockquote>
-<p>vi 文件名；<br>
-insert 进入编辑模式；<br>
-esc退出编辑模式，输入:wq保存退出；</p>
-</blockquote>
-<ol start="4">
-<li>jdk和tomcat的安装</li>
-</ol>
-<blockquote>
-<p>最好使用yum的方式进行安装，这样的好处是不用配置环境变量；</p>
-</blockquote>
-<ol start="5">
-<li>阿里云的入站规则</li>
-</ol>
-<blockquote>
-<p>阿里云默认会把入站的端口关闭，需要把端口打开；</p>
-</blockquote>
-<ol start="6">
-<li>文件的上传</li>
-</ol>
-<blockquote>
-<p>yum   -y  install  lrzsz 进行安装<br>
-rz -y 进行文件的上传，上传的位置是当前目录</p>
-</blockquote>
+              <pre><code>String plainCredentials = &quot;test1:123456&quot;;
+String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBytes()));
+//输出结果dGVzdDE6MTIzNDU2
+//在js请求时，把Authorization:Basic dGVzdDE6MTIzNDU2放到header请求中即可
+</code></pre>
 
             </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
+                    geoserver
+                  </a>
+                
+              </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/1028-1103-zhou-zong-jie">
+                <a href="https://hanjingyuan.github.io/post/0QUeU8sZi">
                   <h3 class="post-title">
-                    1028-1103周总结
+                    postgresql中user表名的问题
                   </h3>
                 </a>
               </div>
