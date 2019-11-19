@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1573724903769">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1574144951758">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1573724903769" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1574144951758" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -120,6 +120,15 @@
 <h3 id="部署多台tomcat服务器">部署多台tomcat服务器</h3>
 <blockquote>
 <p>https://blog.csdn.net/qq_39654841/article/details/82048857</p>
+</blockquote>
+<h3 id="tomcat默认不支持put和delete的解决方法">tomcat默认不支持put和delete的解决方法</h3>
+<blockquote>
+<p>将tomcat的put和delete设置打开<br>
+https://blog.csdn.net/m0_38044453/article/details/80802179</p>
+</blockquote>
+<h3 id="删除图层的方法">删除图层的方法</h3>
+<blockquote>
+<p>删除图层时需要注意删除的顺序，首先调用“/rest/layers/cite:publish”先删除图层，然后再调用“/rest/workspaces/cite/datastores/open_map/featuretypes/publish”去删除featuretype，这样才能删除掉图层；如果直接去删除featuretype，会报403的错误，不能先删除featuretype。</p>
 </blockquote>
 
             </div>

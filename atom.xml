@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-11-14T09:48:27.506Z</updated>
+    <updated>2019-11-19T06:29:19.765Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -241,6 +241,15 @@ https://blog.csdn.net/Certain_/article/details/90745360
 <h3 id="部署多台tomcat服务器">部署多台tomcat服务器</h3>
 <blockquote>
 <p>https://blog.csdn.net/qq_39654841/article/details/82048857</p>
+</blockquote>
+<h3 id="tomcat默认不支持put和delete的解决方法">tomcat默认不支持put和delete的解决方法</h3>
+<blockquote>
+<p>将tomcat的put和delete设置打开<br>
+https://blog.csdn.net/m0_38044453/article/details/80802179</p>
+</blockquote>
+<h3 id="删除图层的方法">删除图层的方法</h3>
+<blockquote>
+<p>删除图层时需要注意删除的顺序，首先调用“/rest/layers/cite:publish”先删除图层，然后再调用“/rest/workspaces/cite/datastores/open_map/featuretypes/publish”去删除featuretype，这样才能删除掉图层；如果直接去删除featuretype，会报403的错误，不能先删除featuretype。</p>
 </blockquote>
 ]]></content>
     </entry>
