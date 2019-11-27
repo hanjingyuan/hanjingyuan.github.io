@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>1014-1020周总结 | 汉景源的博客</title>
+<title>postgresql数据库的导入和导出 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,31 +93,31 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">1014-1020周总结</h2>
-            <div class="post-date">2019-10-14</div>
+            <h2 class="post-title">postgresql数据库的导入和导出</h2>
+            <div class="post-date">2019-11-27</div>
             
             <div class="post-content">
-              <h2 id="1014">1014</h2>
-<h3 id="1geoserver的分页查询">1.geoserver的分页查询</h3>
-<p>geoserver的wfs分页查询需要在2.0.0版本及以上进行。</p>
-<pre><code>http://10.14.3.160:8080/geoserver/wfs?outputFormat=application%2Fjson&amp;request=getFeature&amp;service=WFS&amp;typeName=cite:hn_region&amp;version=2.0.0&amp;count=2&amp;startIndex=0
+              <ol>
+<li>数据库的导出</li>
+</ol>
+<pre><code>1.在pg数据库的bin目录下执行cmd命令行（一定要用cmd命令行），或者需要配置环境变量，包含了pg数据库安装根目录下的bin目录和lib目录，配置到Path中去即可；
+1.pg_dump  -U postgres  数据库名称 &gt; c:\db.sql ——数据库整体的导出
+2.pg_dump -U postgres poidata（数据库名称） -t poi（表名称） -f /home/share/wg/poi.sql（输出路径）——单表的导出
 </code></pre>
-<h3 id="2">2</h3>
-<blockquote>
-<p>1度 约等于 110Km</p>
-</blockquote>
-<h3 id="3">3</h3>
+<ol start="2">
+<li>数据库的导出</li>
+</ol>
+<pre><code>1.执行psql -U postgres -d gwh（数据库名称，要预先创建好） &lt; gwh.sql（上一步中导出的sql文件，放到bin目录中）；
+2.数据表的导入：。。。
+3.执行之后需要先进行一定时间的等待才能完成导入的操作；
+</code></pre>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/w6zQp3yHS" class="tag">
-                    2019周总结
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
-                    geoserver
+                  <a href="https://hanjingyuan.github.io/tag/hYe_vET_OB" class="tag">
+                    postgresql
                   </a>
                 
               </div>
@@ -125,9 +125,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/geoserver-zhong-wfs-shi-yong-shi-de-qi-dong-shi-jian-tan-suo">
+                <a href="https://hanjingyuan.github.io/post/xOnHlsUVk">
                   <h3 class="post-title">
-                    geoserver中wfs使用时的启动时间探索
+                    geoserver basic认证
                   </h3>
                 </a>
               </div>
