@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1574821214018">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1574821730258">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1574821214018" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1574821730258" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -102,6 +102,7 @@
 </ol>
 <pre><code>1.在pg数据库的bin目录下执行cmd命令行（一定要用cmd命令行），或者需要配置环境变量，包含了pg数据库安装根目录下的bin目录和lib目录，配置到Path中去即可；
 1.pg_dump  -U postgres  数据库名称 &gt; c:\db.sql ——数据库整体的导出
+1.1 pg_dump -U postgres -s -f open_map.sql open_map（仅导出表结构不到处表数据）
 2.pg_dump -U postgres poidata（数据库名称） -t poi（表名称） -f /home/share/wg/poi.sql（输出路径）——单表的导出
 </code></pre>
 <ol start="2">

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-11-27T02:20:16.109Z</updated>
+    <updated>2019-11-27T02:28:54.716Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -21,6 +21,7 @@
 </ol>
 <pre><code>1.在pg数据库的bin目录下执行cmd命令行（一定要用cmd命令行），或者需要配置环境变量，包含了pg数据库安装根目录下的bin目录和lib目录，配置到Path中去即可；
 1.pg_dump  -U postgres  数据库名称 &gt; c:\db.sql ——数据库整体的导出
+1.1 pg_dump -U postgres -s -f open_map.sql open_map（仅导出表结构不到处表数据）
 2.pg_dump -U postgres poidata（数据库名称） -t poi（表名称） -f /home/share/wg/poi.sql（输出路径）——单表的导出
 </code></pre>
 <ol start="2">
