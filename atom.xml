@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-11-27T06:03:48.857Z</updated>
+    <updated>2019-12-12T07:25:50.304Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[pg mybatis 多表联查]]></title>
+        <id>https://hanjingyuan.github.io/post/G1Z5TSaLV</id>
+        <link href="https://hanjingyuan.github.io/post/G1Z5TSaLV">
+        </link>
+        <updated>2019-12-12T07:25:09.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-sql">SELECT r.* from tb_role r where r.role_id in (select ur.role_id from tb_user_role ur where user_id = '470a05096a8968d8edb51c9b280ed06d')
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[postgresql数据库的导入和导出]]></title>
         <id>https://hanjingyuan.github.io/post/sZz9cqVrF</id>
@@ -281,16 +291,6 @@ https://blog.csdn.net/m0_38044453/article/details/80802179</p>
 <blockquote>
 <p>删除图层时需要注意删除的顺序，首先调用“/rest/layers/cite:publish”先删除图层，然后再调用“/rest/workspaces/cite/datastores/open_map/featuretypes/publish”去删除featuretype，这样才能删除掉图层；如果直接去删除featuretype，会报403的错误，不能先删除featuretype。</p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[geoserver暴露主键的方法]]></title>
-        <id>https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa</id>
-        <link href="https://hanjingyuan.github.io/post/geoserver-bao-lu-zhu-jian-de-fang-fa">
-        </link>
-        <updated>2019-10-25T06:01:22.000Z</updated>
-        <content type="html"><![CDATA[<p>geoserver在发布数据时，默认情况下主键是不会被发布出来的，需要在数据存储中暴露主键出来；<br>
-<img src="https://hanjingyuan.github.io/post-images/1571983386059.png" alt=""></p>
 ]]></content>
     </entry>
 </feed>
