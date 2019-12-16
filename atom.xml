@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-12-16T03:15:29.648Z</updated>
+    <updated>2019-12-16T07:20:11.824Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -55,10 +55,10 @@
 2.pg_dump -U postgres poidata（数据库名称） -t poi（表名称） -f /home/share/wg/poi.sql（输出路径）——单表的导出
 </code></pre>
 <ol start="2">
-<li>数据库的导出</li>
+<li>数据库的导入</li>
 </ol>
 <pre><code>1.执行psql -U postgres -d gwh（数据库名称，要预先创建好） &lt; gwh.sql（上一步中导出的sql文件，放到bin目录中）；
-2.数据表的导入：。。。
+2.数据表的导入：和上面的方法是一样的，指定好要导入的数据库即可；
 3.执行之后需要先进行一定时间的等待才能完成导入的操作；
 </code></pre>
 <ol start="3">
