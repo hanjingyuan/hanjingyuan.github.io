@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-12-16T07:20:11.824Z</updated>
+    <updated>2019-12-23T09:16:36.493Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,25 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[javascript常用方法]]></title>
+        <id>https://hanjingyuan.github.io/post/CX4aRFvo5</id>
+        <link href="https://hanjingyuan.github.io/post/CX4aRFvo5">
+        </link>
+        <updated>2019-12-23T02:05:37.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>根据索引，删除数组中的项</li>
+</ol>
+<pre><code class="language-js">let arr  = ['a','b','c','d','e','f']
+arr.splice(4, 1);//删除e
+</code></pre>
+<ol start="2">
+<li>时间戳快速获取</li>
+</ol>
+<pre><code class="language-js">const date = Date.parse(new Date());
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[服务部署流程]]></title>
         <id>https://hanjingyuan.github.io/post/jjtD2Z_HM</id>
@@ -199,76 +218,6 @@ esc退出编辑模式，输入:wq保存退出；</p>
 <blockquote>
 <p>yum   -y  install  lrzsz 进行安装<br>
 rz -y 进行文件的上传，上传的位置是当前目录</p>
-</blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[1028-1103周总结]]></title>
-        <id>https://hanjingyuan.github.io/post/1028-1103-zhou-zong-jie</id>
-        <link href="https://hanjingyuan.github.io/post/1028-1103-zhou-zong-jie">
-        </link>
-        <updated>2019-10-28T01:25:42.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1028">1028</h2>
-<h3 id="1maven本地包的配置">1.maven本地包的配置</h3>
-<ol>
-<li>pom文件的配置</li>
-</ol>
-<pre><code class="language-xml">        &lt;!--geoserver restful--&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;it.geosolutions&lt;/groupId&gt;
-            &lt;artifactId&gt;geoserver-manager&lt;/artifactId&gt;
-            &lt;version&gt;1.7-SNAPSHOT&lt;/version&gt;
-            &lt;!--这里使用的是本地jar包集成，远程的环境拉不下来--&gt;
-            &lt;scope&gt;system&lt;/scope&gt;
-            &lt;systemPath&gt;${basedir}/lib/geoserver-manager-1.7.0.jar&lt;/systemPath&gt;
-        &lt;/dependency&gt;
-    &lt;build&gt;
-        &lt;resources&gt;
-            &lt;!--在lib目录下存放着因为网络原因无法拉取到本地的jar包--&gt;
-            &lt;!--maven默认打包时不会包含这些jar包，所以需要单独进行配置--&gt;
-            &lt;!--包含本地jar包的配置--&gt;
-            &lt;resource&gt;
-                &lt;directory&gt;${project.basedir}/lib&lt;/directory&gt;
-                &lt;targetPath&gt;BOOT-INF/lib/&lt;/targetPath&gt;
-                &lt;includes&gt;
-                    &lt;include&gt;**/*.jar&lt;/include&gt;
-                &lt;/includes&gt;
-            &lt;/resource&gt;
-            &lt;resource&gt;
-                &lt;directory&gt;src/main/resources&lt;/directory&gt;
-                &lt;targetPath&gt;BOOT-INF/classes/&lt;/targetPath&gt;
-            &lt;/resource&gt;
-        &lt;/resources&gt;
-    &lt;/build&gt;
-</code></pre>
-<ol start="2">
-<li>根目录下创建lib文件夹，并且把所需要的jar包放入到文件夹中<br>
-<img src="https://hanjingyuan.github.io/post-images/1572226106874.png" alt=""></li>
-</ol>
-<h3 id="2maven配置的若干问题">2.maven配置的若干问题</h3>
-<ol>
-<li>不要使用3.6.1以上版本的maven；</li>
-<li>其他相关问题的参考解决办法：</li>
-</ol>
-<pre><code>https://blog.csdn.net/ashleyjun/article/details/101106810
-https://blog.csdn.net/Certain_/article/details/90745360
-</code></pre>
-<h3 id="3idea与蓝灯配置的方法">3.idea与蓝灯配置的方法</h3>
-<blockquote>
-<p>http://www.itzhai.com/intellij-idea-proxy-settings.html</p>
-</blockquote>
-<h3 id="4maven仓库地址的配置">4.maven仓库地址的配置</h3>
-<pre><code class="language-xml">&lt;mirror&gt;
-    &lt;id&gt;alimaven&lt;/id&gt;
-    &lt;name&gt;aliyun maven&lt;/name&gt;
-    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
-    &lt;mirrorOf&gt;*,!osgeo,!maven2-repository.dev.java.net,!boundless&lt;/mirrorOf&gt; 
-&lt;/mirror&gt;
-</code></pre>
-<h2 id="1031">1031</h2>
-<h3 id="1maven忽略测试进行打包">1.maven忽略测试进行打包</h3>
-<blockquote>
-<p>mvn clean package -Dmaven.test.skip=true</p>
 </blockquote>
 ]]></content>
     </entry>

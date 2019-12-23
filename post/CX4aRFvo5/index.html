@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>0915-0921周总结 | 汉景源的博客</title>
+<title>javascript常用方法 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,88 +93,28 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">0915-0921周总结</h2>
-            <div class="post-date">2019-09-15</div>
+            <h2 class="post-title">javascript常用方法</h2>
+            <div class="post-date">2019-12-23</div>
             
             <div class="post-content">
-              <h1 id="0915-0921周">0915-0921周</h1>
-<h2 id="0917">0917</h2>
-<ol>
-<li>组织树的简单递归算法实现</li>
+              <ol>
+<li>根据索引，删除数组中的项</li>
 </ol>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570799418412.png" alt=""></figure>
-<pre><code class="language-js">data.forEach(item=&gt;{
-  recursiveTraverse(item);
-});
-
-const recursiveTraverse = function (node) {
-  if (!node || node['children'].length === 0) {
-      node['children'] = null;
-      return;
-  }
-  node['children'].forEach(function(item) {
-      recursiveTraverse(item);
-  });
-};
+<pre><code class="language-js">let arr  = ['a','b','c','d','e','f']
+arr.splice(4, 1);//删除e
 </code></pre>
-<h2 id="0918">0918</h2>
-<ol>
-<li>geoserver中对于restful api使用时遇到401和403问题的解决办法：（1）遇到401时，需要在请求的headers中携带'Authorization': 'Basic YWRtaW46Z2Vvc2VydmVy'来进行解决；（2）遇到403时，说明在web.xml中，跨域信息没有完全打开，此时需要打开跨域请求，即:</li>
+<ol start="2">
+<li>时间戳快速获取</li>
 </ol>
-<pre><code class="language-xml">   &lt;filter&gt;
-        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
-        &lt;filter-class&gt;org.eclipse.jetty.servlets.CrossOriginFilter&lt;/filter-class&gt;
-		
-       &lt;init-param&gt;
-           &lt;param-name&gt;chainPreflight&lt;/param-name&gt;
-           &lt;param-value&gt;false&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;allowedOrigins&lt;/param-name&gt;
-           &lt;param-value&gt;*&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;allowedMethods&lt;/param-name&gt;
-           &lt;param-value&gt;GET,POST,PUT,DELETE,HEAD,OPTIONS&lt;/param-value&gt;
-       &lt;/init-param&gt;
-       &lt;init-param&gt;
-           &lt;param-name&gt;allowedHeaders&lt;/param-name&gt;
-           &lt;param-value&gt;*&lt;/param-value&gt;
-       &lt;/init-param&gt;
-    &lt;/filter&gt;
-
-    &lt;filter-mapping&gt;
-      &lt;filter-name&gt;Set Character Encoding&lt;/filter-name&gt;
-      &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-    &lt;/filter-mapping&gt;
-   
-    &lt;filter-mapping&gt;
-        &lt;filter-name&gt;cross-origin&lt;/filter-name&gt;
-        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
-    &lt;/filter-mapping&gt;
-   
-</code></pre>
-<h2 id="0919">0919</h2>
-<ol>
-<li>天地图的能力请求方式：</li>
-</ol>
-<pre><code>http://t0.tianditu.gov.cn/vec_c/wmts?tk=f1d0e61021ded0ed120188019ec1c5a3?request=GetCapabilities&amp;service=wmts
+<pre><code class="language-js">const date = Date.parse(new Date());
 </code></pre>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/w6zQp3yHS" class="tag">
-                    2019周总结
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/hYe_vET_OB" class="tag">
-                    postgresql
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
-                    geoserver
+                  <a href="https://hanjingyuan.github.io/tag/QjltASzX8" class="tag">
+                    javascript
                   </a>
                 
               </div>
@@ -182,9 +122,9 @@ const recursiveTraverse = function (node) {
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/0908-0914周总结">
+                <a href="https://hanjingyuan.github.io/post/jjtD2Z_HM">
                   <h3 class="post-title">
-                    0908-0914周总结
+                    服务部署流程
                   </h3>
                 </a>
               </div>
