@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1577092593116">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1577104142349">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1577092593116" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1577104142349" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -133,10 +133,14 @@ public Result&lt;List&lt;KgLandBound&gt;&gt; getSpatialQueryInfo(dynamic obj)
 <ol start="5">
 <li>根据pg查出来的geometry，顺带把面积也进行查询</li>
 </ol>
-<pre><code class="language-sql">select res.gid,res.ydtype,res.ydcode,res.shape_area,st_area(res.wkt),res.wkt from (
- SELECT gid, ydtype, ydcode,  shape_area,ST_Intersection(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547)) as wkt
- FROM public.kg_land_bound2  where ST_Intersects(geom,ST_MakeEnvelope(49701.02023537382,96951.72932012533,49865.59139784948,97115.77131487598,4547))
-) as res 
+<pre><code class="language-sql">SELECT res.gid, res.ydtype, res.ydcode, res.shape_area, st_area(res.wkt), res.wkt
+FROM (
+		SELECT gid, ydtype, ydcode, shape_area, 
+		ST_Intersection(geom, ST_MakeEnvelope(49701.02023537382, 96951.72932012533, 49865.59139784948, 97115.77131487598, 4547)) AS wkt
+		FROM public.kg_land_bound2
+		WHERE ST_Intersects(geom, ST_MakeEnvelope(49701.02023537382, 96951.72932012533, 49865.59139784948, 97115.77131487598, 4547))
+	) 
+AS res;
 
 </code></pre>
 <h2 id="0806">0806</h2>
