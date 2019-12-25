@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>css布局-水平居中 | 汉景源的博客</title>
+<title>postgis土地利用分析查询 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,45 +93,37 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">css布局-水平居中</h2>
-            <div class="post-date">2019-11-05</div>
+            <h2 class="post-title">postgis土地利用分析查询</h2>
+            <div class="post-date">2019-12-24</div>
             
             <div class="post-content">
-              <h2 id="方案一">方案一</h2>
-<pre><code class="language-css">  .parent{
-    width: 100%;
-    height: 200px;
-    text-align: center;
-  }
-
-  .child{
-    width: 200px;
-    height: 200px;
-    display: inline-block;
-  }
+              <ol>
+<li>求出裁剪后的图斑</li>
+</ol>
+<pre><code class="language-sql">SELECT res.*, 
+	st_area(res.wkt) as real_area, 
+	st_astext(res.wkt) as real_wkt
+FROM (
+		SELECT jb.*,
+		ST_Intersection(jb.geom, 
+						st_geomfromtext('POLYGON ((113.14665136337281 28.156513464450835, 113.14883825778962 28.154443204402924, 113.14498932361603 28.153830873966218, 113.14665136337281 28.156513464450835))',4490)
+			) 
+		AS wkt
+		FROM public.jbntbhtb as jb
+		WHERE 
+			ST_Intersects(jb.geom, 
+						  st_geomfromtext('POLYGON ((113.14665136337281 28.156513464450835, 113.14883825778962 28.154443204402924, 113.14498932361603 28.153830873966218, 113.14665136337281 28.156513464450835))',4490)
+				)
+	) 
+AS res;
 </code></pre>
-<p>##　方案二</p>
-<pre><code class="language-css">  .child{
-    display: table/block;
-    margin: 0 auto;
-  }
-  如果脱离文档流，那么这种方式无效；
-</code></pre>
-<blockquote>
-<p>脱离文档流的三种方式<br>
-1.float浮动<br>
-2.绝对定位<br>
-3.fix固定定位</p>
-</blockquote>
-<h2 id="方案三">方案三</h2>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572960814254.png" alt=""></figure>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/yEgiKk4-l" class="tag">
-                    css
+                  <a href="https://hanjingyuan.github.io/tag/L7RisVMicG" class="tag">
+                    postgis
                   </a>
                 
               </div>
@@ -139,9 +131,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/JkeSUFZAI">
+                <a href="https://hanjingyuan.github.io/post/CX4aRFvo5">
                   <h3 class="post-title">
-                    Centos常用操作总结
+                    javascript常用方法
                   </h3>
                 </a>
               </div>

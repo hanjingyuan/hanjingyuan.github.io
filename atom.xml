@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-12-23T12:29:05.137Z</updated>
+    <updated>2019-12-25T09:05:01.274Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,34 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[postgis土地利用分析查询]]></title>
+        <id>https://hanjingyuan.github.io/post/IBAE_Gh3I</id>
+        <link href="https://hanjingyuan.github.io/post/IBAE_Gh3I">
+        </link>
+        <updated>2019-12-24T01:29:36.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>求出裁剪后的图斑</li>
+</ol>
+<pre><code class="language-sql">SELECT res.*, 
+	st_area(res.wkt) as real_area, 
+	st_astext(res.wkt) as real_wkt
+FROM (
+		SELECT jb.*,
+		ST_Intersection(jb.geom, 
+						st_geomfromtext('POLYGON ((113.14665136337281 28.156513464450835, 113.14883825778962 28.154443204402924, 113.14498932361603 28.153830873966218, 113.14665136337281 28.156513464450835))',4490)
+			) 
+		AS wkt
+		FROM public.jbntbhtb as jb
+		WHERE 
+			ST_Intersects(jb.geom, 
+						  st_geomfromtext('POLYGON ((113.14665136337281 28.156513464450835, 113.14883825778962 28.154443204402924, 113.14498932361603 28.153830873966218, 113.14665136337281 28.156513464450835))',4490)
+				)
+	) 
+AS res;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[javascript常用方法]]></title>
         <id>https://hanjingyuan.github.io/post/CX4aRFvo5</id>
@@ -26,6 +54,17 @@ arr.splice(4, 1);//删除e
 <li>时间戳快速获取</li>
 </ol>
 <pre><code class="language-js">const date = Date.parse(new Date());
+</code></pre>
+<ol start="3">
+<li>select的获取方法</li>
+</ol>
+<pre><code class="language-js">$(&quot;#customScopesBuffUnit&quot;).find(&quot;option:selected&quot;).val();//获取当前select选中的值
+
+//获取值得变化
+$('#quickSearchSelectLayer').change(function (evt) {
+    const id = $(this).children('option:selected').val();
+    //xxxxxx
+})
 </code></pre>
 ]]></content>
     </entry>
@@ -169,56 +208,6 @@ String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBy
 </blockquote>
 <h2 id="方案三">方案三</h2>
 <figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572960814254.png" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Centos常用操作总结]]></title>
-        <id>https://hanjingyuan.github.io/post/JkeSUFZAI</id>
-        <link href="https://hanjingyuan.github.io/post/JkeSUFZAI">
-        </link>
-        <updated>2019-10-30T00:36:04.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>目录切换之间的操作</li>
-</ol>
-<blockquote>
-<p>cd www , 意思是 到www目录；<br>
-cd .. , 意思是到上一级目录；<br>
-cd - ,意思是返回到上次的目录，类似windows返回 ；<br>
-cd /，意思是回到根目录。</p>
-</blockquote>
-<ol start="2">
-<li>查看当前目录下的文件</li>
-</ol>
-<blockquote>
-<p>ls；</p>
-</blockquote>
-<ol start="3">
-<li>编辑某个文件</li>
-</ol>
-<blockquote>
-<p>vi 文件名；<br>
-insert 进入编辑模式；<br>
-esc退出编辑模式，输入:wq保存退出；</p>
-</blockquote>
-<ol start="4">
-<li>jdk和tomcat的安装</li>
-</ol>
-<blockquote>
-<p>最好使用yum的方式进行安装，这样的好处是不用配置环境变量；</p>
-</blockquote>
-<ol start="5">
-<li>阿里云的入站规则</li>
-</ol>
-<blockquote>
-<p>阿里云默认会把入站的端口关闭，需要把端口打开；</p>
-</blockquote>
-<ol start="6">
-<li>文件的上传</li>
-</ol>
-<blockquote>
-<p>yum   -y  install  lrzsz 进行安装<br>
-rz -y 进行文件的上传，上传的位置是当前目录</p>
-</blockquote>
 ]]></content>
     </entry>
 </feed>
