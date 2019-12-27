@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2019-12-25T09:05:01.274Z</updated>
+    <updated>2019-12-27T09:18:22.417Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[maven打包相关]]></title>
+        <id>https://hanjingyuan.github.io/post/cIuOD1fpK</id>
+        <link href="https://hanjingyuan.github.io/post/cIuOD1fpK">
+        </link>
+        <updated>2019-12-26T02:03:27.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>打包时忽略test</li>
+</ol>
+<pre><code>mvn package -Dmaven.test.skip=true
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[postgis土地利用分析查询]]></title>
         <id>https://hanjingyuan.github.io/post/IBAE_Gh3I</id>
@@ -51,9 +64,11 @@ AS res;
 arr.splice(4, 1);//删除e
 </code></pre>
 <ol start="2">
-<li>时间戳快速获取</li>
+<li>时间戳相关</li>
 </ol>
-<pre><code class="language-js">const date = Date.parse(new Date());
+<pre><code class="language-js">const date = Date.parse(new Date());//时间戳快速获取
+
+const timestamp = (new Date('2019-01-01')).valueOf();
 </code></pre>
 <ol start="3">
 <li>select的获取方法</li>
@@ -172,42 +187,6 @@ String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBy
 <figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572961462052.png" alt=""></figure>
 <h2 id="2第二种方案">2.第二种方案</h2>
 <figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1572961873060.png" alt=""></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[css布局-水平居中]]></title>
-        <id>https://hanjingyuan.github.io/post/GnBLhuAwH</id>
-        <link href="https://hanjingyuan.github.io/post/GnBLhuAwH">
-        </link>
-        <updated>2019-11-05T13:17:21.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="方案一">方案一</h2>
-<pre><code class="language-css">  .parent{
-    width: 100%;
-    height: 200px;
-    text-align: center;
-  }
-
-  .child{
-    width: 200px;
-    height: 200px;
-    display: inline-block;
-  }
-</code></pre>
-<p>##　方案二</p>
-<pre><code class="language-css">  .child{
-    display: table/block;
-    margin: 0 auto;
-  }
-  如果脱离文档流，那么这种方式无效；
-</code></pre>
-<blockquote>
-<p>脱离文档流的三种方式<br>
-1.float浮动<br>
-2.绝对定位<br>
-3.fix固定定位</p>
-</blockquote>
-<h2 id="方案三">方案三</h2>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572960814254.png" alt=""></figure>
 ]]></content>
     </entry>
 </feed>
