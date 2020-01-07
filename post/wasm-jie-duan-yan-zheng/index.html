@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1577521657321">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1578367675936">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1577521657321" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1578367675936" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -103,7 +103,7 @@
 <li>WebAssembly 是一种可以在浏览器端运行二进制格式代码的技术，他的目标则是想提供接近Native code的执行效率的技术体验。 相较于文本类型的JavaScirpt而言，它拥有更小的体积，更短的加载时间，和更好的执行性能等特点 。WebAssembly 允许你使用Rust或者C/C++等静态语言来编写，并生成目标文件后缀为wasm的二进制格式文件。通过Fetch或者Ajax与WebAssembly提供的 API ，我们可以实现JavaScript与wasm模块的混用。</li>
 <li>转换流程：</li>
 </ol>
-<figure data-type="image" tabindex="1"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2dip7hxfbj30gw02v75b.jpg" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2dip7hxfbj30gw02v75b.jpg" alt="" loading="lazy"></figure>
 <ol start="3">
 <li>存在的问题：<strong>默认情况下，Emscripten生成的代码只会调用main()函数，其他函数将被视为无用代码。为了避免这件事发生，我们需要在C函数名之前，添加EMSCRIPTEN_KEEPALIVE（在emscripten.h中声明）或定义一个函数导出宏，从而使得在js中可以顺利的调用c函数。</strong></li>
 </ol>
@@ -147,17 +147,17 @@ int main() {
 <ol start="2">
 <li>进入emsdk根目录下，打开git bash，执行&quot;source ./emsdk_env.sh&quot;,启动环境变量，启动完之后，不要关闭窗口；</li>
 </ol>
-<figure data-type="image" tabindex="2"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2cc3phjhlj30g50bg3zc.jpg" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2cc3phjhlj30g50bg3zc.jpg" alt="" loading="lazy"></figure>
 <ol start="3">
 <li>在hello.c文件目录下，执行“emcc hello.c -o hello.js”，将hello.c文件编译成hello.js文件，执行成功后，会生成hello.js和hello.wasm，则说明编译成功；</li>
 <li>使用node hello.js，验证，成功输出结果：</li>
 </ol>
-<figure data-type="image" tabindex="3"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2ccajczo9j30cy01p3yc.jpg" alt=""></figure>
+<figure data-type="image" tabindex="3"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2ccajczo9j30cy01p3yc.jpg" alt="" loading="lazy"></figure>
 <ol start="5">
 <li>使用html验证需要在http协议下可以验证；打开webstorm，新建一个html文件，在html文件中引入hello.js文件，在webstorm中运行，验证成功。</li>
 </ol>
-<figure data-type="image" tabindex="4"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2ccfdc7dpj30t40eat9u.jpg" alt=""></figure>
-<figure data-type="image" tabindex="5"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2ccerc7mgj311k073gmb.jpg" alt="img"></figure>
+<figure data-type="image" tabindex="4"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2ccfdc7dpj30t40eat9u.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2ccerc7mgj311k073gmb.jpg" alt="img" loading="lazy"></figure>
 <ol start="6">
 <li>也可以执行&quot;emcc hello.cc -o hello.html&quot;，可以直接生成基于emcc的测试界面，效果与前面的也是一样的，在这里要注意的是，生成的hello.html文件也是要在http下运行的。</li>
 </ol>
@@ -211,7 +211,7 @@ EM_PORT_API(float) add(float a, float b) {
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<figure data-type="image" tabindex="6"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2dhvy6n7sj30fj06bq39.jpg" alt=""></figure>
+<figure data-type="image" tabindex="6"><img src="http://ww1.sinaimg.cn/large/0061jy1lgy1g2dhvy6n7sj30fj06bq39.jpg" alt="" loading="lazy"></figure>
 <p>在js中验证调用c++中的函数成功。</p>
 <p>注：webstorm下运行出现警告，这个主要是webstorm自带web服务器的问题，我重新使用http-server测试了一下是没有出现警告的。所以不用担心警告的问题。</p>
 <h3 id=""></h3>

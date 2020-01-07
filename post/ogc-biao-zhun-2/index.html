@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1577521657321">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1578367675936">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1577521657321" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1578367675936" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -104,15 +104,15 @@
 </blockquote>
 <p>请求：http://localhost:8080/geoserver/wms?service=wms&amp;version=1.1.1&amp;request=GetCapabilities</p>
 <p>返回：格式为xml文档，包含了如下的信息（返回了一个超长的XML文件，包含了各种信息，有图层，请求，以及WMS的服务器的信息等等）<br>
-<img src="https://hanjingyuan.github.io/post-images/1570800102858.png" alt=""></p>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570800075942.png" alt=""></figure>
+<img src="https://hanjingyuan.github.io/post-images/1570800102858.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570800075942.png" alt="" loading="lazy"></figure>
 <h2 id="1-2getmap">1-2GetMap</h2>
 <blockquote>
 <p>用来获取地图影像，是一个非常常用的方法</p>
 </blockquote>
 <p>请求：http://localhost:8080/geoserver/wms?service=wms&amp;version=1.1.1&amp;request=GetMap&amp;bbox=-130,24,-66,50&amp;style=population&amp;format=image/png&amp;layers=topp:states&amp;width=500&amp;height=250&amp;srs=EPSG:4326</p>
 <p>上面就是一个标准的GetMap请求，请求返回了png数据。对于返回的格式，有如下的选择：</p>
-<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570800114151.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570800114151.png" alt="" loading="lazy"></figure>
 <p><strong>注：style后的内容可以不填，即&amp;style=&amp;xxxx=xxx</strong></p>
 <h2 id="1-3-getfeatureinfo">1-3 GetFeatureInfo</h2>
 <blockquote>
@@ -126,14 +126,14 @@
 </blockquote>
 <p>请求：http://localhost:8060/geoserver/cite/ows?service=wfs&amp;version=1.1.1&amp;request=GetCapabilities</p>
 <p>返回：xml格式的文档<br>
-<img src="https://hanjingyuan.github.io/post-images/1570800122582.png" alt=""></p>
+<img src="https://hanjingyuan.github.io/post-images/1570800122582.png" alt="" loading="lazy"></p>
 <h2 id="3-2-describefeaturetype">3-2 DescribeFeatureType</h2>
 <blockquote>
 <p>返回图层的描述信息</p>
 </blockquote>
 <p>请求：http://localhost:8060/geoserver/cite/ows?service=wfs&amp;version=1.1.1&amp;request=DescribeFeatureType</p>
 <p>返回：很多很多xml文件；</p>
-<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570800130942.png" alt=""></figure>
+<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570800130942.png" alt="" loading="lazy"></figure>
 <h2 id="3-3-getfeature">3-3 GetFeature</h2>
 <p>请求：http://localhost:8060/geoserver/cite/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=cite:xspoint&amp;maxFeatures=50&amp;outputFormat=application%2Fjson</p>
 <p>或者是:http://localhost:8060/geoserver/wfs?service=wfs&amp;version=1.1.0&amp;request=GetFeature&amp;typeName=cite:xspoin&amp;outputFormat=application/json</p>

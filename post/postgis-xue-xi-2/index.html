@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1577521657321">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1578367675936">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1577521657321" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1578367675936" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -102,7 +102,7 @@
 <p>判断两个geometry是否完全相等</p>
 <h2 id="2-st_intersects">2 St_Intersects</h2>
 <p>如果两个图形有相同的部分，即他们的边界或者内部相交，即返回true</p>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570800245411.png" alt=""></figure>
+<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1570800245411.png" alt="" loading="lazy"></figure>
 <p>以宽街地铁站（Broad Street subway station）为例，使用ST_Intersects()函数确定其所在社区。(也就是说求一个点，是否是在某一个面上)</p>
 <p>（1）首先获取Broad Street subway station的地理信息：</p>
 <pre><code class="language-sql">SELECT name,st_astext(geom) from nyc_subway_stations where name = 'Broad St';
@@ -115,14 +115,14 @@
 </code></pre>
 <h2 id="3-st_disjoint">3 St_Disjoint</h2>
 <p>这个方法与intersect相反，即两个图片没有重合，就返回true；</p>
-<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570800262405.png" alt=""></figure>
+<figure data-type="image" tabindex="2"><img src="https://hanjingyuan.github.io/post-images/1570800262405.png" alt="" loading="lazy"></figure>
 <p>ST_Crosses 以两个 ST_Geometry 对象作为输入，如果这两个对象的交集生成的几何对象的维度小于两个源对象中的最大维度，则返回 1（Oracle 和 SQLite）或 t (PostgreSQL)。**交集对象所包含的点必须在两个源几何的内部，并且不等于其中任何一个源对象。**否则，返回 0（Oracle 和 SQLite）或 f (PostgreSQL)。</p>
 <h2 id="4-st_overlaps">4 St_Overlaps</h2>
 <p>**ST_Overlaps(geometry A, geometry B)**比较两个相同维度的几何图形，如果它们的结果集与两个源几何图形都不同但具有相同维度，则返回TRUE。</p>
-<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570800273333.png" alt=""></figure>
+<figure data-type="image" tabindex="3"><img src="https://hanjingyuan.github.io/post-images/1570800273333.png" alt="" loading="lazy"></figure>
 <h2 id="5-st_touches">5 St_Touches</h2>
 <p>判断两个几何图形是否在边界上相接触，但是内部没有相交。</p>
-<figure data-type="image" tabindex="4"><img src="https://hanjingyuan.github.io/post-images/1570800287119.png" alt=""></figure>
+<figure data-type="image" tabindex="4"><img src="https://hanjingyuan.github.io/post-images/1570800287119.png" alt="" loading="lazy"></figure>
 <h2 id="6-st_within和st_contains">6 <strong>ST_Within和ST_Contains</strong></h2>
 <p>如果第一个图形完全位于第二个图形的内部，则Within返回true；</p>
 <p>如果第二个图形完全位于第一个图形的内部，那么Contains返回true；</p>
