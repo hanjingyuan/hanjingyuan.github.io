@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1578532150170">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1578540197218">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1578532150170" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1578540197218" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -127,6 +127,19 @@ $('#quickSearchSelectLayer').change(function (evt) {
 <pre><code class="language-js">var deferred = $q.defer();
 
 return deferred.promise;
+
+
+function getLayerInfo(layers) {
+    const deferred = $q.defer();
+    Promise.all(layers.map(layer=&gt;{
+        return new Promise(function (resolve,reject) {
+
+        })
+    })).then(resp=&gt;{
+        deferred.resolve(resp);
+    });
+    return deferred.promise;
+}
 </code></pre>
 <ol start="5">
 <li>json序列化的方式完成快速替换</li>
