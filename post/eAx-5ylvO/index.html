@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>mybatis | 汉景源的博客</title>
+<title>组织树的递归算法 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,28 +92,51 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: mybatis</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/G1Z5TSaLV">
-                  <h2 class="post-title">pg mybatis 多表联查</h2>
-                </a>
-                <div class="post-date">
-                  2019-12-12
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">组织树的递归算法</h2>
+            <div class="post-date">2020-01-09</div>
+            
+            <div class="post-content">
+              <pre><code class="language-js">xxzxServ.getSelectedNodes = function(treeList, m) {
+    for(let i=0;i&lt;treeList.length;i++){
+        if (treeList[i].selected === true) {
+            m.push(treeList[i])
+        }
+        let children = treeList[i].children;
+        if (Array.isArray(children) &amp;&amp; children.length &gt; 0) {
+            children.forEach(function (item) {
+                xxzxServ.getCheckedNodes([item], m)
+            })
+        }
+    }
+    return m
+};
+    ```</code></pre>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/QjltASzX8" class="tag">
+                    javascript
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/cIuOD1fpK">
+                  <h3 class="post-title">
+                    maven打包相关
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>
