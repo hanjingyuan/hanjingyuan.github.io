@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-01-09T06:11:06.087Z</updated>
+    <updated>2020-01-09T08:37:32.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -16,7 +16,10 @@
         <link href="https://hanjingyuan.github.io/post/eAx-5ylvO">
         </link>
         <updated>2020-01-09T01:01:47.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-js">xxzxServ.getSelectedNodes = function(treeList, m) {
+        <content type="html"><![CDATA[<ol>
+<li>普通递归算法</li>
+</ol>
+<pre><code class="language-js">xxzxServ.getSelectedNodes = function(treeList, m) {
     for(let i=0;i&lt;treeList.length;i++){
         if (treeList[i].selected === true) {
             m.push(treeList[i])
@@ -30,7 +33,33 @@
     }
     return m
 };
-    ```</code></pre>
+    ```
+
+2. 进阶递归:对组织树进行递归，若节点为图层节点，那么此节点被删掉不显示。同时增加判断，若父节点的子节点全被删掉了，那么要被父节点置空。
+
+```js
+function treeFormat(treeList) {
+    for(let i=0;i&lt;treeList.length;i++){
+        if (treeList[i].layerId.length &gt; 0) {
+            delete treeList[i];
+            continue
+        }
+        if(treeList[i].hasOwnProperty('children')){
+            let children = treeList[i].children;
+            if (Array.isArray(children) &amp;&amp; children.length &gt; 0) {
+                treeFormat(children)
+            }
+        }
+        //这一步是为了 删除数组项后，被删除项会被定义为empty，且数组长度不变
+        //此时需要通过filter来过滤数组，实现数组长度被降低
+        if(Array.isArray(treeList[i].children)){
+            treeList[i].children = 
+            treeList[i].children.filter(item=&gt;item !== undefined);
+        }
+
+    }
+        }
+</code></pre>
 ]]></content>
     </entry>
     <entry>
