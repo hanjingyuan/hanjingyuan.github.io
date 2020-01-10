@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-01-09T08:37:32.516Z</updated>
+    <updated>2020-01-10T08:21:00.681Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,83 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[Geotools坐标转换]]></title>
+        <id>https://hanjingyuan.github.io/post/sNQdoSQE3</id>
+        <link href="https://hanjingyuan.github.io/post/sNQdoSQE3">
+        </link>
+        <updated>2020-01-10T08:18:16.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>创建坐标转换</li>
+</ol>
+<pre><code class="language-java">    /**
+     * 创建坐标系转换方法
+     * @param sourceWkt 源坐标系WKT定义
+     * @param targetWkt 目标坐标系WKT定义
+     * @return
+     */
+public static MathTransform createMathTransform(String sourceWkt, String targetWkt){
+    CoordinateReferenceSystem source = null;
+    CoordinateReferenceSystem target = null;
+    try {
+        source = CRS.parseWKT(sourceWkt);
+        target = CRS.parseWKT(targetWkt);
+    } catch (FactoryException e) {
+        e.printStackTrace();
+    }
+
+    MathTransform transform = null;
+    try {
+        transform = CRS.findMathTransform(source, target);
+    } catch (FactoryException e) {
+        e.printStackTrace();
+    }
+    return transform;
+}
+</code></pre>
+<ol start="2">
+<li>将wkt转换为geometry</li>
+</ol>
+<pre><code class="language-java">    /**
+     * 将wkt数据转为geometry数据
+     * @param wkt
+     * @return
+     */
+public static Geometry transformWktToGeometry(String wkt){
+    GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory();
+    WKTReader reader = new WKTReader(geometryFactory);
+    Geometry geometry = null;
+    try {
+        geometry = (Geometry) reader.read(wkt);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+    return geometry;
+}
+</code></pre>
+<ol start="3">
+<li>将坐标转为指定坐标系</li>
+</ol>
+<pre><code class="language-java">    /**
+     * 将输入要素转换为指定坐标系
+     * @param geometry
+     * @param mathTransform 坐标转换方法
+     * @return
+     */
+public static Geometry transformGeometryProjection(Geometry geometry, MathTransform mathTransform){
+    Geometry result = null;
+    try {
+        result = JTS.transform(geometry, mathTransform);
+    } catch (TransformException e) {
+        e.printStackTrace();
+    }
+    return result;
+}
+
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[组织树的递归算法]]></title>
         <id>https://hanjingyuan.github.io/post/eAx-5ylvO</id>
@@ -33,12 +110,11 @@
     }
     return m
 };
-    ```
-
-2. 进阶递归:对组织树进行递归，若节点为图层节点，那么此节点被删掉不显示。同时增加判断，若父节点的子节点全被删掉了，那么要被父节点置空。
-
-```js
-function treeFormat(treeList) {
+</code></pre>
+<ol start="2">
+<li>进阶递归:对组织树进行递归，若节点为图层节点，那么此节点被删掉不显示。同时增加判断，若父节点的子节点全被删掉了，那么要被父节点置空。</li>
+</ol>
+<pre><code class="language-js">function treeFormat(treeList) {
     for(let i=0;i&lt;treeList.length;i++){
         if (treeList[i].layerId.length &gt; 0) {
             delete treeList[i];
@@ -58,7 +134,7 @@ function treeFormat(treeList) {
         }
 
     }
-        }
+ }
 </code></pre>
 ]]></content>
     </entry>
@@ -71,7 +147,7 @@ function treeFormat(treeList) {
         <content type="html"><![CDATA[<ol>
 <li>打包时忽略test</li>
 </ol>
-<pre><code>mvn package -Dmaven.test.skip=true
+<pre><code class="language-xml">mvn package -Dmaven.test.skip=true
 </code></pre>
 ]]></content>
     </entry>
@@ -242,16 +318,6 @@ String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBy
         <content type="html"><![CDATA[<blockquote>
 <p>不要在pg数据库中使用user表名，因为pg数据中会自带一张隐藏的user表，如果使用user表会造成冲突，但是pg数据库本身却不会提示；</p>
 </blockquote>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[css布局-居中布局]]></title>
-        <id>https://hanjingyuan.github.io/post/vmgZDFYz1</id>
-        <link href="https://hanjingyuan.github.io/post/vmgZDFYz1">
-        </link>
-        <updated>2019-11-05T14:02:04.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="方案一">方案一</h2>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572962546779.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>

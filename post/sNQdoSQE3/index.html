@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>关于 | 汉景源的博客</title>
+<title>Geotools坐标转换 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,24 +93,99 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">Geotools坐标转换</h2>
+            <div class="post-date">2020-01-10</div>
             
             <div class="post-content">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>自己的随笔，随便写写的。</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>我是汉景源，目前在长沙市规划信息服务中心工作，主要GIS开发，前端开发也凑活，Java开发也能干干。。</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>没什么爱好。。。</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>lucahan@foxmail.com</p>
+              <ol>
+<li>创建坐标转换</li>
+</ol>
+<pre><code class="language-java">    /**
+     * 创建坐标系转换方法
+     * @param sourceWkt 源坐标系WKT定义
+     * @param targetWkt 目标坐标系WKT定义
+     * @return
+     */
+public static MathTransform createMathTransform(String sourceWkt, String targetWkt){
+    CoordinateReferenceSystem source = null;
+    CoordinateReferenceSystem target = null;
+    try {
+        source = CRS.parseWKT(sourceWkt);
+        target = CRS.parseWKT(targetWkt);
+    } catch (FactoryException e) {
+        e.printStackTrace();
+    }
+
+    MathTransform transform = null;
+    try {
+        transform = CRS.findMathTransform(source, target);
+    } catch (FactoryException e) {
+        e.printStackTrace();
+    }
+    return transform;
+}
+</code></pre>
+<ol start="2">
+<li>将wkt转换为geometry</li>
+</ol>
+<pre><code class="language-java">    /**
+     * 将wkt数据转为geometry数据
+     * @param wkt
+     * @return
+     */
+public static Geometry transformWktToGeometry(String wkt){
+    GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory();
+    WKTReader reader = new WKTReader(geometryFactory);
+    Geometry geometry = null;
+    try {
+        geometry = (Geometry) reader.read(wkt);
+    } catch (ParseException e) {
+        e.printStackTrace();
+    }
+    return geometry;
+}
+</code></pre>
+<ol start="3">
+<li>将坐标转为指定坐标系</li>
+</ol>
+<pre><code class="language-java">    /**
+     * 将输入要素转换为指定坐标系
+     * @param geometry
+     * @param mathTransform 坐标转换方法
+     * @return
+     */
+public static Geometry transformGeometryProjection(Geometry geometry, MathTransform mathTransform){
+    Geometry result = null;
+    try {
+        result = JTS.transform(geometry, mathTransform);
+    } catch (TransformException e) {
+        e.printStackTrace();
+    }
+    return result;
+}
+
+
+</code></pre>
 
             </div>
             
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/A7VEcBezV" class="tag">
+                    geotools
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/eAx-5ylvO">
+                  <h3 class="post-title">
+                    组织树的递归算法
+                  </h3>
+                </a>
+              </div>
             
 
             
