@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>geoserver内存修改 | 汉景源的博客</title>
+<title>Geotools maven问题 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,20 +93,28 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">geoserver内存修改</h2>
-            <div class="post-date">2019-10-23</div>
+            <h2 class="post-title">Geotools maven问题</h2>
+            <div class="post-date">2020-01-13</div>
             
             <div class="post-content">
-              <p>若使用的是在tomcat中部署的war包形式的geoserver，可以直接使用configure tomcat中的设置来直接修改内存即可；<br>
-<img src="https://hanjingyuan.github.io/post-images/1571791619967.png" alt="" loading="lazy"><br>
-<img src="https://hanjingyuan.github.io/post-images/1571791668878.png" alt="" loading="lazy"></p>
+              <p>在maven中使用geotools时，一定要使用固定版本号，而不是使用snapshot，如果使用snapshot，则会导致每次打包时都会去远程仓库中下载匹配最新的包，而不是使用本地的包；</p>
+<pre><code class="language-xml">    &lt;properties&gt;
+        &lt;java.version&gt;1.8&lt;/java.version&gt;
+        &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+        &lt;geotools.version&gt;21.4&lt;/geotools.version&gt;
+    &lt;/properties&gt;
+</code></pre>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
-                    geoserver
+                  <a href="https://hanjingyuan.github.io/tag/A7VEcBezV" class="tag">
+                    geotools
+                  </a>
+                
+                  <a href="https://hanjingyuan.github.io/tag/A-8ziVDp1" class="tag">
+                    maven
                   </a>
                 
               </div>
@@ -114,9 +122,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/1021-1027-zhou-zong-jie">
+                <a href="https://hanjingyuan.github.io/post/sNQdoSQE3">
                   <h3 class="post-title">
-                    1021-1027周总结
+                    Geotools坐标转换
                   </h3>
                 </a>
               </div>
