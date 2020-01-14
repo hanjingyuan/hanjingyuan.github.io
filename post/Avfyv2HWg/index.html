@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>0825-0831周总结 | 汉景源的博客</title>
+<title>openlayers问题汇总 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,36 +93,23 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">0825-0831周总结</h2>
-            <div class="post-date">2019-08-25</div>
+            <h2 class="post-title">openlayers问题汇总</h2>
+            <div class="post-date">2020-01-14</div>
             
             <div class="post-content">
-              <h1 id="0825-0831周">0825-0831周</h1>
-<h2 id="0830">0830</h2>
-<ol>
-<li>对于WFS Transaction的使用，首先要确保geoserver的权限打开，即如果不确定的话，启动匿名模式；</li>
+              <ol>
+<li>resolutions的加载</li>
 </ol>
-<pre><code>http://127.0.0.1:8080/geoserver/web/wicket/page?57
-</code></pre>
-<ol start="2">
-<li>构造WFS/WMS相关语句时，可以参考使用demo request页面，查看相关的示例请求；</li>
-</ol>
-<pre><code>http://127.0.0.1:8080/geoserver/web/wicket/bookmarkable/org.geoserver.web.demo.DemoRequestsPage?59
-</code></pre>
-<ol start="3">
-<li>根据demo request生成的示例请求进行相关的操作即可；</li>
-</ol>
+<blockquote>
+<p>使用resulotions时，zoom会无效，此时需要指定确定的resolution值从而实现分级；</p>
+</blockquote>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/w6zQp3yHS" class="tag">
-                    2019周总结
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9" class="tag">
-                    geoserver
+                  <a href="https://hanjingyuan.github.io/tag/MMl1svNQ-E" class="tag">
+                    openlayers
                   </a>
                 
               </div>
@@ -130,9 +117,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/0818-0824周总结">
+                <a href="https://hanjingyuan.github.io/post/E14UYvFzE">
                   <h3 class="post-title">
-                    0818-0824周总结
+                    Geotools maven问题
                   </h3>
                 </a>
               </div>
