@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-01-15T03:52:11.693Z</updated>
+    <updated>2020-02-17T07:04:10.352Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,48 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[4490坐标系分辨率和比例尺]]></title>
+        <id>https://hanjingyuan.github.io/post/TJSzP2cl5</id>
+        <link href="https://hanjingyuan.github.io/post/TJSzP2cl5">
+        </link>
+        <updated>2020-02-17T07:02:30.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-js">S.resolutions = [
+        0.0125764139776733,//500万
+        0.0062882069888366,//250万
+        0.0025152827955347,//100万
+        0.0012576413977673,//50万
+        0.0006288206988837,//25万
+        0.0003144103494418,//125000
+        0.0001609780989142,//64000
+        0.0000804890494571,//32000
+        0.0000402445247286,//16000
+        0.0000201222623643,//8000
+        0.0000100611311821,//4000
+        0.0000050305655911,//2000
+        0.0000025152827955,//1000
+        0.0000012576413978//500
+    ];
+
+    S.scales = [
+        5000000,
+        2500000,
+        1000000,
+        500000,
+        250000,
+        125000,
+        64000,
+        32000,
+        16000,
+        8000,
+        4000,
+        2000,
+        1000,
+        500
+    ];
+    ```</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[openlayers问题汇总]]></title>
         <id>https://hanjingyuan.github.io/post/Avfyv2HWg</id>
@@ -263,6 +305,13 @@ function getLayerInfo(layers) {
 </ol>
 <pre><code class="language-js">JSON.parse(JSON.stringify(treeData).replace(/&quot;title&quot;/g,'&quot;name&quot;'))
 </code></pre>
+<ol start="6">
+<li>字符串去除空格</li>
+</ol>
+<pre><code class="language-js">function trim(str) {
+    return str.replace(/\s*/g, '');
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -293,36 +342,6 @@ function getLayerInfo(layers) {
         <updated>2019-12-12T07:25:09.000Z</updated>
         <content type="html"><![CDATA[<pre><code class="language-sql">SELECT r.* from tb_role r where r.role_id in (select ur.role_id from tb_user_role ur where user_id = '470a05096a8968d8edb51c9b280ed06d')
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[postgresql数据库的导入和导出]]></title>
-        <id>https://hanjingyuan.github.io/post/sZz9cqVrF</id>
-        <link href="https://hanjingyuan.github.io/post/sZz9cqVrF">
-        </link>
-        <updated>2019-11-27T02:10:09.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>数据库的导出</li>
-</ol>
-<pre><code>1.在pg数据库的bin目录下执行cmd命令行（一定要用cmd命令行），或者需要配置环境变量，包含了pg数据库安装根目录下的bin目录和lib目录，配置到Path中去即可；
-1.pg_dump  -U postgres  数据库名称 &gt; c:\db.sql ——数据库整体的导出
-1.1 pg_dump -U postgres -s -f open_map.sql open_map（仅导出表结构不到处表数据）
-2.pg_dump -U postgres poidata（数据库名称） -t poi（表名称） -f /home/share/wg/poi.sql（输出路径）——单表的导出
-</code></pre>
-<ol start="2">
-<li>数据库的导入</li>
-</ol>
-<pre><code>1.执行psql -U postgres -d gwh（数据库名称，要预先创建好） &lt; gwh.sql（上一步中导出的sql文件，放到bin目录中）；
-2.数据表的导入：和上面的方法是一样的，指定好要导入的数据库即可；
-3.执行之后需要先进行一定时间的等待才能完成导入的操作；
-</code></pre>
-<ol start="3">
-<li>参考</li>
-</ol>
-<blockquote>
-<p>https://www.cnblogs.com/huajiezh/p/6186309.html<br>
-https://blog.csdn.net/fct2001140269/article/details/88736608</p>
-</blockquote>
 ]]></content>
     </entry>
 </feed>
