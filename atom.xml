@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-02-17T07:04:10.352Z</updated>
+    <updated>2020-02-20T12:15:05.645Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -11,9 +11,91 @@
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
     <entry>
+        <title type="html"><![CDATA[Java电商平台笔记（1）]]></title>
+        <id>https://hanjingyuan.github.io/post/tnA6NQZjS/</id>
+        <link href="https://hanjingyuan.github.io/post/tnA6NQZjS/">
+        </link>
+        <updated>2020-02-20T12:08:17.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>spring mvc post请求参数接收的方法</li>
+</ol>
+<blockquote>
+<p>1.使用@RequestParam String username接收，这种方式使用的是form表单形式，或者直接使用直接使用User user接收；<br>
+2.使用@RequestBody UserForm userForm形式接收，这种方式使用的是application/json方式接收。这种方式的好处是，可以把所需要的参数单独封装起来，封装在form包下，同时可以配合使用javax.validation进行表单校验。</p>
+</blockquote>
+<ol start="2">
+<li>mybatis-generator的基础模板配置</li>
+</ol>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE generatorConfiguration
+        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;
+        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;
+
+&lt;generatorConfiguration&gt;
+    &lt;classPathEntry location=&quot;E:\mysql-connector-java-5.1.6.jar&quot; /&gt;
+    &lt;!--&lt;classPathEntry location=&quot;src/main/resources/application.yml&quot; /&gt;--&gt;
+    &lt;context id=&quot;DB2Tables&quot; targetRuntime=&quot;MyBatis3&quot;&gt;
+        &lt;!--不再追加xml--&gt;
+        &lt;plugin type=&quot;org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin&quot;&gt;&lt;/plugin&gt;
+        &lt;commentGenerator&gt;
+            &lt;property name=&quot;suppressAllComments&quot; value=&quot;true&quot;&gt;&lt;/property&gt;
+        &lt;/commentGenerator&gt;
+        &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot;
+                        connectionURL=&quot;jdbc:mysql://localhost:3306/mall?characterEncoding=utf-8&quot;
+                        userId=&quot;root&quot;
+                        password=&quot;123456&quot;&gt;
+        &lt;/jdbcConnection&gt;
+        &lt;javaTypeResolver &gt;
+            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot; /&gt;
+        &lt;/javaTypeResolver&gt;
+
+        &lt;javaModelGenerator targetPackage=&quot;com.imooc.mall.pojo&quot; targetProject=&quot;src/main/java&quot;&gt;
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;
+            &lt;!--&lt;property name=&quot;trimStrings&quot; value=&quot;true&quot; /&gt;--&gt;
+        &lt;/javaModelGenerator&gt;
+
+        &lt;sqlMapGenerator targetPackage=&quot;mapper&quot;  targetProject=&quot;src/main/resources/&quot;&gt;
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;
+        &lt;/sqlMapGenerator&gt;
+
+        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;com.imooc.mall.dao&quot;  targetProject=&quot;src/main/java&quot;&gt;
+            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;
+        &lt;/javaClientGenerator&gt;
+
+        &lt;!--&lt;table tableName=&quot;mall_order&quot; domainObjectName=&quot;Order&quot;--&gt;
+               &lt;!--enableCountByExample=&quot;false&quot;--&gt;
+               &lt;!--enableDeleteByExample=&quot;false&quot;--&gt;
+               &lt;!--enableSelectByExample=&quot;false&quot;--&gt;
+               &lt;!--enableUpdateByExample=&quot;false&quot;&gt;--&gt;
+        &lt;!--&lt;/table&gt;--&gt;
+
+        &lt;!--&lt;table tableName=&quot;mall_order_item&quot; domainObjectName=&quot;OrderItem&quot;--&gt;
+               &lt;!--enableCountByExample=&quot;false&quot;--&gt;
+               &lt;!--enableDeleteByExample=&quot;false&quot;--&gt;
+               &lt;!--enableSelectByExample=&quot;false&quot;--&gt;
+               &lt;!--enableUpdateByExample=&quot;false&quot;&gt;--&gt;
+        &lt;!--&lt;/table&gt;--&gt;
+
+        &lt;table tableName=&quot;mall_user&quot; domainObjectName=&quot;User&quot;
+               enableCountByExample=&quot;false&quot;
+               enableDeleteByExample=&quot;false&quot;
+               enableSelectByExample=&quot;false&quot;
+               enableUpdateByExample=&quot;false&quot;&gt;
+        &lt;/table&gt;
+
+    &lt;/context&gt;
+    &lt;!--mvn mybatis-generator:generate--&gt;
+&lt;/generatorConfiguration&gt;
+</code></pre>
+<blockquote>
+<p>其他配置可以参加：https://www.jianshu.com/p/e09d2370b796</p>
+</blockquote>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[4490坐标系分辨率和比例尺]]></title>
-        <id>https://hanjingyuan.github.io/post/TJSzP2cl5</id>
-        <link href="https://hanjingyuan.github.io/post/TJSzP2cl5">
+        <id>https://hanjingyuan.github.io/post/TJSzP2cl5/</id>
+        <link href="https://hanjingyuan.github.io/post/TJSzP2cl5/">
         </link>
         <updated>2020-02-17T07:02:30.000Z</updated>
         <content type="html"><![CDATA[<pre><code class="language-js">S.resolutions = [
@@ -54,8 +136,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[openlayers问题汇总]]></title>
-        <id>https://hanjingyuan.github.io/post/Avfyv2HWg</id>
-        <link href="https://hanjingyuan.github.io/post/Avfyv2HWg">
+        <id>https://hanjingyuan.github.io/post/Avfyv2HWg/</id>
+        <link href="https://hanjingyuan.github.io/post/Avfyv2HWg/">
         </link>
         <updated>2020-01-14T07:26:40.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -68,8 +150,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Geotools maven问题]]></title>
-        <id>https://hanjingyuan.github.io/post/E14UYvFzE</id>
-        <link href="https://hanjingyuan.github.io/post/E14UYvFzE">
+        <id>https://hanjingyuan.github.io/post/E14UYvFzE/</id>
+        <link href="https://hanjingyuan.github.io/post/E14UYvFzE/">
         </link>
         <updated>2020-01-13T01:12:16.000Z</updated>
         <content type="html"><![CDATA[<p>在maven中使用geotools时，一定要使用固定版本号，而不是使用snapshot，如果使用snapshot，则会导致每次打包时都会去远程仓库中下载匹配最新的包，而不是使用本地的包；</p>
@@ -83,8 +165,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Geotools坐标转换]]></title>
-        <id>https://hanjingyuan.github.io/post/sNQdoSQE3</id>
-        <link href="https://hanjingyuan.github.io/post/sNQdoSQE3">
+        <id>https://hanjingyuan.github.io/post/sNQdoSQE3/</id>
+        <link href="https://hanjingyuan.github.io/post/sNQdoSQE3/">
         </link>
         <updated>2020-01-10T08:18:16.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -160,8 +242,8 @@ public static Geometry transformGeometryProjection(Geometry geometry, MathTransf
     </entry>
     <entry>
         <title type="html"><![CDATA[组织树的递归算法]]></title>
-        <id>https://hanjingyuan.github.io/post/eAx-5ylvO</id>
-        <link href="https://hanjingyuan.github.io/post/eAx-5ylvO">
+        <id>https://hanjingyuan.github.io/post/eAx-5ylvO/</id>
+        <link href="https://hanjingyuan.github.io/post/eAx-5ylvO/">
         </link>
         <updated>2020-01-09T01:01:47.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -211,8 +293,8 @@ public static Geometry transformGeometryProjection(Geometry geometry, MathTransf
     </entry>
     <entry>
         <title type="html"><![CDATA[maven打包相关]]></title>
-        <id>https://hanjingyuan.github.io/post/cIuOD1fpK</id>
-        <link href="https://hanjingyuan.github.io/post/cIuOD1fpK">
+        <id>https://hanjingyuan.github.io/post/cIuOD1fpK/</id>
+        <link href="https://hanjingyuan.github.io/post/cIuOD1fpK/">
         </link>
         <updated>2019-12-26T02:03:27.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -224,8 +306,8 @@ public static Geometry transformGeometryProjection(Geometry geometry, MathTransf
     </entry>
     <entry>
         <title type="html"><![CDATA[postgis土地利用分析查询]]></title>
-        <id>https://hanjingyuan.github.io/post/IBAE_Gh3I</id>
-        <link href="https://hanjingyuan.github.io/post/IBAE_Gh3I">
+        <id>https://hanjingyuan.github.io/post/IBAE_Gh3I/</id>
+        <link href="https://hanjingyuan.github.io/post/IBAE_Gh3I/">
         </link>
         <updated>2019-12-24T01:29:36.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -252,8 +334,8 @@ AS res;
     </entry>
     <entry>
         <title type="html"><![CDATA[javascript常用方法]]></title>
-        <id>https://hanjingyuan.github.io/post/CX4aRFvo5</id>
-        <link href="https://hanjingyuan.github.io/post/CX4aRFvo5">
+        <id>https://hanjingyuan.github.io/post/CX4aRFvo5/</id>
+        <link href="https://hanjingyuan.github.io/post/CX4aRFvo5/">
         </link>
         <updated>2019-12-23T02:05:37.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -316,8 +398,8 @@ function getLayerInfo(layers) {
     </entry>
     <entry>
         <title type="html"><![CDATA[服务部署流程]]></title>
-        <id>https://hanjingyuan.github.io/post/jjtD2Z_HM</id>
-        <link href="https://hanjingyuan.github.io/post/jjtD2Z_HM">
+        <id>https://hanjingyuan.github.io/post/jjtD2Z_HM/</id>
+        <link href="https://hanjingyuan.github.io/post/jjtD2Z_HM/">
         </link>
         <updated>2019-12-16T01:44:35.000Z</updated>
         <content type="html"><![CDATA[<ol>
@@ -332,16 +414,6 @@ function getLayerInfo(layers) {
 <ol start="4">
 <li>pg数据表的迁移</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[pg mybatis 多表联查]]></title>
-        <id>https://hanjingyuan.github.io/post/G1Z5TSaLV</id>
-        <link href="https://hanjingyuan.github.io/post/G1Z5TSaLV">
-        </link>
-        <updated>2019-12-12T07:25:09.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-sql">SELECT r.* from tb_role r where r.role_id in (select ur.role_id from tb_user_role ur where user_id = '470a05096a8968d8edb51c9b280ed06d')
-</code></pre>
 ]]></content>
     </entry>
 </feed>
