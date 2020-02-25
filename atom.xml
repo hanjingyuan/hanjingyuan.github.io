@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-02-20T12:15:05.645Z</updated>
+    <updated>2020-02-25T06:30:17.176Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[ArcGIS Engine10.2环境搭建流程]]></title>
+        <id>https://hanjingyuan.github.io/post/Xh7zFZ4J_/</id>
+        <link href="https://hanjingyuan.github.io/post/Xh7zFZ4J_/">
+        </link>
+        <updated>2020-02-25T06:28:11.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>安装visual studio；</li>
+<li>使用&quot;ArcGIS_Engine_DevKit_Windows_102_134944.iso&quot;依次安装runtime和sdk；</li>
+<li>对ae进行激活，激活方式与desktop激活方式相同；</li>
+<li>引入dll或者com组件，即可正常使用；</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Java电商平台笔记（1）]]></title>
         <id>https://hanjingyuan.github.io/post/tnA6NQZjS/</id>
@@ -90,6 +104,9 @@
 <blockquote>
 <p>其他配置可以参加：https://www.jianshu.com/p/e09d2370b796</p>
 </blockquote>
+<ol start="3">
+<li>所有的常量不要使用硬编码，全部使用枚举或者常量方法；</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
@@ -394,26 +411,6 @@ function getLayerInfo(layers) {
     return str.replace(/\s*/g, '');
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[服务部署流程]]></title>
-        <id>https://hanjingyuan.github.io/post/jjtD2Z_HM/</id>
-        <link href="https://hanjingyuan.github.io/post/jjtD2Z_HM/">
-        </link>
-        <updated>2019-12-16T01:44:35.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>jdk/tomcat的环境安装</li>
-<li>postgresql数据局/postgis的安装</li>
-<li>geoserver war包的安装</li>
-</ol>
-<pre><code>3.1 geoserver 跨域的配置：1）添加跨域jar包；2）修改web.xml文件，释放跨域；
-3.2 主键暴露 
-3.3 tomcat的put和delete方法释放
-</code></pre>
-<ol start="4">
-<li>pg数据表的迁移</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
