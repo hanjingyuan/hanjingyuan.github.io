@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1582612212815">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1582772362182">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1582612212815" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1582772362182" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -102,7 +102,12 @@
 <li>使用&quot;ArcGIS_Engine_DevKit_Windows_102_134944.iso&quot;依次安装runtime和sdk；</li>
 <li>对ae进行激活，激活方式与desktop激活方式相同；</li>
 <li>引入dll或者com组件，即可正常使用；</li>
+<li>有些情况下还需要通过代码的方式进行服务的注册</li>
 </ol>
+<pre><code class="language-C#">ESRI.ArcGIS.esriSystem.IAoInitialize m_AoInitialize = new ESRI.ArcGIS.esriSystem.AoInitialize();
+m_AoInitialize.Initialize(esriLicenseProductCode.esriLicenseProductCodeEngine;
+ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.EngineOrDesktop);
+</code></pre>
 
             </div>
             
