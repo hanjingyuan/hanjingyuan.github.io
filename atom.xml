@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-02-27T06:16:25.822Z</updated>
+    <updated>2020-03-03T00:46:45.941Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,118 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[ArcGIS Engine10.2部分封装方法一览]]></title>
+        <id>https://hanjingyuan.github.io/post/3n2MAbf6z/</id>
+        <link href="https://hanjingyuan.github.io/post/3n2MAbf6z/">
+        </link>
+        <updated>2020-03-03T00:44:57.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-c#">using ESRI.ArcGIS.DataSourcesFile;
+using ESRI.ArcGIS.DataSourcesGDB;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace XXZX.OSMP.OneMap.Gis
+{
+    public class GisDatasource
+    {
+
+        /// &lt;summary&gt;
+        /// 连接SDE方法1
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;_pServerIP&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pInstance&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pDatabase&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pUser&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pPassword&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pVersion&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static IWorkspace GetSDEWorkspace(String _pServerIP, String _pInstance, String _pDatabase, String _pUser, String _pPassword, string _pVersion)
+        {
+            ESRI.ArcGIS.esriSystem.IPropertySet pPropertySet = new ESRI.ArcGIS.esriSystem.PropertySetClass();
+            pPropertySet.SetProperty(&quot;SERVER&quot;, _pServerIP);
+            pPropertySet.SetProperty(&quot;INSTANCE&quot;, _pInstance);
+            pPropertySet.SetProperty(&quot;DATABASE&quot;, _pDatabase);
+            pPropertySet.SetProperty(&quot;USER&quot;, _pUser);
+            pPropertySet.SetProperty(&quot;PASSWORD&quot;, _pPassword);
+            //pPropertySet.SetProperty(&quot;VERSION&quot;, _pVersion);
+            // pPropertySet.SetProperty(&quot;AUTHENTICATION_MODE&quot;, &quot;DBMS&quot;);
+            IWorkspaceFactory workspaceFactory = new SdeWorkspaceFactory();
+            IWorkspace pws = workspaceFactory.Open(pPropertySet, 0);
+            return pws;
+        }
+
+        /// &lt;summary&gt;
+        /// 连接SDE方法2
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;_pServerIP&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pInstance&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pDatabase&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pUser&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pPassword&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pVersion&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;2
+        public static IFeatureWorkspace GetSDEWorkspace2(String _pServerIP, String _pInstance, String _pDatabase, String _pUser, String _pPassword, string _pVersion)
+        {
+            SdeWorkspaceFactory sdeWorkspaceFactory = new SdeWorkspaceFactory();
+            PropertySet pset = new PropertySet();
+            pset.SetProperty(&quot;SERVER&quot;, _pServerIP);
+            pset.SetProperty(&quot;INSTANCE&quot;, _pInstance);
+            pset.SetProperty(&quot;DATABASE&quot;, _pDatabase);
+            pset.SetProperty(&quot;USER&quot;, _pUser);
+            pset.SetProperty(&quot;PASSWORD&quot;, _pPassword);
+
+            IWorkspaceFactory workspaceFactroy = new SdeWorkspaceFactoryClass();
+            IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)workspaceFactroy.Open(pset, 0);
+            return featureWorkspace;
+        }
+
+        /// &lt;summary&gt;
+        /// 连接gdb数据库
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;path&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static IWorkspace GetGDBWorkspace(String path)
+        {
+            //@&quot;E:\workspace\layer\test.gdb&quot;
+            IWorkspaceFactory pWsFac = new FileGDBWorkspaceFactoryClass();
+            IWorkspace pWs = pWsFac.OpenFromFile(path, 0);
+            return pWs;
+        }
+
+        /// &lt;summary&gt;
+        /// 打开shp文件
+        /// @&quot;E:\workspace\layer\publish\publish1\publish1.shp&quot;
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;filePath&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static IFeatureClass GetShpFeatureClass(string filePath)
+        {
+
+            IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();
+            IWorkspaceFactoryLockControl pWorkspaceFactoryLockControl = pWorkspaceFactory as IWorkspaceFactoryLockControl;
+            if (pWorkspaceFactoryLockControl.SchemaLockingEnabled)
+            {
+                pWorkspaceFactoryLockControl.DisableSchemaLocking();
+            }
+            IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(System.IO.Path.GetDirectoryName(filePath), 0);
+            IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
+            IFeatureClass pFeatureClass = pFeatureWorkspace.OpenFeatureClass(System.IO.Path.GetFileName(filePath));
+            return pFeatureClass;
+        }
+
+    }
+}
+
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ArcGIS Engine10.2环境搭建流程]]></title>
         <id>https://hanjingyuan.github.io/post/Xh7zFZ4J_/</id>
@@ -351,70 +463,6 @@ FROM (
 				)
 	) 
 AS res;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[javascript常用方法]]></title>
-        <id>https://hanjingyuan.github.io/post/CX4aRFvo5/</id>
-        <link href="https://hanjingyuan.github.io/post/CX4aRFvo5/">
-        </link>
-        <updated>2019-12-23T02:05:37.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>根据索引，删除数组中的项</li>
-</ol>
-<pre><code class="language-js">let arr  = ['a','b','c','d','e','f']
-arr.splice(4, 1);//删除e
-</code></pre>
-<ol start="2">
-<li>时间戳相关</li>
-</ol>
-<pre><code class="language-js">const date = Date.parse(new Date());//时间戳快速获取
-
-const timestamp = (new Date('2019-01-01')).valueOf();
-</code></pre>
-<ol start="3">
-<li>select的获取方法</li>
-</ol>
-<pre><code class="language-js">$(&quot;#customScopesBuffUnit&quot;).find(&quot;option:selected&quot;).val();//获取当前select选中的值
-
-//获取值得变化
-$('#quickSearchSelectLayer').change(function (evt) {
-    const id = $(this).children('option:selected').val();
-    //xxxxxx
-})
-</code></pre>
-<ol start="4">
-<li>$q的方法使用</li>
-</ol>
-<pre><code class="language-js">var deferred = $q.defer();
-
-return deferred.promise;
-
-
-function getLayerInfo(layers) {
-    const deferred = $q.defer();
-    Promise.all(layers.map(layer=&gt;{
-        return new Promise(function (resolve,reject) {
-
-        })
-    })).then(resp=&gt;{
-        deferred.resolve(resp);
-    });
-    return deferred.promise;
-}
-</code></pre>
-<ol start="5">
-<li>json序列化的方式完成快速替换</li>
-</ol>
-<pre><code class="language-js">JSON.parse(JSON.stringify(treeData).replace(/&quot;title&quot;/g,'&quot;name&quot;'))
-</code></pre>
-<ol start="6">
-<li>字符串去除空格</li>
-</ol>
-<pre><code class="language-js">function trim(str) {
-    return str.replace(/\s*/g, '');
-}
 </code></pre>
 ]]></content>
     </entry>

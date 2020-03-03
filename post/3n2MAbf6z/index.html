@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+<meta name="baidu-site-verification" content="6VzM6JzBHH" />
+<meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
+<title>ArcGIS Engine10.2部分封装方法一览 | 汉景源的博客</title>
+<meta name="description" content="我只是一个GIS工程师，来自长沙。">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1583196402765">
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
+<link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
+
+
+
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://hanjingyuan.github.io">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1583196402765" class="site-logo">
+        <h1 class="site-title">汉景源的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      我只是一个GIS工程师，来自长沙。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/lucahan" target="_blank">汉景源</a> | <a class="rss" href="https://hanjingyuan.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">ArcGIS Engine10.2部分封装方法一览</h2>
+            <div class="post-date">2020-03-03</div>
+            
+            <div class="post-content">
+              <pre><code class="language-c#">using ESRI.ArcGIS.DataSourcesFile;
+using ESRI.ArcGIS.DataSourcesGDB;
+using ESRI.ArcGIS.esriSystem;
+using ESRI.ArcGIS.Geodatabase;
+using ESRI.ArcGIS.Geometry;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace XXZX.OSMP.OneMap.Gis
+{
+    public class GisDatasource
+    {
+
+        /// &lt;summary&gt;
+        /// 连接SDE方法1
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;_pServerIP&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pInstance&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pDatabase&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pUser&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pPassword&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pVersion&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static IWorkspace GetSDEWorkspace(String _pServerIP, String _pInstance, String _pDatabase, String _pUser, String _pPassword, string _pVersion)
+        {
+            ESRI.ArcGIS.esriSystem.IPropertySet pPropertySet = new ESRI.ArcGIS.esriSystem.PropertySetClass();
+            pPropertySet.SetProperty(&quot;SERVER&quot;, _pServerIP);
+            pPropertySet.SetProperty(&quot;INSTANCE&quot;, _pInstance);
+            pPropertySet.SetProperty(&quot;DATABASE&quot;, _pDatabase);
+            pPropertySet.SetProperty(&quot;USER&quot;, _pUser);
+            pPropertySet.SetProperty(&quot;PASSWORD&quot;, _pPassword);
+            //pPropertySet.SetProperty(&quot;VERSION&quot;, _pVersion);
+            // pPropertySet.SetProperty(&quot;AUTHENTICATION_MODE&quot;, &quot;DBMS&quot;);
+            IWorkspaceFactory workspaceFactory = new SdeWorkspaceFactory();
+            IWorkspace pws = workspaceFactory.Open(pPropertySet, 0);
+            return pws;
+        }
+
+        /// &lt;summary&gt;
+        /// 连接SDE方法2
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;_pServerIP&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pInstance&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pDatabase&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pUser&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pPassword&quot;&gt;&lt;/param&gt;
+        /// &lt;param name=&quot;_pVersion&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;2
+        public static IFeatureWorkspace GetSDEWorkspace2(String _pServerIP, String _pInstance, String _pDatabase, String _pUser, String _pPassword, string _pVersion)
+        {
+            SdeWorkspaceFactory sdeWorkspaceFactory = new SdeWorkspaceFactory();
+            PropertySet pset = new PropertySet();
+            pset.SetProperty(&quot;SERVER&quot;, _pServerIP);
+            pset.SetProperty(&quot;INSTANCE&quot;, _pInstance);
+            pset.SetProperty(&quot;DATABASE&quot;, _pDatabase);
+            pset.SetProperty(&quot;USER&quot;, _pUser);
+            pset.SetProperty(&quot;PASSWORD&quot;, _pPassword);
+
+            IWorkspaceFactory workspaceFactroy = new SdeWorkspaceFactoryClass();
+            IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)workspaceFactroy.Open(pset, 0);
+            return featureWorkspace;
+        }
+
+        /// &lt;summary&gt;
+        /// 连接gdb数据库
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;path&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static IWorkspace GetGDBWorkspace(String path)
+        {
+            //@&quot;E:\workspace\layer\test.gdb&quot;
+            IWorkspaceFactory pWsFac = new FileGDBWorkspaceFactoryClass();
+            IWorkspace pWs = pWsFac.OpenFromFile(path, 0);
+            return pWs;
+        }
+
+        /// &lt;summary&gt;
+        /// 打开shp文件
+        /// @&quot;E:\workspace\layer\publish\publish1\publish1.shp&quot;
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;filePath&quot;&gt;&lt;/param&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public static IFeatureClass GetShpFeatureClass(string filePath)
+        {
+
+            IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();
+            IWorkspaceFactoryLockControl pWorkspaceFactoryLockControl = pWorkspaceFactory as IWorkspaceFactoryLockControl;
+            if (pWorkspaceFactoryLockControl.SchemaLockingEnabled)
+            {
+                pWorkspaceFactoryLockControl.DisableSchemaLocking();
+            }
+            IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(System.IO.Path.GetDirectoryName(filePath), 0);
+            IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
+            IFeatureClass pFeatureClass = pFeatureWorkspace.OpenFeatureClass(System.IO.Path.GetFileName(filePath));
+            return pFeatureClass;
+        }
+
+    }
+}
+
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/KJmRbYjQf/" class="tag">
+                    gis
+                  </a>
+                
+                  <a href="https://hanjingyuan.github.io/tag/svFAHcFQU/" class="tag">
+                    arcgis
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/Xh7zFZ4J_/">
+                  <h3 class="post-title">
+                    ArcGIS Engine10.2环境搭建流程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+  </body>
+</html>
