@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-03-03T11:12:29.072Z</updated>
+    <updated>2020-03-12T06:02:43.559Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,16 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[获取arcgis图层某一个图层中所有属性表的方法]]></title>
+        <id>https://hanjingyuan.github.io/post/6bOB05mt4/</id>
+        <link href="https://hanjingyuan.github.io/post/6bOB05mt4/">
+        </link>
+        <updated>2020-03-10T03:01:03.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>http://59.231.10.67:20030/arcgis/rest/services/XZ/HNRegion4490/MapServer/0/query?where=1%3D1&amp;text=&amp;objectIds=&amp;time=&amp;geometry=&amp;geometryType=esriGeometryEnvelope&amp;inSR=&amp;spatialRel=esriSpatialRelIntersects&amp;relationParam=&amp;outFields=&amp;returnGeometry=true&amp;maxAllowableOffset=&amp;outSR=&amp;returnIdsOnly=false&amp;returnCountOnly=false&amp;orderByFields=&amp;groupByFieldsForStatistics=&amp;outStatistics=&amp;returnZ=false&amp;returnM=false&amp;gdbVersion=&amp;f=pjson
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ArcGIS Engine10.2部分封装方法一览]]></title>
         <id>https://hanjingyuan.github.io/post/3n2MAbf6z/</id>
@@ -435,34 +445,6 @@ public static Geometry transformGeometryProjection(Geometry geometry, MathTransf
 <li>打包时忽略test</li>
 </ol>
 <pre><code class="language-xml">mvn package -Dmaven.test.skip=true
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[postgis土地利用分析查询]]></title>
-        <id>https://hanjingyuan.github.io/post/IBAE_Gh3I/</id>
-        <link href="https://hanjingyuan.github.io/post/IBAE_Gh3I/">
-        </link>
-        <updated>2019-12-24T01:29:36.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>求出裁剪后的图斑</li>
-</ol>
-<pre><code class="language-sql">SELECT res.*, 
-	st_area(res.wkt) as real_area, 
-	st_astext(res.wkt) as real_wkt
-FROM (
-		SELECT jb.*,
-		ST_Intersection(jb.geom, 
-						st_geomfromtext('POLYGON ((113.14665136337281 28.156513464450835, 113.14883825778962 28.154443204402924, 113.14498932361603 28.153830873966218, 113.14665136337281 28.156513464450835))',4490)
-			) 
-		AS wkt
-		FROM public.jbntbhtb as jb
-		WHERE 
-			ST_Intersects(jb.geom, 
-						  st_geomfromtext('POLYGON ((113.14665136337281 28.156513464450835, 113.14883825778962 28.154443204402924, 113.14498932361603 28.153830873966218, 113.14665136337281 28.156513464450835))',4490)
-				)
-	) 
-AS res;
 </code></pre>
 ]]></content>
     </entry>
