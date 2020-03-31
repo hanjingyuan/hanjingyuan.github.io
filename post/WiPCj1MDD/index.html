@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>canvas | 汉景源的博客</title>
+<title>postgis polygon转multipolygon | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -92,43 +92,31 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: canvas</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/0818-0824周总结/">
-                  <h2 class="post-title">0818-0824周总结</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://hanjingyuan.github.io/post/0811-0817周总结/">
-                  <h2 class="post-title">0811-0817周总结</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-11
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">postgis polygon转multipolygon</h2>
+            <div class="post-date">2020-03-31</div>
+            
+            <div class="post-content">
+              <pre><code>ALTER TABLE my_table
+    ALTER COLUMN geom TYPE geometry(MultiPoint,4326) USING ST_Multi(geom);
+</code></pre>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/-ngzGVnMK/">
+                  <h3 class="post-title">
+                    ArcGIS Server常用方法
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>

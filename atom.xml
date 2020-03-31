@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-03-12T06:02:43.559Z</updated>
+    <updated>2020-03-31T02:02:56.217Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[postgis polygon转multipolygon]]></title>
+        <id>https://hanjingyuan.github.io/post/WiPCj1MDD/</id>
+        <link href="https://hanjingyuan.github.io/post/WiPCj1MDD/">
+        </link>
+        <updated>2020-03-31T02:02:33.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>ALTER TABLE my_table
+    ALTER COLUMN geom TYPE geometry(MultiPoint,4326) USING ST_Multi(geom);
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ArcGIS Server常用方法]]></title>
+        <id>https://hanjingyuan.github.io/post/-ngzGVnMK/</id>
+        <link href="https://hanjingyuan.github.io/post/-ngzGVnMK/">
+        </link>
+        <updated>2020-03-14T07:13:19.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>identify面查询方法
+http://10.14.3.41:6080/arcgis/rest/services/HNPHYZT/MapServer/identify?geometry=%7B%22rings%22%3A%5B%5B%5B110.16831%2C28.25005%5D%2C%5B110.16276%2C28.24864%5D%2C%5B110.16498%2C28.24886%5D%2C%5B110.16831%2C28.25005%5D%2C%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A4490%7D%7D&amp;geometryType=esriGeometryPolygon&amp;sr=4490&amp;layers=4&amp;layerDefs=&amp;time=&amp;layerTimeOptions=&amp;tolerance=1&amp;mapExtent=83.21649896800005%2C18.498789527000042%2C134.81281152600002%2C35.129373515000054&amp;imageDisplay=800%2C850%2C96&amp;returnGeometry=true&amp;maxAllowableOffset=&amp;dynamicLayers=&amp;returnZ=false&amp;returnM=false&amp;gdbVersion=&amp;f=html
+</code></pre>
+<pre><code>http://10.14.3.41:6080/arcgis/rest/services/HNPHYZT/MapServer/2/query?where=&amp;text=&amp;objectIds=&amp;time=&amp;geometry=%7B%22rings%22%3A%5B%5B%5B113.07721%2C28.16075%5D%2C%5B113.07278%2C28.15478%5D%2C%5B113.08181%2C28.15462%5D%2C%5B113.07721%2C28.16075%5D%2C%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A4490%7D%7D&amp;geometryType=esriGeometryPolygon&amp;inSR=&amp;spatialRel=esriSpatialRelWithin&amp;relationParam=&amp;outFields=*&amp;returnGeometry=true&amp;maxAllowableOffset=&amp;outSR=&amp;returnIdsOnly=false&amp;returnCountOnly=false&amp;orderByFields=&amp;groupByFieldsForStatistics=&amp;outStatistics=&amp;returnZ=false&amp;returnM=false&amp;gdbVersion=&amp;f=html
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[获取arcgis图层某一个图层中所有属性表的方法]]></title>
         <id>https://hanjingyuan.github.io/post/6bOB05mt4/</id>
@@ -381,70 +405,6 @@ public static Geometry transformGeometryProjection(Geometry geometry, MathTransf
 }
 
 
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[组织树的递归算法]]></title>
-        <id>https://hanjingyuan.github.io/post/eAx-5ylvO/</id>
-        <link href="https://hanjingyuan.github.io/post/eAx-5ylvO/">
-        </link>
-        <updated>2020-01-09T01:01:47.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>普通递归算法</li>
-</ol>
-<pre><code class="language-js">xxzxServ.getSelectedNodes = function(treeList, m) {
-    for(let i=0;i&lt;treeList.length;i++){
-        if (treeList[i].selected === true) {
-            m.push(treeList[i])
-        }
-        let children = treeList[i].children;
-        if (Array.isArray(children) &amp;&amp; children.length &gt; 0) {
-            children.forEach(function (item) {
-                xxzxServ.getCheckedNodes([item], m)
-            })
-        }
-    }
-    return m
-};
-</code></pre>
-<ol start="2">
-<li>进阶递归:对组织树进行递归，若节点为图层节点，那么此节点被删掉不显示。同时增加判断，若父节点的子节点全被删掉了，那么要被父节点置空。</li>
-</ol>
-<pre><code class="language-js">function treeFormat(treeList) {
-    for(let i=0;i&lt;treeList.length;i++){
-        if (treeList[i].layerId.length &gt; 0) {
-            delete treeList[i];
-            continue
-        }
-        if(treeList[i].hasOwnProperty('children')){
-            let children = treeList[i].children;
-            if (Array.isArray(children) &amp;&amp; children.length &gt; 0) {
-                treeFormat(children)
-            }
-        }
-        //这一步是为了 删除数组项后，被删除项会被定义为empty，且数组长度不变
-        //此时需要通过filter来过滤数组，实现数组长度被降低
-        if(Array.isArray(treeList[i].children)){
-            treeList[i].children = 
-            treeList[i].children.filter(item=&gt;item !== undefined);
-        }
-
-    }
- }
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[maven打包相关]]></title>
-        <id>https://hanjingyuan.github.io/post/cIuOD1fpK/</id>
-        <link href="https://hanjingyuan.github.io/post/cIuOD1fpK/">
-        </link>
-        <updated>2019-12-26T02:03:27.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>打包时忽略test</li>
-</ol>
-<pre><code class="language-xml">mvn package -Dmaven.test.skip=true
 </code></pre>
 ]]></content>
     </entry>
