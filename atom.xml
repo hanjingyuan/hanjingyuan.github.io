@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-03-31T02:02:56.217Z</updated>
+    <updated>2020-04-03T01:04:08.181Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -17,7 +17,7 @@
         </link>
         <updated>2020-03-31T02:02:33.000Z</updated>
         <content type="html"><![CDATA[<pre><code>ALTER TABLE my_table
-    ALTER COLUMN geom TYPE geometry(MultiPoint,4326) USING ST_Multi(geom);
+    ALTER COLUMN geom TYPE geometry(MultiPolygon,4490) USING ST_Multi(geom);
 </code></pre>
 ]]></content>
     </entry>
