@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>css布局-居中布局 | 汉景源的博客</title>
+<title>pg数据库的默认时间 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,21 +93,28 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">css布局-居中布局</h2>
-            <div class="post-date">2019-11-05</div>
+            <h2 class="post-title">pg数据库的默认时间</h2>
+            <div class="post-date">2020-04-07</div>
             
             <div class="post-content">
-              <h2 id="方案一">方案一</h2>
-<figure data-type="image" tabindex="1"><img src="https://hanjingyuan.github.io/post-images/1572962546779.png" alt="" loading="lazy"></figure>
+              <pre><code class="language-sql">drop table if exists student;
+create table student(
+   id int primary key     not null,
+   name        char(10)   not null,   
+   address     char(50),
+   create_time timestamp default current_timestamp,
+   update_time timestamp default current_timestamp
+);
+</code></pre>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/DXqxFXLgT/">
+                <a href="https://hanjingyuan.github.io/post/WiPCj1MDD/">
                   <h3 class="post-title">
-                    css布局-垂直居中
+                    postgis polygon转multipolygon
                   </h3>
                 </a>
               </div>

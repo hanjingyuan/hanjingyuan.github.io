@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-04-03T01:04:08.181Z</updated>
+    <updated>2020-04-07T06:13:24.200Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[pg数据库的默认时间]]></title>
+        <id>https://hanjingyuan.github.io/post/ZssQT_n6I/</id>
+        <link href="https://hanjingyuan.github.io/post/ZssQT_n6I/">
+        </link>
+        <updated>2020-04-07T06:12:44.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-sql">drop table if exists student;
+create table student(
+   id int primary key     not null,
+   name        char(10)   not null,   
+   address     char(50),
+   create_time timestamp default current_timestamp,
+   update_time timestamp default current_timestamp
+);
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[postgis polygon转multipolygon]]></title>
         <id>https://hanjingyuan.github.io/post/WiPCj1MDD/</id>
@@ -328,83 +345,6 @@ ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.EngineOrDesktop);
         &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
         &lt;geotools.version&gt;21.4&lt;/geotools.version&gt;
     &lt;/properties&gt;
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Geotools坐标转换]]></title>
-        <id>https://hanjingyuan.github.io/post/sNQdoSQE3/</id>
-        <link href="https://hanjingyuan.github.io/post/sNQdoSQE3/">
-        </link>
-        <updated>2020-01-10T08:18:16.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>创建坐标转换</li>
-</ol>
-<pre><code class="language-java">    /**
-     * 创建坐标系转换方法
-     * @param sourceWkt 源坐标系WKT定义
-     * @param targetWkt 目标坐标系WKT定义
-     * @return
-     */
-public static MathTransform createMathTransform(String sourceWkt, String targetWkt){
-    CoordinateReferenceSystem source = null;
-    CoordinateReferenceSystem target = null;
-    try {
-        source = CRS.parseWKT(sourceWkt);
-        target = CRS.parseWKT(targetWkt);
-    } catch (FactoryException e) {
-        e.printStackTrace();
-    }
-
-    MathTransform transform = null;
-    try {
-        transform = CRS.findMathTransform(source, target);
-    } catch (FactoryException e) {
-        e.printStackTrace();
-    }
-    return transform;
-}
-</code></pre>
-<ol start="2">
-<li>将wkt转换为geometry</li>
-</ol>
-<pre><code class="language-java">    /**
-     * 将wkt数据转为geometry数据
-     * @param wkt
-     * @return
-     */
-public static Geometry transformWktToGeometry(String wkt){
-    GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory();
-    WKTReader reader = new WKTReader(geometryFactory);
-    Geometry geometry = null;
-    try {
-        geometry = (Geometry) reader.read(wkt);
-    } catch (ParseException e) {
-        e.printStackTrace();
-    }
-    return geometry;
-}
-</code></pre>
-<ol start="3">
-<li>将坐标转为指定坐标系</li>
-</ol>
-<pre><code class="language-java">    /**
-     * 将输入要素转换为指定坐标系
-     * @param geometry
-     * @param mathTransform 坐标转换方法
-     * @return
-     */
-public static Geometry transformGeometryProjection(Geometry geometry, MathTransform mathTransform){
-    Geometry result = null;
-    try {
-        result = JTS.transform(geometry, mathTransform);
-    } catch (TransformException e) {
-        e.printStackTrace();
-    }
-    return result;
-}
-
-
 </code></pre>
 ]]></content>
     </entry>
