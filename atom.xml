@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-05-09T09:29:28.269Z</updated>
+    <updated>2020-05-18T02:35:46.657Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,46 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[geotools maven仓库配置]]></title>
+        <id>https://hanjingyuan.github.io/post/io2CxfhdM/</id>
+        <link href="https://hanjingyuan.github.io/post/io2CxfhdM/">
+        </link>
+        <updated>2020-05-18T02:33:50.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>配置maven的setting.xml，注意不要把mirror配置为*，不然会拦截</li>
+</ol>
+<pre><code class="language-xml">  &lt;mirrors&gt;
+	 &lt;mirror&gt;
+		&lt;id&gt;alimaven&lt;/id&gt;
+		&lt;name&gt;aliyun maven&lt;/name&gt;
+		&lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
+		&lt;mirrorOf&gt;*,!osgeo,!maven2-repository.dev.java.net,!boundless&lt;/mirrorOf&gt; 
+	 &lt;/mirror&gt;
+  &lt;/mirrors&gt;
+</code></pre>
+<ol start="2">
+<li>配置pom文件，增加对应所需要的镜像即可；</li>
+</ol>
+<pre><code class="language-xml">    &lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;osgeo&lt;/id&gt;
+            &lt;name&gt;OSGeo Release Repository&lt;/name&gt;
+            &lt;url&gt;https://repo.osgeo.org/repository/release/&lt;/url&gt;
+            &lt;snapshots&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/snapshots&gt;
+            &lt;releases&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/releases&gt;
+        &lt;/repository&gt;
+        &lt;repository&gt;
+            &lt;id&gt;osgeo-snapshot&lt;/id&gt;
+            &lt;name&gt;OSGeo Snapshot Repository&lt;/name&gt;
+            &lt;url&gt;https://repo.osgeo.org/repository/snapshot/&lt;/url&gt;
+            &lt;snapshots&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/snapshots&gt;
+            &lt;releases&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/releases&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[通用滚动条样式]]></title>
         <id>https://hanjingyuan.github.io/post/-8fA9FS8r/</id>
@@ -343,20 +383,6 @@ ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.EngineOrDesktop);
         500
     ];
     ```</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[openlayers问题汇总]]></title>
-        <id>https://hanjingyuan.github.io/post/Avfyv2HWg/</id>
-        <link href="https://hanjingyuan.github.io/post/Avfyv2HWg/">
-        </link>
-        <updated>2020-01-14T07:26:40.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>resolutions的加载</li>
-</ol>
-<blockquote>
-<p>使用resulotions时，zoom会无效，此时需要指定确定的resolution值从而实现分级；</p>
-</blockquote>
 ]]></content>
     </entry>
 </feed>

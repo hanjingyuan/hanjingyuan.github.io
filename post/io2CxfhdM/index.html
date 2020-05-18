@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>0721-0727周总结 | 汉景源的博客</title>
+<title>geotools maven仓库配置 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,68 +93,53 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">0721-0727周总结</h2>
-            <div class="post-date">2019-07-27</div>
+            <h2 class="post-title">geotools maven仓库配置</h2>
+            <div class="post-date">2020-05-18</div>
             
             <div class="post-content">
-              <h1 id="19-0721-0727周总结">19-0721-0727周总结</h1>
-<h2 id="0724">0724</h2>
-<ol>
-<li>openlayers中地图的容器div先被隐藏后被显示，此时需要调用setTimeout进行map.updateSize()；</li>
-<li>惰性单例模式的封装；</li>
-<li>图层加载时的状态监听：</li>
+              <ol>
+<li>配置maven的setting.xml，注意不要把mirror配置为*，不然会拦截</li>
 </ol>
-<pre><code class="language-js">    const wmsLayerSource = new ol.source.ImageWMS(
-        Object.assign(defaultOption, option)
-    );
-    wmsLayerSource.on('imageloadstart', function() {
-        console.log('imageloadstart')
-    });
-
-    wmsLayerSource.on('imageloadend', function() {
-        console.log('imageloadend')
-    });
+<pre><code class="language-xml">  &lt;mirrors&gt;
+	 &lt;mirror&gt;
+		&lt;id&gt;alimaven&lt;/id&gt;
+		&lt;name&gt;aliyun maven&lt;/name&gt;
+		&lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
+		&lt;mirrorOf&gt;*,!osgeo,!maven2-repository.dev.java.net,!boundless&lt;/mirrorOf&gt; 
+	 &lt;/mirror&gt;
+  &lt;/mirrors&gt;
 </code></pre>
-<h2 id="0725">0725</h2>
-<ol>
-<li>geoserver中配置sld导致无法预览的原因是：geoserver读取的属性名全部为小写，而qgis生成的sld中的字段名存在大写，大小写不一致就会导致无法预览图层的情况；</li>
-<li>请求图例的方式：</li>
+<ol start="2">
+<li>配置pom文件，增加对应所需要的镜像即可；</li>
 </ol>
-<blockquote>
-<p>http://localhost:8080/geoserver/wms?REQUEST=GetLegendGraphic&amp;VERSION=1.0.0&amp;FORMAT=image/png&amp;WIDTH=100&amp;HEIGHT=100&amp;LAYER=cite:indexmap_kg&amp;STYLE=cite:xzq</p>
-</blockquote>
-<ol start="3">
-<li>arcgis请求图例分别有html和json两种方式，且json方式返回的是base格式：</li>
-</ol>
-<blockquote>
-<p>http://172.30.3.201:6080/arcgis/rest/services/JSYDSP_TDGY1/MapServer/legend</p>
-</blockquote>
-<h2 id="0726">0726</h2>
-<ol>
-<li>c#中，获取webconfig的连接字符串：</li>
-</ol>
-<pre><code class="language-c#">ConnectionStringSettings cs = ConfigurationManager.ConnectionStrings[&quot;postgresql&quot;];
-            string conStr = cs.ConnectionString;
+<pre><code class="language-xml">    &lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;osgeo&lt;/id&gt;
+            &lt;name&gt;OSGeo Release Repository&lt;/name&gt;
+            &lt;url&gt;https://repo.osgeo.org/repository/release/&lt;/url&gt;
+            &lt;snapshots&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/snapshots&gt;
+            &lt;releases&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/releases&gt;
+        &lt;/repository&gt;
+        &lt;repository&gt;
+            &lt;id&gt;osgeo-snapshot&lt;/id&gt;
+            &lt;name&gt;OSGeo Snapshot Repository&lt;/name&gt;
+            &lt;url&gt;https://repo.osgeo.org/repository/snapshot/&lt;/url&gt;
+            &lt;snapshots&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/snapshots&gt;
+            &lt;releases&gt;&lt;enabled&gt;false&lt;/enabled&gt;&lt;/releases&gt;
+        &lt;/repository&gt;
+    &lt;/repositories&gt;
 </code></pre>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/w6zQp3yHS/" class="tag">
-                    2019周总结
+                  <a href="https://hanjingyuan.github.io/tag/A7VEcBezV/" class="tag">
+                    geotools
                   </a>
                 
-                  <a href="https://hanjingyuan.github.io/tag/ch7k1ojcWT/" class="tag">
-                    asp.net
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9/" class="tag">
-                    geoserver
-                  </a>
-                
-                  <a href="https://hanjingyuan.github.io/tag/MMl1svNQ-E/" class="tag">
-                    openlayers
+                  <a href="https://hanjingyuan.github.io/tag/A-8ziVDp1/" class="tag">
+                    maven
                   </a>
                 
               </div>
@@ -162,9 +147,9 @@
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/2019-mian-shi-zong-jie/">
+                <a href="https://hanjingyuan.github.io/post/-8fA9FS8r/">
                   <h3 class="post-title">
-                    2019面试总结
+                    通用滚动条样式
                   </h3>
                 </a>
               </div>
