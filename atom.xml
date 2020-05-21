@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-05-19T14:12:50.990Z</updated>
+    <updated>2020-05-21T10:06:11.118Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,19 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[openlayers分辨率和比例尺]]></title>
+        <id>https://hanjingyuan.github.io/post/73V4Mg8d1/</id>
+        <link href="https://hanjingyuan.github.io/post/73V4Mg8d1/">
+        </link>
+        <updated>2020-05-21T10:02:12.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>比例尺——屏幕上1米代表多少地图坐标单位；分辨率——屏幕上一个像素代表多少地图坐标单位。<br>
+两者的转换关系是：scale = resolution * 96* 39.3701（1米=39.3701英寸，1英寸=96像素，96或者72要根据实际情况来决定。）<br>
+对于上述公式，指的是投影坐标系，如果是经纬度坐标系，就要得到一度（经纬度）等于多少米即可；</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[geotools maven仓库配置]]></title>
         <id>https://hanjingyuan.github.io/post/io2CxfhdM/</id>
@@ -341,48 +354,6 @@ ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.EngineOrDesktop);
 <ol start="3">
 <li>所有的常量不要使用硬编码，全部使用枚举或者常量方法；</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[4490坐标系分辨率和比例尺]]></title>
-        <id>https://hanjingyuan.github.io/post/TJSzP2cl5/</id>
-        <link href="https://hanjingyuan.github.io/post/TJSzP2cl5/">
-        </link>
-        <updated>2020-02-17T07:02:30.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-js">S.resolutions = [
-        0.0125764139776733,//500万
-        0.0062882069888366,//250万
-        0.0025152827955347,//100万
-        0.0012576413977673,//50万
-        0.0006288206988837,//25万
-        0.0003144103494418,//125000
-        0.0001609780989142,//64000
-        0.0000804890494571,//32000
-        0.0000402445247286,//16000
-        0.0000201222623643,//8000
-        0.0000100611311821,//4000
-        0.0000050305655911,//2000
-        0.0000025152827955,//1000
-        0.0000012576413978//500
-    ];
-
-    S.scales = [
-        5000000,
-        2500000,
-        1000000,
-        500000,
-        250000,
-        125000,
-        64000,
-        32000,
-        16000,
-        8000,
-        4000,
-        2000,
-        1000,
-        500
-    ];
-    ```</code></pre>
 ]]></content>
     </entry>
 </feed>
