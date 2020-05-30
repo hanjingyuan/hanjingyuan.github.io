@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-05-22T09:28:33.810Z</updated>
+    <updated>2020-05-30T06:00:54.490Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -88,12 +88,15 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[pg数据库的默认时间]]></title>
+        <title type="html"><![CDATA[pg常用方法]]></title>
         <id>https://hanjingyuan.github.io/post/ZssQT_n6I/</id>
         <link href="https://hanjingyuan.github.io/post/ZssQT_n6I/">
         </link>
         <updated>2020-04-07T06:12:44.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-sql">drop table if exists student;
+        <content type="html"><![CDATA[<ol>
+<li>时间戳设置</li>
+</ol>
+<pre><code class="language-sql">drop table if exists student;
 create table student(
    id int primary key     not null,
    name        char(10)   not null,   
@@ -102,6 +105,12 @@ create table student(
    update_time timestamp default current_timestamp
 );
 </code></pre>
+<ol start="2">
+<li>修改坐标系</li>
+</ol>
+<blockquote>
+<p>SELECT UpdateGeometrySRID('表名','geom',32649);</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
