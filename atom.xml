@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-06-03T08:43:50.476Z</updated>
+    <updated>2020-06-10T09:13:39.266Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,96 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[java服务bat脚本配置]]></title>
+        <id>https://hanjingyuan.github.io/post/L8syXUk_m/</id>
+        <link href="https://hanjingyuan.github.io/post/L8syXUk_m/">
+        </link>
+        <updated>2020-06-10T09:12:14.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>install.bat 
+net stop com-hnup-gis-sso-gateway
+sc delete  com-hnup-gis-sso-gateway
+%~dp0com-hnup-gis-sso-gateway.exe install 
+net start com-hnup-gis-sso-gateway
+pause
+</code></pre>
+<pre><code>run.bat
+java -jar com-hnup-gis-osmp-serv.jar  
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[openlayers中icon融合加文字白边]]></title>
+        <id>https://hanjingyuan.github.io/post/FCJ7DjNlr/</id>
+        <link href="https://hanjingyuan.github.io/post/FCJ7DjNlr/">
+        </link>
+        <updated>2020-06-09T06:30:17.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-js">    zfServiceApi.transCoors2000ToCST(coors[0],coors[1]).then(resp=&gt;{
+        let data = resp;
+        var canvas = document.createElement(&quot;canvas&quot;);
+        canvas.width = 100;
+        canvas.height = 40;
+        var context = canvas.getContext(&quot;2d&quot;);
+        context.rect(0 , 0 , canvas.width , canvas.height);
+        var myImage = new Image();
+        myImage.src = &quot;./assets/images/base.png&quot;;  //背景图片 你自己本地的图片或者在线图片
+        myImage.crossOrigin = 'Anonymous';
+        myImage.onload = function(){
+            context.drawImage(myImage , 0 , 0 , 36 , 40);
+            var myImage2 = new Image();
+            myImage2.src = item.Image;  //你自己本地的图片或者在线图片
+            myImage2.crossOrigin = 'Anonymous';
+            myImage2.onload = function(){
+                context.drawImage(myImage2 , 7 , 7 , 22 , 22);
+
+                let x = data[1];
+                let y = data[2];
+                x = x.split(&quot;:&quot;)[1];
+                y = y.split(&quot;:&quot;)[1];
+                let feature = new ol.Feature({
+                    geometry:new ol.geom.Point([x,y])
+                });
+                let style = new ol.style.Style({
+                    image: new ol.style.Icon(({
+                        anchor: [0.5, 46],
+                        anchorXUnits: 'fraction',
+                        anchorYUnits: 'pixels',
+                        img: canvas,
+                        src:undefined,
+                        imgSize: canvas ? [canvas.width, canvas.height] : undefined
+                    })),
+                    text: new ol.style.Text({
+                        text:  item.CreateName,
+                        font: 'bold 16px PingFang SC',
+                        overflow: true,
+                        fill: new ol.style.Fill({
+                            color: 'rgba(66, 133, 244,1)'
+                        }),
+                        backgroundStroke: ol.style.Stroke({
+                            color: '#ffffff',
+                            width: 1
+                        }),
+                        backgroundFill: ol.style.Fill({
+                            color: &quot;#ffffff&quot;
+                        }),
+                        placement: &quot;point&quot;,
+                        offsetX: 5,
+                        offsetY: -25,
+                        stroke: new ol.style.Stroke({
+                            color: '#ffffff',
+                            width: 3
+                        })
+                    })
+                });
+                feature.setStyle(style);
+            }
+        };
+
+
+    });
+    ```</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[openlayers分辨率和比例尺]]></title>
         <id>https://hanjingyuan.github.io/post/73V4Mg8d1/</id>
@@ -259,110 +349,6 @@ namespace XXZX.OSMP.OneMap.Gis
 }
 
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ArcGIS Engine10.2环境搭建流程]]></title>
-        <id>https://hanjingyuan.github.io/post/Xh7zFZ4J_/</id>
-        <link href="https://hanjingyuan.github.io/post/Xh7zFZ4J_/">
-        </link>
-        <updated>2020-02-25T06:28:11.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>安装visual studio；</li>
-<li>使用&quot;ArcGIS_Engine_DevKit_Windows_102_134944.iso&quot;依次安装runtime和sdk；</li>
-<li>对ae进行激活，激活方式与desktop激活方式相同；</li>
-<li>引入dll或者com组件，即可正常使用；</li>
-<li>有些情况下还需要通过代码的方式进行服务的注册</li>
-</ol>
-<pre><code class="language-C#">ESRI.ArcGIS.esriSystem.IAoInitialize m_AoInitialize = new ESRI.ArcGIS.esriSystem.AoInitialize();
-m_AoInitialize.Initialize(esriLicenseProductCode.esriLicenseProductCodeEngine;
-ESRI.ArcGIS.RuntimeManager.Bind(ESRI.ArcGIS.ProductCode.EngineOrDesktop);
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Java电商平台笔记（1）]]></title>
-        <id>https://hanjingyuan.github.io/post/tnA6NQZjS/</id>
-        <link href="https://hanjingyuan.github.io/post/tnA6NQZjS/">
-        </link>
-        <updated>2020-02-20T12:08:17.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>spring mvc post请求参数接收的方法</li>
-</ol>
-<blockquote>
-<p>1.使用@RequestParam String username接收，这种方式使用的是form表单形式，或者直接使用直接使用User user接收；<br>
-2.使用@RequestBody UserForm userForm形式接收，这种方式使用的是application/json方式接收。这种方式的好处是，可以把所需要的参数单独封装起来，封装在form包下，同时可以配合使用javax.validation进行表单校验。</p>
-</blockquote>
-<ol start="2">
-<li>mybatis-generator的基础模板配置</li>
-</ol>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
-&lt;!DOCTYPE generatorConfiguration
-        PUBLIC &quot;-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN&quot;
-        &quot;http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;&gt;
-
-&lt;generatorConfiguration&gt;
-    &lt;classPathEntry location=&quot;E:\mysql-connector-java-5.1.6.jar&quot; /&gt;
-    &lt;!--&lt;classPathEntry location=&quot;src/main/resources/application.yml&quot; /&gt;--&gt;
-    &lt;context id=&quot;DB2Tables&quot; targetRuntime=&quot;MyBatis3&quot;&gt;
-        &lt;!--不再追加xml--&gt;
-        &lt;plugin type=&quot;org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin&quot;&gt;&lt;/plugin&gt;
-        &lt;commentGenerator&gt;
-            &lt;property name=&quot;suppressAllComments&quot; value=&quot;true&quot;&gt;&lt;/property&gt;
-        &lt;/commentGenerator&gt;
-        &lt;jdbcConnection driverClass=&quot;com.mysql.jdbc.Driver&quot;
-                        connectionURL=&quot;jdbc:mysql://localhost:3306/mall?characterEncoding=utf-8&quot;
-                        userId=&quot;root&quot;
-                        password=&quot;123456&quot;&gt;
-        &lt;/jdbcConnection&gt;
-        &lt;javaTypeResolver &gt;
-            &lt;property name=&quot;forceBigDecimals&quot; value=&quot;false&quot; /&gt;
-        &lt;/javaTypeResolver&gt;
-
-        &lt;javaModelGenerator targetPackage=&quot;com.imooc.mall.pojo&quot; targetProject=&quot;src/main/java&quot;&gt;
-            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;
-            &lt;!--&lt;property name=&quot;trimStrings&quot; value=&quot;true&quot; /&gt;--&gt;
-        &lt;/javaModelGenerator&gt;
-
-        &lt;sqlMapGenerator targetPackage=&quot;mapper&quot;  targetProject=&quot;src/main/resources/&quot;&gt;
-            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;
-        &lt;/sqlMapGenerator&gt;
-
-        &lt;javaClientGenerator type=&quot;XMLMAPPER&quot; targetPackage=&quot;com.imooc.mall.dao&quot;  targetProject=&quot;src/main/java&quot;&gt;
-            &lt;property name=&quot;enableSubPackages&quot; value=&quot;true&quot; /&gt;
-        &lt;/javaClientGenerator&gt;
-
-        &lt;!--&lt;table tableName=&quot;mall_order&quot; domainObjectName=&quot;Order&quot;--&gt;
-               &lt;!--enableCountByExample=&quot;false&quot;--&gt;
-               &lt;!--enableDeleteByExample=&quot;false&quot;--&gt;
-               &lt;!--enableSelectByExample=&quot;false&quot;--&gt;
-               &lt;!--enableUpdateByExample=&quot;false&quot;&gt;--&gt;
-        &lt;!--&lt;/table&gt;--&gt;
-
-        &lt;!--&lt;table tableName=&quot;mall_order_item&quot; domainObjectName=&quot;OrderItem&quot;--&gt;
-               &lt;!--enableCountByExample=&quot;false&quot;--&gt;
-               &lt;!--enableDeleteByExample=&quot;false&quot;--&gt;
-               &lt;!--enableSelectByExample=&quot;false&quot;--&gt;
-               &lt;!--enableUpdateByExample=&quot;false&quot;&gt;--&gt;
-        &lt;!--&lt;/table&gt;--&gt;
-
-        &lt;table tableName=&quot;mall_user&quot; domainObjectName=&quot;User&quot;
-               enableCountByExample=&quot;false&quot;
-               enableDeleteByExample=&quot;false&quot;
-               enableSelectByExample=&quot;false&quot;
-               enableUpdateByExample=&quot;false&quot;&gt;
-        &lt;/table&gt;
-
-    &lt;/context&gt;
-    &lt;!--mvn mybatis-generator:generate--&gt;
-&lt;/generatorConfiguration&gt;
-</code></pre>
-<blockquote>
-<p>其他配置可以参加：https://www.jianshu.com/p/e09d2370b796</p>
-</blockquote>
-<ol start="3">
-<li>所有的常量不要使用硬编码，全部使用枚举或者常量方法；</li>
-</ol>
 ]]></content>
     </entry>
 </feed>

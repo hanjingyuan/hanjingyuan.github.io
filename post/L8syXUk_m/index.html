@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>关于 | 汉景源的博客</title>
+<title>java服务bat脚本配置 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,24 +93,40 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">java服务bat脚本配置</h2>
+            <div class="post-date">2020-06-10</div>
             
             <div class="post-content">
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>自己的随笔，随便写写的。</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>我是汉景源，目前在长沙市规划信息服务中心工作，主要GIS开发，前端开发也凑活，Java开发也能干干。。</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>没什么爱好。。。</p>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>lucahan@foxmail.com</p>
+              <pre><code>install.bat 
+net stop com-hnup-gis-sso-gateway
+sc delete  com-hnup-gis-sso-gateway
+%~dp0com-hnup-gis-sso-gateway.exe install 
+net start com-hnup-gis-sso-gateway
+pause
+</code></pre>
+<pre><code>run.bat
+java -jar com-hnup-gis-osmp-serv.jar  
+</code></pre>
 
             </div>
             
+              <div class="tag-container">
+                
+                  <a href="https://hanjingyuan.github.io/tag/BtH6FWlBM/" class="tag">
+                    java
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://hanjingyuan.github.io/post/FCJ7DjNlr/">
+                  <h3 class="post-title">
+                    openlayers中icon融合加文字白边
+                  </h3>
+                </a>
+              </div>
             
 
             
