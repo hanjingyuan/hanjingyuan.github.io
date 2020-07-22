@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-06-10T09:13:39.266Z</updated>
+    <updated>2020-07-22T03:38:10.386Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,36 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[linux常用命令]]></title>
+        <id>https://hanjingyuan.github.io/post/FQLGTm52q/</id>
+        <link href="https://hanjingyuan.github.io/post/FQLGTm52q/">
+        </link>
+        <updated>2020-06-24T04:06:51.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>nginx相关</li>
+</ol>
+<blockquote>
+<p>1.重启： sudo nginx -s reload<br>
+2.检测文件正确性：sudo nginx -t<br>
+2.nginx位置：进入/usr/sbin,执行上面的命令</p>
+</blockquote>
+<ol>
+<li>查找文件</li>
+</ol>
+<blockquote>
+<p>1.蓝色代表文件夹<br>
+2.nginx配置文件位于：/etc/nginx/conf.d文件夹内</p>
+</blockquote>
+<ol start="3">
+<li>防火墙增加端口</li>
+</ol>
+<blockquote>
+<p>1.增加端口:sudo firewall-cmd --zone=public --add-port=8303/tcp --permanent<br>
+2.重启防火墙:sudo systemctl restart firewalld.service</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[java服务bat脚本配置]]></title>
         <id>https://hanjingyuan.github.io/post/L8syXUk_m/</id>
@@ -201,6 +231,19 @@ create table student(
 <blockquote>
 <p>SELECT UpdateGeometrySRID('表名','geom',32649);</p>
 </blockquote>
+<ol start="3">
+<li>创建空间索引</li>
+</ol>
+<blockquote>
+<p>CREATE INDEX tb_map_analysis_fwx_gist ON tb_map_analysis_fwx USING GIST ( geom);<br>
+CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
+</blockquote>
+<ol>
+<li>空间数据库建表方法</li>
+</ol>
+<blockquote>
+<p>polygon和multipolygon可以混合存储，使用geometry字段；将字段定义好坐标系，使用方法2，然后使用方法3创建空间索引即可；</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
@@ -236,118 +279,6 @@ http://10.14.3.41:6080/arcgis/rest/services/HNPHYZT/MapServer/identify?geometry=
         <content type="html"><![CDATA[<pre><code>http://59.231.10.67:20030/arcgis/rest/services/XZ/HNRegion4490/MapServer/0/query?where=1%3D1&amp;text=&amp;objectIds=&amp;time=&amp;geometry=&amp;geometryType=esriGeometryEnvelope&amp;inSR=&amp;spatialRel=esriSpatialRelIntersects&amp;relationParam=&amp;outFields=&amp;returnGeometry=true&amp;maxAllowableOffset=&amp;outSR=&amp;returnIdsOnly=false&amp;returnCountOnly=false&amp;orderByFields=&amp;groupByFieldsForStatistics=&amp;outStatistics=&amp;returnZ=false&amp;returnM=false&amp;gdbVersion=&amp;f=html
 </code></pre>
 <pre><code>http://59.231.10.67:20030/arcgis/rest/services/XZ/HNRegion4490/MapServer/0/query?where=1%3D1&amp;text=&amp;objectIds=&amp;time=&amp;geometry=%7B%22rings%22%3A%5B%5B%5B113.07721%2C28.16075%5D%2C%5B113.07278%2C28.15478%5D%2C%5B113.08181%2C28.15462%5D%2C%5B113.07721%2C28.16075%5D%2C%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A4490%7D%7D&amp;geometryType=esriGeometryPolygon&amp;inSR=&amp;spatialRel=esriSpatialRelIntersects&amp;relationParam=&amp;outFields=*&amp;returnGeometry=true&amp;maxAllowableOffset=&amp;outSR=&amp;returnIdsOnly=false&amp;returnCountOnly=false&amp;orderByFields=&amp;groupByFieldsForStatistics=&amp;outStatistics=&amp;returnZ=false&amp;returnM=false&amp;gdbVersion=&amp;f=html
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ArcGIS Engine10.2部分封装方法一览]]></title>
-        <id>https://hanjingyuan.github.io/post/3n2MAbf6z/</id>
-        <link href="https://hanjingyuan.github.io/post/3n2MAbf6z/">
-        </link>
-        <updated>2020-03-03T00:44:57.000Z</updated>
-        <content type="html"><![CDATA[<pre><code class="language-c#">using ESRI.ArcGIS.DataSourcesFile;
-using ESRI.ArcGIS.DataSourcesGDB;
-using ESRI.ArcGIS.esriSystem;
-using ESRI.ArcGIS.Geodatabase;
-using ESRI.ArcGIS.Geometry;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace XXZX.OSMP.OneMap.Gis
-{
-    public class GisDatasource
-    {
-
-        /// &lt;summary&gt;
-        /// 连接SDE方法1
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;_pServerIP&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pInstance&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pDatabase&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pUser&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pPassword&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pVersion&quot;&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        public static IWorkspace GetSDEWorkspace(String _pServerIP, String _pInstance, String _pDatabase, String _pUser, String _pPassword, string _pVersion)
-        {
-            ESRI.ArcGIS.esriSystem.IPropertySet pPropertySet = new ESRI.ArcGIS.esriSystem.PropertySetClass();
-            pPropertySet.SetProperty(&quot;SERVER&quot;, _pServerIP);
-            pPropertySet.SetProperty(&quot;INSTANCE&quot;, _pInstance);
-            pPropertySet.SetProperty(&quot;DATABASE&quot;, _pDatabase);
-            pPropertySet.SetProperty(&quot;USER&quot;, _pUser);
-            pPropertySet.SetProperty(&quot;PASSWORD&quot;, _pPassword);
-            //pPropertySet.SetProperty(&quot;VERSION&quot;, _pVersion);
-            // pPropertySet.SetProperty(&quot;AUTHENTICATION_MODE&quot;, &quot;DBMS&quot;);
-            IWorkspaceFactory workspaceFactory = new SdeWorkspaceFactory();
-            IWorkspace pws = workspaceFactory.Open(pPropertySet, 0);
-            return pws;
-        }
-
-        /// &lt;summary&gt;
-        /// 连接SDE方法2
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;_pServerIP&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pInstance&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pDatabase&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pUser&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pPassword&quot;&gt;&lt;/param&gt;
-        /// &lt;param name=&quot;_pVersion&quot;&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;2
-        public static IFeatureWorkspace GetSDEWorkspace2(String _pServerIP, String _pInstance, String _pDatabase, String _pUser, String _pPassword, string _pVersion)
-        {
-            SdeWorkspaceFactory sdeWorkspaceFactory = new SdeWorkspaceFactory();
-            PropertySet pset = new PropertySet();
-            pset.SetProperty(&quot;SERVER&quot;, _pServerIP);
-            pset.SetProperty(&quot;INSTANCE&quot;, _pInstance);
-            pset.SetProperty(&quot;DATABASE&quot;, _pDatabase);
-            pset.SetProperty(&quot;USER&quot;, _pUser);
-            pset.SetProperty(&quot;PASSWORD&quot;, _pPassword);
-
-            IWorkspaceFactory workspaceFactroy = new SdeWorkspaceFactoryClass();
-            IFeatureWorkspace featureWorkspace = (IFeatureWorkspace)workspaceFactroy.Open(pset, 0);
-            return featureWorkspace;
-        }
-
-        /// &lt;summary&gt;
-        /// 连接gdb数据库
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;path&quot;&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        public static IWorkspace GetGDBWorkspace(String path)
-        {
-            //@&quot;E:\workspace\layer\test.gdb&quot;
-            IWorkspaceFactory pWsFac = new FileGDBWorkspaceFactoryClass();
-            IWorkspace pWs = pWsFac.OpenFromFile(path, 0);
-            return pWs;
-        }
-
-        /// &lt;summary&gt;
-        /// 打开shp文件
-        /// @&quot;E:\workspace\layer\publish\publish1\publish1.shp&quot;
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;filePath&quot;&gt;&lt;/param&gt;
-        /// &lt;returns&gt;&lt;/returns&gt;
-        public static IFeatureClass GetShpFeatureClass(string filePath)
-        {
-
-            IWorkspaceFactory pWorkspaceFactory = new ShapefileWorkspaceFactory();
-            IWorkspaceFactoryLockControl pWorkspaceFactoryLockControl = pWorkspaceFactory as IWorkspaceFactoryLockControl;
-            if (pWorkspaceFactoryLockControl.SchemaLockingEnabled)
-            {
-                pWorkspaceFactoryLockControl.DisableSchemaLocking();
-            }
-            IWorkspace pWorkspace = pWorkspaceFactory.OpenFromFile(System.IO.Path.GetDirectoryName(filePath), 0);
-            IFeatureWorkspace pFeatureWorkspace = pWorkspace as IFeatureWorkspace;
-            IFeatureClass pFeatureClass = pFeatureWorkspace.OpenFeatureClass(System.IO.Path.GetFileName(filePath));
-            return pFeatureClass;
-        }
-
-    }
-}
-
 </code></pre>
 ]]></content>
     </entry>
