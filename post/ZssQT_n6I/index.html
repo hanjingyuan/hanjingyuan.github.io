@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1595389076639">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1595577447148">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1595389076639" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1595577447148" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -122,11 +122,17 @@ create table student(
 <p>CREATE INDEX tb_map_analysis_fwx_gist ON tb_map_analysis_fwx USING GIST ( geom);<br>
 CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
 </blockquote>
-<ol>
+<ol start="4">
 <li>空间数据库建表方法</li>
 </ol>
 <blockquote>
 <p>polygon和multipolygon可以混合存储，使用geometry字段；将字段定义好坐标系，使用方法2，然后使用方法3创建空间索引即可；</p>
+</blockquote>
+<ol start="5">
+<li>坐标的转化</li>
+</ol>
+<blockquote>
+<p>SELECT ST_AsText(ST_Transform(st_geometryfromtext('POINT(120.8 20.5)',4490),4547));</p>
 </blockquote>
 
             </div>
