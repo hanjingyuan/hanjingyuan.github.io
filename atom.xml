@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-08-02T13:40:32.032Z</updated>
+    <updated>2020-08-15T04:45:16.854Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,18 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[git 增加忽略文件]]></title>
+        <id>https://hanjingyuan.github.io/post/vbX1Ar8CE/</id>
+        <link href="https://hanjingyuan.github.io/post/vbX1Ar8CE/">
+        </link>
+        <updated>2020-08-05T01:12:23.000Z</updated>
+        <content type="html"><![CDATA[<pre><code>git rm -r --cached log
+git add .
+git commit -m 'update .gitignore
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[docker nginx]]></title>
         <id>https://hanjingyuan.github.io/post/lOiIFf0lH/</id>
@@ -69,6 +81,180 @@
 <p>1.增加端口:sudo firewall-cmd --zone=public --add-port=8303/tcp --permanent<br>
 2.重启防火墙:sudo systemctl restart firewalld.service</p>
 </blockquote>
+<ol start="4">
+<li>查看当前目录完整路径</li>
+</ol>
+<blockquote>
+<p>pwd</p>
+</blockquote>
+<ol start="5">
+<li>sh脚本命令相关</li>
+</ol>
+<blockquote>
+<p>sudo sh ./app.sh stop 运行sh脚本<br>
+set ff=unix 更改编码格式</p>
+</blockquote>
+<ol start="6">
+<li>注册为linux服务</li>
+</ol>
+<blockquote>
+<p>sudo wget http://10.14.3.160:9080/txt/map.jar<br>
+mvn package -Dmaven.test.skip=true<br>
+sudo ln -s  /home/deploy/xxpt/mapmap.jar  /etc/init.d/xxptmap<br>
+sudo chmod a+wrx /etc/init.d/xxptmap<br>
+sudo service xxptmap start/stop<br>
+service xxptmap status<br>
+chkconfig xxptmap on</p>
+</blockquote>
+<ol start="7">
+<li>查找文件</li>
+</ol>
+<pre><code>find / -name filename.txt 根据名称查找/目录下的filename.txt文件。
+
+find . -name &quot;*.xml&quot; 递归查找所有的xml文件
+
+find . -name &quot;*&quot; |xargs grep &quot;hello&quot; 递归查找所有文件内容中包含hello world的xml文件
+
+grep -H 'spring' *.xml 查找所以有的包含spring的xml文件
+
+find ./ -size 0 | xargs rm -f &amp; 删除文件大小为零的文件
+
+ls -l | grep '.jar' 查找当前目录中的所有jar文件
+
+grep 'test' d* 显示所有以d开头的文件中包含test的行。
+
+grep 'test' aa bb cc 显示在aa，bb，cc文件中匹配test的行。
+
+grep '[a-z]\{5\}' aa 显示所有包含每个字符串至少有5个连续小写字符的字符串的行。
+</code></pre>
+<ol start="8">
+<li>其他命令</li>
+</ol>
+<pre><code>
+查看一个程序是否运行
+
+
+ps –ef|grep tomcat 查看所有有关tomcat的进程
+
+ps -ef|grep --color java 高亮要查询的关键字
+
+终止进程
+
+kill -9 19979 终止线程号位19979的进程
+
+查看文件，包含隐藏文件
+
+ls -al
+
+当前工作目录
+
+pwd
+
+复制文件
+
+
+cp source dest 复制文件
+
+cp -r sourceFolder targetFolder 递归复制整个文件夹
+
+scp sourecFile name@ip:addr 远程拷贝
+
+创建目录
+
+mkdir newfolder
+
+删除目录
+
+
+rmdir deleteEmptyFolder 删除空目录 
+
+rm -rf deleteFile 递归删除目录中所有内容
+
+移动文件
+
+mv /temp/movefile /targetFolder
+
+重命名
+
+mv oldNameFile newNameFile
+
+切换用户
+
+su -username
+
+修改文件权限
+
+chmod 777 file.java file.java的权限-rwxrwxrwx，r表示读、w表示写、x表示可执行
+
+压缩文件
+
+tar -czf test.tar.gz /test1 /test2
+
+列出压缩文件列表
+
+tar -tzf test.tar.gz
+
+解压文件
+
+tar -xvzf test.tar.gz
+
+查看文件前10行
+
+head -n 10 example.txt
+
+查看文件后10行
+
+tail -n 10 example.txt
+
+查看日志最近更新
+
+tail -f exmaple.log 这个命令会自动显示新增内容，屏幕只显示10行内容的（可设置）。
+
+使用超级管理员身份执行命令
+
+sudo rm a.txt 使用管理员身份删除文件
+
+查看端口占用情况
+
+netstat -tln | grep 8080 查看端口8080的使用情况
+
+查看端口属于哪个进程
+
+lsof -i :8080
+
+查看进程
+
+ps aux|grep java 查看java进程
+
+ps aux 查看所有进程
+
+以树状格式列出目录
+
+tree a
+
+PS：Mac下使用tree命令
+
+文件下载
+
+
+wget http://file.tgz 
+
+PS ：Mac下安装wget命令
+
+curl http://file.tgz
+
+网络检测
+
+ping www.just-ping.com
+
+远程登录
+
+ssh userName@ip
+
+打印信息
+
+echo $JAVA_HOME 打印java home环境变量的值
+</code></pre>
 ]]></content>
     </entry>
     <entry>
@@ -281,6 +467,16 @@ CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
 <blockquote>
 <p>SELECT ST_AsText(ST_Transform(st_geometryfromtext('POINT(120.8 20.5)',4490),4547));</p>
 </blockquote>
+<ol start="6">
+<li>docker下的pg安装</li>
+</ol>
+<blockquote>
+<p>docker pull kartoza/postgis:10.0-2.4<br>
+docker run -d --name postgresql2 --restart always -e POSTGRES_USER=postgres -e POSTGRES_PASS='xxzx_1234' -e ALLOW_IP_RANGE=0.0.0.0/0 -v /docker_root/postgresql11-docker:/var/lib/postgresql -v /4T/tmp:/tmp/tmp -p 5432:5432 -t kartoza/postgis:10.0-2.4</p>
+</blockquote>
+<ol start="7">
+<li>pg中单环转多环</li>
+</ol>
 ]]></content>
     </entry>
     <entry>
@@ -291,19 +487,6 @@ CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
         <updated>2020-03-31T02:02:33.000Z</updated>
         <content type="html"><![CDATA[<pre><code>ALTER TABLE my_table
     ALTER COLUMN geom TYPE geometry(MultiPolygon,4490) USING ST_Multi(geom);
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ArcGIS Server常用方法]]></title>
-        <id>https://hanjingyuan.github.io/post/-ngzGVnMK/</id>
-        <link href="https://hanjingyuan.github.io/post/-ngzGVnMK/">
-        </link>
-        <updated>2020-03-14T07:13:19.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>identify面查询方法
-http://10.14.3.41:6080/arcgis/rest/services/HNPHYZT/MapServer/identify?geometry=%7B%22rings%22%3A%5B%5B%5B110.16831%2C28.25005%5D%2C%5B110.16276%2C28.24864%5D%2C%5B110.16498%2C28.24886%5D%2C%5B110.16831%2C28.25005%5D%2C%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A4490%7D%7D&amp;geometryType=esriGeometryPolygon&amp;sr=4490&amp;layers=4&amp;layerDefs=&amp;time=&amp;layerTimeOptions=&amp;tolerance=1&amp;mapExtent=83.21649896800005%2C18.498789527000042%2C134.81281152600002%2C35.129373515000054&amp;imageDisplay=800%2C850%2C96&amp;returnGeometry=true&amp;maxAllowableOffset=&amp;dynamicLayers=&amp;returnZ=false&amp;returnM=false&amp;gdbVersion=&amp;f=html
-</code></pre>
-<pre><code>http://10.14.3.41:6080/arcgis/rest/services/HNPHYZT/MapServer/2/query?where=&amp;text=&amp;objectIds=&amp;time=&amp;geometry=%7B%22rings%22%3A%5B%5B%5B113.07721%2C28.16075%5D%2C%5B113.07278%2C28.15478%5D%2C%5B113.08181%2C28.15462%5D%2C%5B113.07721%2C28.16075%5D%2C%5D%5D%2C%22spatialReference%22%3A%7B%22wkid%22%3A4490%7D%7D&amp;geometryType=esriGeometryPolygon&amp;inSR=&amp;spatialRel=esriSpatialRelWithin&amp;relationParam=&amp;outFields=*&amp;returnGeometry=true&amp;maxAllowableOffset=&amp;outSR=&amp;returnIdsOnly=false&amp;returnCountOnly=false&amp;orderByFields=&amp;groupByFieldsForStatistics=&amp;outStatistics=&amp;returnZ=false&amp;returnM=false&amp;gdbVersion=&amp;f=html
 </code></pre>
 ]]></content>
     </entry>
