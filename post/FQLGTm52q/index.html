@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1597466713303">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1597714340866">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1597466713303" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1597714340866" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -133,166 +133,31 @@
 set ff=unix 更改编码格式</p>
 </blockquote>
 <ol start="6">
-<li>注册为linux服务</li>
+<li>java自启动服务注册</li>
 </ol>
 <blockquote>
-<p>sudo wget http://10.14.3.160:9080/txt/map.jar<br>
-mvn package -Dmaven.test.skip=true<br>
-sudo ln -s  /home/deploy/xxpt/mapmap.jar  /etc/init.d/xxptmap<br>
-sudo chmod a+wrx /etc/init.d/xxptmap<br>
-sudo service xxptmap start/stop<br>
-service xxptmap status<br>
-chkconfig xxptmap on</p>
+<p>sudo wget http://10.14.3.160:9080/txt/map.jar  mvn package -Dmaven.test.skip=true<br>
+在此目录下创建指定文件，并且写入如下指定内容:sudo vim /etc/systemd/system/map.service</p>
 </blockquote>
-<ol start="7">
-<li>查找文件</li>
-</ol>
-<pre><code>find / -name filename.txt 根据名称查找/目录下的filename.txt文件。
-
-find . -name &quot;*.xml&quot; 递归查找所有的xml文件
-
-find . -name &quot;*&quot; |xargs grep &quot;hello&quot; 递归查找所有文件内容中包含hello world的xml文件
-
-grep -H 'spring' *.xml 查找所以有的包含spring的xml文件
-
-find ./ -size 0 | xargs rm -f &amp; 删除文件大小为零的文件
-
-ls -l | grep '.jar' 查找当前目录中的所有jar文件
-
-grep 'test' d* 显示所有以d开头的文件中包含test的行。
-
-grep 'test' aa bb cc 显示在aa，bb，cc文件中匹配test的行。
-
-grep '[a-z]\{5\}' aa 显示所有包含每个字符串至少有5个连续小写字符的字符串的行。
+<pre><code>[Unit]
+Description=apps
+After=syslog.target
+[Service]
+WorkingDirectory=/home/deploy/xxpt/map/
+Restart=always
+Type=simple
+ExecStart=/usr/bin/java -jar /home/deploy/xxpt/map/map.jar
+[Install]
+WantedBy=multi-user.target
 </code></pre>
-<ol start="8">
-<li>其他命令</li>
-</ol>
-<pre><code>
-查看一个程序是否运行
-
-
-ps –ef|grep tomcat 查看所有有关tomcat的进程
-
-ps -ef|grep --color java 高亮要查询的关键字
-
-终止进程
-
-kill -9 19979 终止线程号位19979的进程
-
-查看文件，包含隐藏文件
-
-ls -al
-
-当前工作目录
-
-pwd
-
-复制文件
-
-
-cp source dest 复制文件
-
-cp -r sourceFolder targetFolder 递归复制整个文件夹
-
-scp sourecFile name@ip:addr 远程拷贝
-
-创建目录
-
-mkdir newfolder
-
-删除目录
-
-
-rmdir deleteEmptyFolder 删除空目录 
-
-rm -rf deleteFile 递归删除目录中所有内容
-
-移动文件
-
-mv /temp/movefile /targetFolder
-
-重命名
-
-mv oldNameFile newNameFile
-
-切换用户
-
-su -username
-
-修改文件权限
-
-chmod 777 file.java file.java的权限-rwxrwxrwx，r表示读、w表示写、x表示可执行
-
-压缩文件
-
-tar -czf test.tar.gz /test1 /test2
-
-列出压缩文件列表
-
-tar -tzf test.tar.gz
-
-解压文件
-
-tar -xvzf test.tar.gz
-
-查看文件前10行
-
-head -n 10 example.txt
-
-查看文件后10行
-
-tail -n 10 example.txt
-
-查看日志最近更新
-
-tail -f exmaple.log 这个命令会自动显示新增内容，屏幕只显示10行内容的（可设置）。
-
-使用超级管理员身份执行命令
-
-sudo rm a.txt 使用管理员身份删除文件
-
-查看端口占用情况
-
-netstat -tln | grep 8080 查看端口8080的使用情况
-
-查看端口属于哪个进程
-
-lsof -i :8080
-
-查看进程
-
-ps aux|grep java 查看java进程
-
-ps aux 查看所有进程
-
-以树状格式列出目录
-
-tree a
-
-PS：Mac下使用tree命令
-
-文件下载
-
-
-wget http://file.tgz 
-
-PS ：Mac下安装wget命令
-
-curl http://file.tgz
-
-网络检测
-
-ping www.just-ping.com
-
-远程登录
-
-ssh userName@ip
-
-打印信息
-
-echo $JAVA_HOME 打印java home环境变量的值
-</code></pre>
+<blockquote>
+<p>重新写入 systemctl daemon-reload<br>
+查看服务状态 systemctl status test<br>
+设置为开机自启动 systemctl enable test<br>
+systemctl start test         #启动服务<br>
+systemctl stop test            #停止服务<br>
+systemctl reload test           #重新加载</p>
+</blockquote>
 
             </div>
             

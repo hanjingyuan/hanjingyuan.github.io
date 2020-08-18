@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-08-15T04:45:16.854Z</updated>
+    <updated>2020-08-18T01:32:25.676Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,65 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[linux下的java自启动脚本处理]]></title>
+        <id>https://hanjingyuan.github.io/post/0B_9Trmcc/</id>
+        <link href="https://hanjingyuan.github.io/post/0B_9Trmcc/">
+        </link>
+        <updated>2020-08-18T01:31:25.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>java工程下的pom需要增加配置如下，主要是executable修改为true：</li>
+</ol>
+<pre><code class="language-xml"> &lt;build&gt;
+        &lt;plugins&gt;
+            &lt;plugin&gt;
+                &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+                &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;
+                &lt;configuration&gt;
+                    &lt;executable&gt;true&lt;/executable&gt;
+                &lt;/configuration&gt;
+            &lt;/plugin&gt;
+        &lt;/plugins&gt;
+    &lt;/build&gt;
+</code></pre>
+<ol start="2">
+<li>将文件进行打包即可</li>
+</ol>
+<pre><code>mvn package -Dmaven.test.skip=true
+</code></pre>
+<ol start="3">
+<li>创建系统自启动文件，map.service是需要创建的服务名称</li>
+</ol>
+<pre><code>sudo vim /etc/systemd/system/map.service
+</code></pre>
+<ol start="4">
+<li>在第3步创建的文件中写入如下内容，注意需要填写的路径是java所在的路径和项目jar包的存放路径</li>
+</ol>
+<pre><code>[Unit]
+Description=apps
+After=syslog.target
+[Service]
+WorkingDirectory=/home/deploy/xxpt/map/
+Restart=always
+Type=simple
+ExecStart=/usr/bin/java -jar /home/deploy/xxpt/map/map.jar
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<ol start="5">
+<li>systemctl常用命令的记录</li>
+</ol>
+<pre><code>重新写入配置文件 systemctl daemon-reload
+查看服务状态 systemctl status test
+设置为开机自启动 systemctl enable test
+启动服务 systemctl start test         
+停止服务 systemctl stop test            
+重新加载 systemctl reload test
+当前项目路径 pwd
+查看java所在路径 which java
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[git 增加忽略文件]]></title>
         <id>https://hanjingyuan.github.io/post/vbX1Ar8CE/</id>
@@ -95,166 +154,31 @@ git commit -m 'update .gitignore
 set ff=unix 更改编码格式</p>
 </blockquote>
 <ol start="6">
-<li>注册为linux服务</li>
+<li>java自启动服务注册</li>
 </ol>
 <blockquote>
-<p>sudo wget http://10.14.3.160:9080/txt/map.jar<br>
-mvn package -Dmaven.test.skip=true<br>
-sudo ln -s  /home/deploy/xxpt/mapmap.jar  /etc/init.d/xxptmap<br>
-sudo chmod a+wrx /etc/init.d/xxptmap<br>
-sudo service xxptmap start/stop<br>
-service xxptmap status<br>
-chkconfig xxptmap on</p>
+<p>sudo wget http://10.14.3.160:9080/txt/map.jar  mvn package -Dmaven.test.skip=true<br>
+在此目录下创建指定文件，并且写入如下指定内容:sudo vim /etc/systemd/system/map.service</p>
 </blockquote>
-<ol start="7">
-<li>查找文件</li>
-</ol>
-<pre><code>find / -name filename.txt 根据名称查找/目录下的filename.txt文件。
-
-find . -name &quot;*.xml&quot; 递归查找所有的xml文件
-
-find . -name &quot;*&quot; |xargs grep &quot;hello&quot; 递归查找所有文件内容中包含hello world的xml文件
-
-grep -H 'spring' *.xml 查找所以有的包含spring的xml文件
-
-find ./ -size 0 | xargs rm -f &amp; 删除文件大小为零的文件
-
-ls -l | grep '.jar' 查找当前目录中的所有jar文件
-
-grep 'test' d* 显示所有以d开头的文件中包含test的行。
-
-grep 'test' aa bb cc 显示在aa，bb，cc文件中匹配test的行。
-
-grep '[a-z]\{5\}' aa 显示所有包含每个字符串至少有5个连续小写字符的字符串的行。
+<pre><code>[Unit]
+Description=apps
+After=syslog.target
+[Service]
+WorkingDirectory=/home/deploy/xxpt/map/
+Restart=always
+Type=simple
+ExecStart=/usr/bin/java -jar /home/deploy/xxpt/map/map.jar
+[Install]
+WantedBy=multi-user.target
 </code></pre>
-<ol start="8">
-<li>其他命令</li>
-</ol>
-<pre><code>
-查看一个程序是否运行
-
-
-ps –ef|grep tomcat 查看所有有关tomcat的进程
-
-ps -ef|grep --color java 高亮要查询的关键字
-
-终止进程
-
-kill -9 19979 终止线程号位19979的进程
-
-查看文件，包含隐藏文件
-
-ls -al
-
-当前工作目录
-
-pwd
-
-复制文件
-
-
-cp source dest 复制文件
-
-cp -r sourceFolder targetFolder 递归复制整个文件夹
-
-scp sourecFile name@ip:addr 远程拷贝
-
-创建目录
-
-mkdir newfolder
-
-删除目录
-
-
-rmdir deleteEmptyFolder 删除空目录 
-
-rm -rf deleteFile 递归删除目录中所有内容
-
-移动文件
-
-mv /temp/movefile /targetFolder
-
-重命名
-
-mv oldNameFile newNameFile
-
-切换用户
-
-su -username
-
-修改文件权限
-
-chmod 777 file.java file.java的权限-rwxrwxrwx，r表示读、w表示写、x表示可执行
-
-压缩文件
-
-tar -czf test.tar.gz /test1 /test2
-
-列出压缩文件列表
-
-tar -tzf test.tar.gz
-
-解压文件
-
-tar -xvzf test.tar.gz
-
-查看文件前10行
-
-head -n 10 example.txt
-
-查看文件后10行
-
-tail -n 10 example.txt
-
-查看日志最近更新
-
-tail -f exmaple.log 这个命令会自动显示新增内容，屏幕只显示10行内容的（可设置）。
-
-使用超级管理员身份执行命令
-
-sudo rm a.txt 使用管理员身份删除文件
-
-查看端口占用情况
-
-netstat -tln | grep 8080 查看端口8080的使用情况
-
-查看端口属于哪个进程
-
-lsof -i :8080
-
-查看进程
-
-ps aux|grep java 查看java进程
-
-ps aux 查看所有进程
-
-以树状格式列出目录
-
-tree a
-
-PS：Mac下使用tree命令
-
-文件下载
-
-
-wget http://file.tgz 
-
-PS ：Mac下安装wget命令
-
-curl http://file.tgz
-
-网络检测
-
-ping www.just-ping.com
-
-远程登录
-
-ssh userName@ip
-
-打印信息
-
-echo $JAVA_HOME 打印java home环境变量的值
-</code></pre>
+<blockquote>
+<p>重新写入 systemctl daemon-reload<br>
+查看服务状态 systemctl status test<br>
+设置为开机自启动 systemctl enable test<br>
+systemctl start test         #启动服务<br>
+systemctl stop test            #停止服务<br>
+systemctl reload test           #重新加载</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
@@ -477,17 +401,6 @@ docker run -d --name postgresql2 --restart always -e POSTGRES_USER=postgres -e P
 <ol start="7">
 <li>pg中单环转多环</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[postgis polygon转multipolygon]]></title>
-        <id>https://hanjingyuan.github.io/post/WiPCj1MDD/</id>
-        <link href="https://hanjingyuan.github.io/post/WiPCj1MDD/">
-        </link>
-        <updated>2020-03-31T02:02:33.000Z</updated>
-        <content type="html"><![CDATA[<pre><code>ALTER TABLE my_table
-    ALTER COLUMN geom TYPE geometry(MultiPolygon,4490) USING ST_Multi(geom);
-</code></pre>
 ]]></content>
     </entry>
 </feed>
