@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1597714340866">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1599529138220">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1597714340866" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1599529138220" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -142,8 +142,18 @@ CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
 docker run -d --name postgresql2 --restart always -e POSTGRES_USER=postgres -e POSTGRES_PASS='xxzx_1234' -e ALLOW_IP_RANGE=0.0.0.0/0 -v /docker_root/postgresql11-docker:/var/lib/postgresql -v /4T/tmp:/tmp/tmp -p 5432:5432 -t kartoza/postgis:10.0-2.4</p>
 </blockquote>
 <ol start="7">
-<li>pg中单环转多环</li>
+<li>
+<p>pg中单环转多环</p>
+</li>
+<li>
+<p>索引的添加</p>
+</li>
 </ol>
+<blockquote>
+<p>索引是加速查询，但是会降低插入和更新的速度；<br>
+语法：CREATE INDEX index_name ON table_name;<br>
+示例：CREATE INDEX fwbh_index ON fwx_village_buildings (fwbh);</p>
+</blockquote>
 
             </div>
             
