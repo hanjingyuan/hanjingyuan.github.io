@@ -10,7 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/5.10.2/css/all.min.css">
-<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1599529138220">
+<link rel="shortcut icon" href="https://hanjingyuan.github.io/favicon.ico?v=1600501626851">
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.11.0/katex.min.css">
 <link rel="stylesheet" href="https://hanjingyuan.github.io/styles/main.css">
 
@@ -31,7 +31,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://hanjingyuan.github.io">
-        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1599529138220" class="site-logo">
+        <img src="https://hanjingyuan.github.io/images/avatar.png?v=1600501626851" class="site-logo">
         <h1 class="site-title">汉景源的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -126,15 +126,17 @@ CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
 <li>空间数据库建表方法</li>
 </ol>
 <blockquote>
-<p>polygon和multipolygon可以混合存储，使用geometry字段；将字段定义好坐标系，使用方法2，然后使用方法3创建空间索引即可；</p>
+<p>polygon和multipolygon可以混合存储，使用geometry字段；将字段定义好坐标系，使用方法2，然后使用方法3创建空间索引即可；<br>
+create extension postgis;</p>
 </blockquote>
 <ol start="5">
-<li>坐标的转化</li>
+<li>坐标转化和面积的计算</li>
 </ol>
 <blockquote>
-<p>SELECT ST_AsText(ST_Transform(st_geometryfromtext('POINT(120.8 20.5)',4490),4547));</p>
+<p>SELECT ST_AsText(ST_Transform(st_geometryfromtext('POINT(120.8 20.5)',4490),4547));<br>
+SELECT ST_Area(ST_Transform(geom,4547));</p>
 </blockquote>
-<ol start="6">
+<ol>
 <li>docker下的pg安装</li>
 </ol>
 <blockquote>
@@ -142,6 +144,12 @@ CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
 docker run -d --name postgresql2 --restart always -e POSTGRES_USER=postgres -e POSTGRES_PASS='xxzx_1234' -e ALLOW_IP_RANGE=0.0.0.0/0 -v /docker_root/postgresql11-docker:/var/lib/postgresql -v /4T/tmp:/tmp/tmp -p 5432:5432 -t kartoza/postgis:10.0-2.4</p>
 </blockquote>
 <ol start="7">
+<li>自增索引重新计数</li>
+</ol>
+<blockquote>
+<p>SELECT setval('fwx_single_id_seq',1,FALSE); fwx_single_id_seq指的是索引名称；</p>
+</blockquote>
+<ol start="8">
 <li>
 <p>pg中单环转多环</p>
 </li>
@@ -153,6 +161,22 @@ docker run -d --name postgresql2 --restart always -e POSTGRES_USER=postgres -e P
 <p>索引是加速查询，但是会降低插入和更新的速度；<br>
 语法：CREATE INDEX index_name ON table_name;<br>
 示例：CREATE INDEX fwbh_index ON fwx_village_buildings (fwbh);</p>
+</blockquote>
+<ol start="10">
+<li>数据库的导出</li>
+</ol>
+<blockquote>
+<p>pg_dump -U postgres -t fwx_village_buildings -f ./db.sql vb<br>
+-U ：表示用户名 -f ：指定输出文件  vb ：该表从属于的数据库名</p>
+</blockquote>
+<ol>
+<li>数据库的导入</li>
+</ol>
+<blockquote>
+<p>psql -U postgres -d vb -f ./db.sql</p>
+</blockquote>
+<blockquote>
+<p>-U ：表示数据库用户名  -d ：指定要恢复到的数据库名 -f ：指定要恢复的xxx.sql文件名称</p>
 </blockquote>
 
             </div>

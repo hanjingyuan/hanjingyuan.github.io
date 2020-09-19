@@ -4,7 +4,7 @@
     <meta charset="utf-8" >
 <meta name="baidu-site-verification" content="6VzM6JzBHH" />
 <meta name="google-site-verification" content="dAQDAX--9MfnHLEd2VL4ZuK59-6DO6fsqX9S2nSofTY" />
-<title>geoserver basic认证 | 汉景源的博客</title>
+<title>redis在线安装 | 汉景源的博客</title>
 <meta name="description" content="我只是一个GIS工程师，来自长沙。">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -93,22 +93,55 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">geoserver basic认证</h2>
-            <div class="post-date">2019-11-14</div>
+            <h2 class="post-title">redis在线安装</h2>
+            <div class="post-date">2020-09-09</div>
             
             <div class="post-content">
-              <pre><code>String plainCredentials = &quot;test1:123456&quot;;
-String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBytes()));
-//输出结果dGVzdDE6MTIzNDU2
-//在js请求时，把Authorization:Basic dGVzdDE6MTIzNDU2放到header请求中即可
-</code></pre>
+              <ol>
+<li>更新yum源</li>
+</ol>
+<blockquote>
+<p>yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</p>
+</blockquote>
+<ol start="2">
+<li>安装redis</li>
+</ol>
+<blockquote>
+<p>yum --enablerepo=remi install redis</p>
+</blockquote>
+<ol start="3">
+<li>启动redis服务和开机自启动配置</li>
+</ol>
+<blockquote>
+<p>systemctl start redis<br>
+systemctl enable redis.service</p>
+</blockquote>
+<ol start="4">
+<li>设置远程连接，设置完成后重启redis</li>
+</ol>
+<blockquote>
+<p>打开/etc/redis.conf，增加如下<br>
+bind  0.0.0.0<br>
+protected-mode   no</p>
+</blockquote>
+<ol start="5">
+<li>打开6379端口，并且重启防火墙</li>
+</ol>
+<blockquote>
+<p>1.增加端口:sudo firewall-cmd --zone=public --add-port=6379/tcp --permanent<br>
+2.重启防火墙:sudo systemctl restart firewalld.service</p>
+</blockquote>
 
             </div>
             
               <div class="tag-container">
                 
-                  <a href="https://hanjingyuan.github.io/tag/xdKjPqmP9/" class="tag">
-                    geoserver
+                  <a href="https://hanjingyuan.github.io/tag/IqrLKOXLZ/" class="tag">
+                    redis
+                  </a>
+                
+                  <a href="https://hanjingyuan.github.io/tag/AJigyH_mA/" class="tag">
+                    linux
                   </a>
                 
               </div>
@@ -116,9 +149,9 @@ String base64Credentials = new String(Base64.encodeBase64(plainCredentials.getBy
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://hanjingyuan.github.io/post/0QUeU8sZi/">
+                <a href="https://hanjingyuan.github.io/post/0B_9Trmcc/">
                   <h3 class="post-title">
-                    postgresql中user表名的问题
+                    linux下的java自启动脚本处理
                   </h3>
                 </a>
               </div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://hanjingyuan.github.io</id>
     <title>汉景源的博客</title>
-    <updated>2020-09-08T01:39:02.085Z</updated>
+    <updated>2020-09-19T07:47:08.946Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://hanjingyuan.github.io"/>
     <link rel="self" href="https://hanjingyuan.github.io/atom.xml"/>
@@ -10,6 +10,48 @@
     <logo>https://hanjingyuan.github.io/images/avatar.png</logo>
     <icon>https://hanjingyuan.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 汉景源的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[redis在线安装]]></title>
+        <id>https://hanjingyuan.github.io/post/x_THeVrDK/</id>
+        <link href="https://hanjingyuan.github.io/post/x_THeVrDK/">
+        </link>
+        <updated>2020-09-09T08:25:35.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>更新yum源</li>
+</ol>
+<blockquote>
+<p>yum install -y http://rpms.famillecollet.com/enterprise/remi-release-7.rpm</p>
+</blockquote>
+<ol start="2">
+<li>安装redis</li>
+</ol>
+<blockquote>
+<p>yum --enablerepo=remi install redis</p>
+</blockquote>
+<ol start="3">
+<li>启动redis服务和开机自启动配置</li>
+</ol>
+<blockquote>
+<p>systemctl start redis<br>
+systemctl enable redis.service</p>
+</blockquote>
+<ol start="4">
+<li>设置远程连接，设置完成后重启redis</li>
+</ol>
+<blockquote>
+<p>打开/etc/redis.conf，增加如下<br>
+bind  0.0.0.0<br>
+protected-mode   no</p>
+</blockquote>
+<ol start="5">
+<li>打开6379端口，并且重启防火墙</li>
+</ol>
+<blockquote>
+<p>1.增加端口:sudo firewall-cmd --zone=public --add-port=6379/tcp --permanent<br>
+2.重启防火墙:sudo systemctl restart firewalld.service</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[linux下的java自启动脚本处理]]></title>
         <id>https://hanjingyuan.github.io/post/0B_9Trmcc/</id>
@@ -179,6 +221,12 @@ systemctl start test         #启动服务<br>
 systemctl stop test            #停止服务<br>
 systemctl reload test           #重新加载</p>
 </blockquote>
+<ol start="7">
+<li>202服务器无法传送文件的解决方案</li>
+</ol>
+<blockquote>
+<p>sudo chmod 777 /home/soft 指定目录打开权限即可</p>
+</blockquote>
 ]]></content>
     </entry>
     <entry>
@@ -346,71 +394,6 @@ java -jar com-hnup-gis-osmp-serv.jar
   background: #EDEDED;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[pg常用方法]]></title>
-        <id>https://hanjingyuan.github.io/post/ZssQT_n6I/</id>
-        <link href="https://hanjingyuan.github.io/post/ZssQT_n6I/">
-        </link>
-        <updated>2020-04-07T06:12:44.000Z</updated>
-        <content type="html"><![CDATA[<ol>
-<li>时间戳设置</li>
-</ol>
-<pre><code class="language-sql">drop table if exists student;
-create table student(
-   id int primary key     not null,
-   name        char(10)   not null,   
-   address     char(50),
-   create_time timestamp default current_timestamp,
-   update_time timestamp default current_timestamp
-);
-</code></pre>
-<ol start="2">
-<li>修改坐标系</li>
-</ol>
-<blockquote>
-<p>SELECT UpdateGeometrySRID('表名','geom',32649);</p>
-</blockquote>
-<ol start="3">
-<li>创建空间索引</li>
-</ol>
-<blockquote>
-<p>CREATE INDEX tb_map_analysis_fwx_gist ON tb_map_analysis_fwx USING GIST ( geom);<br>
-CREATE INDEX 索引名称 ON 表名称 USING GIST ( 字段名称);</p>
-</blockquote>
-<ol start="4">
-<li>空间数据库建表方法</li>
-</ol>
-<blockquote>
-<p>polygon和multipolygon可以混合存储，使用geometry字段；将字段定义好坐标系，使用方法2，然后使用方法3创建空间索引即可；</p>
-</blockquote>
-<ol start="5">
-<li>坐标的转化</li>
-</ol>
-<blockquote>
-<p>SELECT ST_AsText(ST_Transform(st_geometryfromtext('POINT(120.8 20.5)',4490),4547));</p>
-</blockquote>
-<ol start="6">
-<li>docker下的pg安装</li>
-</ol>
-<blockquote>
-<p>docker pull kartoza/postgis:10.0-2.4<br>
-docker run -d --name postgresql2 --restart always -e POSTGRES_USER=postgres -e POSTGRES_PASS='xxzx_1234' -e ALLOW_IP_RANGE=0.0.0.0/0 -v /docker_root/postgresql11-docker:/var/lib/postgresql -v /4T/tmp:/tmp/tmp -p 5432:5432 -t kartoza/postgis:10.0-2.4</p>
-</blockquote>
-<ol start="7">
-<li>
-<p>pg中单环转多环</p>
-</li>
-<li>
-<p>索引的添加</p>
-</li>
-</ol>
-<blockquote>
-<p>索引是加速查询，但是会降低插入和更新的速度；<br>
-语法：CREATE INDEX index_name ON table_name;<br>
-示例：CREATE INDEX fwbh_index ON fwx_village_buildings (fwbh);</p>
-</blockquote>
 ]]></content>
     </entry>
 </feed>
